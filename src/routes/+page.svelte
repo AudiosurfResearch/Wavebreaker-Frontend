@@ -1,2 +1,4 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="prose">
+	<h1>Welcome to Wavebreaker</h1>
+	<p>i cordially invite you to join the suffering</p>
+</div>
