@@ -1,7 +1,7 @@
 <div class="w-full py-5">
 	<div class="divider" />
 	<footer class="footer footer-center bg-base-100 text-base-content">
-		<div>
+		<div class="px-5">
 			<p>
 				Frontend for <a class="text-primary" href="https://github.com/AudiosurfResearch/Wavebreaker"
 					>Wavebreaker</a

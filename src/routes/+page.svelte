@@ -1,4 +1,16 @@
-<div class="prose p-5">
-	<h1>Welcome to Wavebreaker</h1>
-	<p>i cordially invite you to join the suffering</p>
+<script>
+	import logo from '$lib/assets/wavebreaker_icon.svg';
+</script>
+
+<div class="hero">
+	<div class="hero-content flex-col lg:flex-row-reverse p-9">
+		<img src={logo} class="max-w-xs py-14 lg:max-w-sm" alt="Wavebreaker logo" />
+		<div>
+			<h1 class="text-5xl font-bold">Welcome to Wavebreaker</h1>
+			<p class="py-6">
+				Wavebreaker is a WIP open-source reimplementation of Audiosurf's online services.
+				It aims to provide the same functionality as the original game.
+			</p>
+		</div>
+	</div>
 </div>

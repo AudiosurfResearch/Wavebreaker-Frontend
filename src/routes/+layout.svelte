@@ -6,6 +6,6 @@
 
 <div class="flex flex-col min-h-screen justify-between">
 	<Navbar />
-	<div class="flex max-w-6xl justify-center"><slot /></div>
+	<div class="flex max-w-7xl self-center items-center w-full"><slot /></div>
 	<Footer />
 </div>
