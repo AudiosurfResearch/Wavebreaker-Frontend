@@ -10,6 +10,6 @@
 		</a>
 	</div>
 	<div class="flex-none navbar-end">
-		<button class="btn btn-primary btn-sm normal-case mr-4">Sign in</button>
+		<a href="/login" class="btn btn-primary btn-sm normal-case mr-4">Sign in</a>
 	</div>
 </div>
