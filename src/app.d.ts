@@ -1,6 +1,6 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
-import type { UserInfo } from '$lib/api';
+import type { UserInfo } from '$lib/models/UserData.ts';
 
 declare global {
 	namespace App {

@@ -17,10 +17,13 @@ const config = {
   daisyui: {
     themes: [{
       dark: {
+        //Based on the VSCode Moonlight II theme.
         ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
         primary: wavebreakerBrandColor,
         neutral: "#212337",
-        "base-100": "#1B1E2B",
+        "base-100": "#1E2030",
+        "base-200": "#191A2A",
+        "base-300": "#131421",
         "base-content": "#c8d3f5"
       },
     },
