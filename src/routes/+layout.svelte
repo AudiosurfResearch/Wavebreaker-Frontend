@@ -5,17 +5,11 @@
 
 	import { onMount } from 'svelte';
 	import { fetcher } from '$lib/api';
-	import type { UserInfo } from '$lib/models/UserData';
-	import { userInfo } from '$lib/stores';
-
-	onMount(async () => {
-		const user = await fetcher<UserInfo>('/api/auth/verifyToken');
-		userInfo.set(user);
-	});
+	import { page } from '$app/stores';
 </script>
 
 <div class="flex flex-col min-h-screen justify-between">
 	<Navbar />
-	<div class="flex max-w-7xl self-center items-center w-full"><slot /></div>
+	<div class="flex max-w-7xl self-center items-center w-full p-5"><slot /></div>
 	<Footer />
 </div>

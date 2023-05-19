@@ -1,12 +1,12 @@
 import { fetcher } from '$lib/api';
 import type { UserInfo, UserTokenResponse } from '$lib/models/UserData';
-import { userInfo } from '$lib/stores';
 import { redirect, type ServerLoadEvent } from '@sveltejs/kit';
 
 //Getting this to work took me at least 4 hours. This is a cry for help.
 //Nevermind. Make that at least 6.
 //still not working.
-export const load = async ({ url, cookies }: ServerLoadEvent) => {
+//nvm finally.
+export const load = async ({ url, cookies, locals }: ServerLoadEvent) => {
 	const tokenResponse = await fetcher<UserTokenResponse>(
 		'/api/auth/steam/return?' + url.searchParams.toString()
 	);
@@ -18,7 +18,7 @@ export const load = async ({ url, cookies }: ServerLoadEvent) => {
 	});
 
 	const user = await fetcher<UserInfo>('/api/auth/verifyToken', tokenResponse.token);
-	userInfo.set(user);
+	locals.user = user;
 	console.log("Logged in as user " + user.id)
 
 	throw redirect(307, '/');
