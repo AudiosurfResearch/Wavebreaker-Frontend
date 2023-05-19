@@ -2,6 +2,7 @@
 	import logo from '$lib/assets/wavebreaker_icon.svg';
 
 	import { page } from '$app/stores';
+	import { dev } from '$app/environment';
 </script>
 
 <div class="navbar bg-base-100 sticky top-0 z-50">
@@ -9,6 +10,9 @@
 		<a href="/" class="btn btn-ghost normal-case text-2xl">
 			<img src={logo} class="h-8 mr-4" alt="Wavebreaker logo" />
 			<span>Wavebreaker</span>
+			{#if dev}
+				<div class="ml-2 badge badge-outline badge-warning badge-sm">dev</div>
+			{/if}
 		</a>
 	</div>
 	<div class="flex-none navbar-end">
@@ -29,11 +33,15 @@
 						<span>{$page.data.user.username}</span>
 					</li>
 					<li><a href="/user/{$page.data.user.id}">Profile</a></li>
-					<li><a>Settings</a></li>
+					<li>
+						<form action="/logout" method="POST">
+							<button type="submit">Log out</button>
+						</form>
+					</li>
 				</ul>
 			</div>
 		{:else}
-			<a href="/login" class="btn btn-primary btn-sm normal-case mr-4">Sign in</a>
+			<a href="/login" rel="external" class="btn btn-primary btn-sm normal-case mr-4">Sign in</a>
 		{/if}
 	</div>
 </div>

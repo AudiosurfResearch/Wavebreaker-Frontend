@@ -4,12 +4,19 @@
 	import Navbar from '../components/Navbar.svelte';
 
 	import { onMount } from 'svelte';
-	import { fetcher } from '$lib/api';
-	import { page } from '$app/stores';
+	import { navigating } from '$app/stores';
 </script>
 
 <div class="flex flex-col min-h-screen justify-between">
 	<Navbar />
-	<div class="flex max-w-7xl self-center items-center w-full p-5"><slot /></div>
+	<div class="flex max-w-7xl self-center items-center w-full p-5">
+		{#if $navigating}
+			<div class="flex justify-center items-center w-full">
+				<h1 class="text-3xl text-center">Please wait...</h1>
+			</div>
+		{:else}
+			<slot />
+		{/if}
+	</div>
 	<Footer />
 </div>

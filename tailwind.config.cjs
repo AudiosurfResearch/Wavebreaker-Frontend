@@ -24,7 +24,9 @@ const config = {
         "base-100": "#1E2030",
         "base-200": "#191A2A",
         "base-300": "#131421",
-        "base-content": "#c8d3f5"
+        "base-content": "#C8D3F5",
+        "warning": "#FFC777",
+        "error": "#FF5370"
       },
     },
     {

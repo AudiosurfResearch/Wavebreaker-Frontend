@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 import { fetcher } from '$lib/api';
 import type { UserInfo, UserTokenResponse } from '$lib/models/UserData';
 import { redirect, type ServerLoadEvent } from '@sveltejs/kit';
@@ -14,7 +15,7 @@ export const load = async ({ url, cookies, locals }: ServerLoadEvent) => {
 	cookies.set('Authorization', tokenResponse.token, {
 		path: '/',
 		expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 14), // 2 weeks
-		secure: false,
+		secure: !dev,
 	});
 
 	const user = await fetcher<UserInfo>('/api/auth/verifyToken', tokenResponse.token);

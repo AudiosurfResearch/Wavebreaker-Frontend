@@ -4,6 +4,10 @@
 	const quote = songQuoteList[Math.floor(Math.random() * songQuoteList.length)];
 </script>
 
+<svelte:head>
+    <title>Wavebreaker | Error</title> 
+</svelte:head>
+
 <div>
 	<h1 class="text-9xl font-bold">{$page.status}</h1>
 	<h2 class="text-4xl">{$page.error?.message}</h2>

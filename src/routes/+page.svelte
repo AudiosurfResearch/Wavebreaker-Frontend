@@ -2,6 +2,10 @@
 	import logo from '$lib/assets/wavebreaker_icon.svg';
 </script>
 
+<svelte:head>
+    <title>Wavebreaker | Home</title> 
+</svelte:head>
+
 <div class="hero">
 	<div class="hero-content flex-col lg:flex-row-reverse p-9">
 		<img src={logo} class="max-w-xs py-14 lg:max-w-sm" alt="Wavebreaker logo" />
