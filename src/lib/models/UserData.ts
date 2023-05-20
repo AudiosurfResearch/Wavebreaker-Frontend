@@ -9,6 +9,10 @@ export interface UserInfo {
 	avatarUrl: string;
 }
 
+export interface ExtendedUserInfo extends UserInfo {
+	totalScore: number;
+}
+
 export interface UserTokenResponse {
 	token: string;
 }

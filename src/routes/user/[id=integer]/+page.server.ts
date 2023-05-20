@@ -1,10 +1,13 @@
 import { error } from '@sveltejs/kit';
-import { fetcher } from '$lib/api';
-import type { UserInfo } from '$lib/models/UserData';
+import { poster } from '$lib/api';
+import type { ExtendedUserInfo } from '$lib/models/UserData';
 
 export async function load({ params }) {
 	const id: number = +params.id;
-	const userResult = await fetcher<UserInfo>(`/api/users/getUser/${id}`);
+	const userResult = await poster<ExtendedUserInfo>('/api/users/getUser', {
+		id: id,
+		getExtendedInfo: true
+	});
 
 	if (userResult) {
 		return {
