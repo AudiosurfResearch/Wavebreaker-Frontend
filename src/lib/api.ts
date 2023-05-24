@@ -1,6 +1,7 @@
-import axios, { Axios, type AxiosRequestConfig } from 'axios';
+import { env } from '$env/dynamic/private';
+import axios, { type AxiosRequestConfig } from 'axios';
 
-export const apiBaseURL = 'http://wavebreakerdev.local'; //TODO: Move into config/env vars
+export const apiBaseURL = env.API_URL; //TODO: Move into config/env vars
 export enum RestMethods {
 	GET = 'GET',
 	POST = 'POST',
