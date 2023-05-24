@@ -9,8 +9,16 @@ export interface UserInfo {
 	avatarUrl: string;
 }
 
+export type Song = {
+    id: number;
+    title: string;
+    artist: string;
+}
+
 export interface ExtendedUserInfo extends UserInfo {
 	totalScore: number;
+	totalPlays: number;
+	favoriteSong?: Song;
 }
 
 export interface UserTokenResponse {
