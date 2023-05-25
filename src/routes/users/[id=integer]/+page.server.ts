@@ -4,16 +4,16 @@ import type { ExtendedUserInfo } from '$lib/models/UserData';
 
 export async function load({ params }) {
 	const id: number = +params.id;
-	const userResult = await poster<ExtendedUserInfo>('/api/users/getUser', {
-		id: id,
-		getExtendedInfo: true
-	});
+	try {
+		const userResult = await poster<ExtendedUserInfo>('/api/users/getUser', {
+			id: id,
+			getExtendedInfo: true
+		});
 
-	if (userResult) {
 		return {
 			userResult
 		};
+	} catch (e) {
+		throw error(404, { message: 'User not found' });
 	}
-
-	throw error(404, { message: 'User not found' });
 }

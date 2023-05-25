@@ -19,5 +19,21 @@ export const songQuoteList: SongQuote[] = [
     {
 		content: "I see myself, dancing in the puddles", //shoutout to asuzora
 		link: "https://bycolourcrew.bandcamp.com/track/live-once-2"
-	}
+	},
+	{
+		content: "You'll see it's about to rain",
+		link: "https://soundcloud.com/lapixmusic/spd-garcrossfade#t=12%3A04"
+	},
+	{
+		content: "All I know is, it's just for the summer",
+		link: "https://youtu.be/sBRjaQIub_g"
+	},
+	{
+		content: "What a silly tale!",
+		link: "https://youtu.be/1hvTktgYORo"
+	},
+	{
+		content: "It's crystal clear to me",
+		link: "https://youtu.be/HgMGW3vjLVk"
+	},
 ];

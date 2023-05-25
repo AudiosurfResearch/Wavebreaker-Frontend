@@ -4,9 +4,9 @@
 	export let classExt: string;
 </script>
 
-<div class={'flex items-center text-primary-content px-2 rounded-lg ' + classExt}>
+<span class={'inline-flex max-w-fit items-center text-primary-content px-2 rounded-lg ' + classExt}>
 	{#if imgSrc}
-		<span><img src={imgSrc} class="h-4 mr-2" alt="Wavebreaker logo" /></span>
+		<img src={imgSrc} class="h-4 mr-2" alt="Wavebreaker logo" />
 	{/if}
 	{label}
-</div>
+</span>

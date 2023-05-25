@@ -8,7 +8,7 @@
 
 <div class="flex flex-col min-h-screen justify-between">
 	<Navbar />
-	<div class="flex max-w-7xl self-center items-center w-full p-5">
+	<div class="max-w-7xl self-center w-full p-5">
 		<slot />
 		<!--
 		{#if $navigating}
