@@ -18,7 +18,6 @@ export type Song = {
 export interface ExtendedUserInfo extends UserInfo {
 	totalScore: number;
 	totalPlays: number;
-	totalSongTime: number;
 	favoriteCharacter?: number;
 	favoriteSong?: Song;
 }
