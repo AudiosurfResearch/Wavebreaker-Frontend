@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "dotenv -e .env.development -- vite dev",
 		"build": "vite build",
-		"preview": "vite preview",
+		"preview": "dotenv -e .env.development -- vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
@@ -36,6 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"axios": "^1.4.0"
+		"axios": "^1.4.0",
+		"timeago.js": "^4.0.2"
 	}
 }

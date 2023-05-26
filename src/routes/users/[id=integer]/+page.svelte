@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import UserDisplay from '../../../components/users/UserDisplay.svelte';
+	import { format } from 'timeago.js';
+	import { characterList } from '$lib/characterUtils';
 
 	export let data: PageData;
 </script>
@@ -14,7 +16,7 @@
 	<div class="flex p-5 rounded-3xl bg-neutral grow">
 		<div class="self-center space-y-2">
 			<p>
-				<b>Joined {new Date(data.userResult.joinedAt).toLocaleDateString()}</b>
+				<b>Joined {format(data.userResult.joinedAt)}</b>
 				<br />
 			</p>
 			<p>
@@ -24,8 +26,10 @@
 				{data.userResult.totalPlays} <br />
 			</p>
 			<p>
-				<b>Favorite character:</b>
-				{data.userResult.favoriteCharacter} <br />
+				{#if data.userResult.favoriteCharacter}
+					<b>Favorite character:</b>
+					{characterList[data.userResult.favoriteCharacter]} <br />
+				{/if}
 				{#if data.userResult.favoriteSong}
 					<b>Favorite song:</b>
 					<a class="hover:underline" href="/songs/{data.userResult.id}"
