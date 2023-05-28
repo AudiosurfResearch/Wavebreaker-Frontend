@@ -3,6 +3,7 @@
 	import UserDisplay from '../../../components/users/UserDisplay.svelte';
 	import { format } from 'timeago.js';
 	import { characterList } from '$lib/characterUtils';
+	import ScoreTable from '../../../components/ScoreTable.svelte';
 
 	export let data: PageData;
 </script>
@@ -13,30 +14,50 @@
 
 <div class="flex p-4 gap-4 justify-center items-stretch w-full flex-col">
 	<UserDisplay targetUser={data.userResult} />
-	<div class="flex p-5 rounded-3xl bg-neutral grow">
-		<div class="self-center space-y-2">
-			<p>
-				<b>Joined {format(data.userResult.joinedAt)}</b>
-				<br />
-			</p>
-			<p>
-				<b>Total score:</b>
-				{data.userResult.totalScore} <br />
-				<b>Total plays:</b>
-				{data.userResult.totalPlays} <br />
-			</p>
-			<p>
-				{#if data.userResult.favoriteCharacter}
-					<b>Favorite character:</b>
-					{characterList[data.userResult.favoriteCharacter]} <br />
-				{/if}
-				{#if data.userResult.favoriteSong}
-					<b>Favorite song:</b>
-					<a class="hover:underline" href="/songs/{data.userResult.id}"
-						>{data.userResult.favoriteSong.artist} - {data.userResult.favoriteSong.title}</a
-					> <br />
-				{/if}
-			</p>
+	<div class="stats stats-vertical rounded-3xl bg-neutral lg:stats-horizontal grow shadow">
+		<div class="stat">
+			<div class="stat-title">Joined</div>
+			<div class="stat-value text-3xl lg:text-4xl">{format(data.userResult.joinedAt)}</div>
 		</div>
+
+		<div class="stat">
+			<div class="stat-title">Total score</div>
+			<div class="stat-value text-3xl lg:text-4xl">{data.userResult.totalScore}</div>
+		</div>
+
+		<div class="stat">
+			<div class="stat-title">Total plays</div>
+			<div class="stat-value text-3xl lg:text-4xl">{data.userResult.totalPlays}</div>
+		</div>
+
+		{#if data.userResult.favoriteCharacter}
+			<div class="stat">
+				<div class="stat-title">Favorite character</div>
+				<div class="stat-value text-3xl lg:text-4xl">
+					{characterList[data.userResult.favoriteCharacter]}
+				</div>
+			</div>
+		{/if}
+
+		<!-- TODO: Make this thing not overflow
+			{#if data.userResult.favoriteSong}
+				<div class="stat">
+					<div class="stat-title">Favorite song</div>
+					<div class="stat-value text-3xl lg:text-4xl">
+						<a class="hover:underline" href="/songs/{data.userResult.id}"
+							>{data.userResult.favoriteSong.artist} - {data.userResult.favoriteSong.title}</a
+						>
+					</div>
+				</div>
+			{/if}
+		-->
+	</div>
+	<div class="mt-3">
+		<h1 class="text-3xl font-bold mb-2">Latest scores</h1>
+		<ScoreTable targetScores={data.latestScoresResult.scores} />
+	</div>
+	<div class="mt-3">
+		<h1 class="text-3xl font-bold mb-2">Best scores</h1>
+		<ScoreTable targetScores={data.bestScoresResult.scores} />
 	</div>
 </div>

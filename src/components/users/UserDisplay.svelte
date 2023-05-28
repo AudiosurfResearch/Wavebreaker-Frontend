@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="flex p-5 gap-y-2 items-center flex-col
+	class="flex mx-5 gap-y-2 items-center flex-col
     md:flex-row md:space-x-5"
 >
 	<div class="avatar">

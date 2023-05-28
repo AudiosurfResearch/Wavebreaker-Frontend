@@ -36,4 +36,12 @@ export const songQuoteList: SongQuote[] = [
 		content: "It's crystal clear to me",
 		link: "https://youtu.be/HgMGW3vjLVk"
 	},
+	{
+		content: "Jack the broadcasting room!",
+		link: "https://youtu.be/lo603GRjNvI"
+	},
+	{
+		content: "Moon shines in the cranberry city, our stories taste sour but sweet",
+		link: "https://youtu.be/TLpgGajZgHE"
+	},
 ];

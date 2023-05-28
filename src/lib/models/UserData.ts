@@ -1,3 +1,5 @@
+import type { Song } from "./SongData";
+
 export interface UserInfo {
 	id: number;
 	username: string;
@@ -7,12 +9,8 @@ export interface UserInfo {
 	accountType: number;
 	joinedAt: Date;
 	avatarUrl: string;
-}
-
-export type Song = {
-    id: number;
-    title: string;
-    artist: string;
+	avatarUrlMedium: string;
+	avatarUrlSmall: string;
 }
 
 export interface ExtendedUserInfo extends UserInfo {
