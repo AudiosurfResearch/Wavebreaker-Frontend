@@ -12,7 +12,7 @@
     md:flex-row md:space-x-5"
 >
 	<div class="avatar">
-		<div class="max-w-xs lg:max-w-sm rounded-3xl">
+		<div class="max-w-xs lg:max-w-sm rounded-3xl shadow">
 			<img src={targetUser.avatarUrl} alt="Avatar of {targetUser.username}" />
 		</div>
 	</div>

@@ -3,7 +3,7 @@
 	import UserDisplay from '../../../components/users/UserDisplay.svelte';
 	import { format } from 'timeago.js';
 	import { characterList } from '$lib/characterUtils';
-	import ScoreTable from '../../../components/ScoreTable.svelte';
+	import ScoreTable from '../../../components/scores/ScoreTable.svelte';
 
 	export let data: PageData;
 </script>
@@ -54,10 +54,10 @@
 	</div>
 	<div class="mt-3">
 		<h1 class="text-3xl font-bold mb-2">Latest scores</h1>
-		<ScoreTable targetScores={data.latestScoresResult.scores} />
+		<ScoreTable targetScores={data.latestScoresResult.scores} showSong={true} showPlayer={false} />
 	</div>
 	<div class="mt-3">
 		<h1 class="text-3xl font-bold mb-2">Best scores</h1>
-		<ScoreTable targetScores={data.bestScoresResult.scores} />
+		<ScoreTable targetScores={data.bestScoresResult.scores} showSong={true} showPlayer={false} />
 	</div>
 </div>
