@@ -8,7 +8,7 @@
 
 <div class="hero">
 	<div class="hero-content flex-col lg:flex-row-reverse p-9">
-		<img src={logo} class="max-w-xs py-14 lg:max-w-sm" alt="Wavebreaker logo" />
+		<img src={logo} class="py-14 max-w-xs lg:max-w-sm" alt="Wavebreaker logo" />
 		<div class="max-w-5xl">
 			<h1 class="text-5xl font-bold">Welcome to Wavebreaker</h1>
 			<p class="py-6">

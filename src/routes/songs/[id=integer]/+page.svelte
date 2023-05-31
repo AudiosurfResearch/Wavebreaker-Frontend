@@ -13,10 +13,7 @@
 </svelte:head>
 
 <div class="flex p-4 gap-4 justify-center items-stretch w-full flex-col">
-	<div
-		class="flex mx-5 gap-y-2 items-center flex-col
-    md:flex-row md:space-x-5"
-	>
+	<div class="flex mx-5 gap-y-2 items-center flex-col md:flex-row md:space-x-5">
 		{#if data.songResult.coverUrl}
 			<div class="avatar">
 				<div class="max-w-xs rounded-3xl shadow">
@@ -43,4 +40,5 @@
 			{/if}
 		</div>
 	</div>
+	
 </div>

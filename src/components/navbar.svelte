@@ -7,11 +7,11 @@
 
 <div class="navbar bg-base-100 sticky top-0 z-50">
 	<div class="flex-none navbar-start">
-		<a href="/" class="btn btn-ghost normal-case text-2xl">
-			<img src={logo} class="h-8 mr-4" alt="Wavebreaker logo" />
-			<span>Wavebreaker</span>
+		<a href="/" class="btn btn-ghost normal-case text-2xl gap-x-3">
+			<img src={logo} class="h-8" alt="Wavebreaker logo" />
+			<span class="hidden sm:block">Wavebreaker</span>
 			{#if dev}
-				<div class="ml-2 badge badge-outline badge-warning badge-sm">dev</div>
+				<div class="badge badge-outline badge-warning badge-sm">dev</div>
 			{/if}
 		</a>
 	</div>
