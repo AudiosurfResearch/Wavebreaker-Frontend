@@ -1,7 +1,7 @@
-import { env } from '$env/dynamic/private';
+import { env } from '$env/dynamic/public';
 import axios, { type AxiosRequestConfig } from 'axios';
 
-export const apiBaseURL = env.API_URL;
+export const apiBaseURL = env.PUBLIC_API_URL;
 export enum RestMethods {
 	GET = 'GET',
 	POST = 'POST',
