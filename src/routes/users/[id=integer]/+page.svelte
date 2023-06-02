@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import UserDisplay from '../../../components/users/UserDisplay.svelte';
+	import UserDisplay from '$lib/components/users/UserDisplay.svelte';
 	import { format } from 'timeago.js';
 	import { characterList } from '$lib/characterUtils';
-	import ScoreTable from '../../../components/scores/ScoreTable.svelte';
+	import ScoreTable from '$lib/components/scores/ScoreTable.svelte';
 
 	export let data: PageData;
 </script>

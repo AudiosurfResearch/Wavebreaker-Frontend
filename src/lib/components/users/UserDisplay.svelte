@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { UserInfo } from '$lib/models/UserData';
-	import UserBadge from '../UserBadge.svelte';
+	import UserBadge from './UserBadge.svelte';
 
 	import teamBadgeIcon from '$lib/assets/wavebreaker_icon_white.svg';
 

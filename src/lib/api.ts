@@ -14,7 +14,7 @@ export enum RestMethods {
 export async function fetcher<T>(
 	url: string,
 	authToken?: string,
-	config?: AxiosRequestConfig
+	config?: AxiosRequestConfig,
 ): Promise<T> {
 	const isAPI = url.startsWith('/api');
 

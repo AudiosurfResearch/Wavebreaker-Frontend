@@ -3,11 +3,12 @@
 	import { format } from 'timeago.js';
 	import { characterList } from '$lib/characterUtils';
 	import { Duration } from 'luxon';
-	import type { Song } from '$lib/models/SongData';
 
 	export let targetScores: ExtendedScoreInfo[];
 	export let showPlayer: boolean;
 	export let showSong: boolean;
+
+	let formatter = Intl.NumberFormat('en');
 </script>
 
 <div class="overflow-x-auto rounded-3xl bg-neutral shadow">
@@ -54,11 +55,11 @@
 					{#if showSong}
 						<td class="bg-neutral">
 							<div class="flex items-center space-x-3">
-								{#if score.song.coverUrl}
+								{#if score.song.coverUrl || score.song.smallCoverUrl}
 									<div class="avatar">
 										<div class="w-12 h-12 rounded-xl">
 											<img
-												src={score.song.coverUrl}
+												src={score.song.smallCoverUrl ?? score.song.coverUrl}
 												alt="Cover of {score.song.musicbrainzArtist ?? score.song.artist} - {score
 													.song.musicbrainzTitle ?? score.song.title}"
 											/>
@@ -74,7 +75,7 @@
 							</div>
 						</td>
 					{/if}
-					<td class="bg-neutral">{score.score}</td>
+					<td class="bg-neutral">{formatter.format(score.score)}</td>
 					<td class="bg-neutral">{format(score.rideTime)}</td>
 					<td class="bg-neutral">{characterList[score.vehicleId]}</td>
 					<td class="bg-neutral">{Duration.fromMillis(score.songLength * 10).toFormat('m:ss')}</td>

@@ -21,11 +21,11 @@ export interface Score {
 }
 
 export interface ExtendedScoreInfo extends Score {
-	song: Song;
+	song?: Song;
 	player?: UserInfo;
 }
 
 export interface GetScoresResponse {
 	scores: ExtendedScoreInfo[];
-	resultCount: number;
+	totalCount: number;
 }

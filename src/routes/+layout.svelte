@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.postcss';
-	import Footer from '../components/Footer.svelte';
-	import Navbar from '../components/Navbar.svelte';
+	import Footer from '$lib/components/common/Footer.svelte';
+	import Navbar from '$lib/components/common/Navbar.svelte';
 
 	//import { navigating } from '$app/stores';
 </script>

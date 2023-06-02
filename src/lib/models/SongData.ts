@@ -7,4 +7,5 @@ export type Song = {
     musicbrainzArtist?: string;
     musicbrainzLength?: number;
     coverUrl?: string;
+    smallCoverUrl?: string;
 }
