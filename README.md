@@ -25,4 +25,4 @@ You can preview the production build with `npm run preview`.
 
 ## Thanks
 
-This project uses a few things from ScoreSaber's frontend (namely, the entirety of src/lib/utils/accio), which is open-source and licensed under the MIT license.
+This project uses a few things from ScoreSaber's frontend (like the entirety of src/lib/utils/accio), which is open-source and licensed under the MIT license.

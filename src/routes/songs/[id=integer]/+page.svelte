@@ -8,10 +8,7 @@
 
 	import ClassicPagination from '$lib/components/common/pagination/classic-pagination.svelte';
 	import ScoreTable from '$lib/components/scores/ScoreTable.svelte';
-	import PaginationNav from '$lib/components/common/pagination/pagination-nav.svelte';
 	import type { GetScoresResponse } from '$lib/models/ScoreData';
-	import ArrowButton from '$lib/components/common/pagination/arrow-button.svelte';
-	import ArrowPagination from '$lib/components/common/pagination/arrow-pagination.svelte';
 
 	import { requestCancel, updateCancelToken } from '$lib/utils/accio/canceler';
 	import { useAccio } from '$lib/utils/accio';
@@ -106,19 +103,25 @@
 			{/if}
 		</div>
 	</div>
-	<div class="tabs tabs-boxed self-center">
-		<a
+	<div class="tabs tabs-boxed self-center shadow">
+		<button
 			on:click={() => changeLeagueId(0)}
-			class="tab {$pageQuery.leagueId == 0 && 'bg-success text-success-content'}">Casual</a
+			class="tab {$pageQuery.leagueId == 0 && 'bg-success text-success-content'}"
 		>
-		<a
+			Casual
+		</button>
+		<button
 			on:click={() => changeLeagueId(1)}
-			class="tab {$pageQuery.leagueId == 1 && 'bg-warning text-warning-content'}">Pro</a
+			class="tab {$pageQuery.leagueId == 1 && 'bg-warning text-warning-content'}"
 		>
-		<a
+			Pro
+		</button>
+		<button
 			on:click={() => changeLeagueId(2)}
-			class="tab {$pageQuery.leagueId == 2 && 'bg-primary text-primary-content'}">Elite</a
+			class="tab {$pageQuery.leagueId == 2 && 'bg-primary text-primary-content'}"
 		>
+			Elite
+		</button>
 	</div>
 	{#if !$leaderboards && !$leaderboardsError}
 		<p>Loading...</p>
@@ -128,7 +131,7 @@
 	{/if}
 	{#if $leaderboards}
 		<ScoreTable showSong={false} showPlayer={true} targetScores={$leaderboards.scores} />
-		<div class="self-center">
+		<div class="self-center shadow">
 			<ClassicPagination
 				totalItems={$leaderboards.totalCount}
 				pageSize={14}
