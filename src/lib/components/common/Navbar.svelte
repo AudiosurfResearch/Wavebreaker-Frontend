@@ -2,14 +2,14 @@
 	import logo from '$lib/assets/wavebreaker_icon.svg';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faSteam } from '@fortawesome/free-brands-svg-icons';
-	import { faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
+	import { faHome, faMusic, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 </script>
 
 <div class="navbar bg-base-100 sticky top-0 z-50">
-	<div class="flex-none navbar-start">
+	<div class="navbar-start">
 		<a href="/" class="btn btn-ghost normal-case text-2xl gap-x-3">
 			<img src={logo} class="h-8" alt="Wavebreaker logo" />
 			<span class="hidden sm:block">Wavebreaker</span>
@@ -18,7 +18,18 @@
 			{/if}
 		</a>
 	</div>
-	<div class="flex-none navbar-end">
+	<div class="navbar-center hidden lg:block">
+		<a href="/" class="btn btn-sm btn-ghost normal-case" class:text-primary={$page.url.pathname == "/"}>
+			<Fa class="mr-2" icon={faHome} /> Home
+		</a>
+		<a href="/users/search" class="btn btn-sm btn-ghost normal-case" class:text-primary={$page.url.pathname.startsWith('/users')}>
+			<Fa class="mr-2" icon={faUser} /> Users
+		</a>
+		<a href="/songs/search" class="btn btn-sm btn-ghost normal-case" class:text-primary={$page.url.pathname.startsWith('/songs')}>
+			<Fa class="mr-2" icon={faMusic} /> Songs
+		</a>
+	</div>
+	<div class="navbar-end">
 		{#if $page.data.user}
 			<div class="dropdown dropdown-end">
 				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
@@ -39,10 +50,7 @@
 						<a href="/users/{$page.data.user.id}"><Fa icon={faUser} class="mr-1" /> Profile</a>
 					</li>
 					<li>
-						<a
-							href="/logout"
-							rel="external"
-							class="btn mr-4 text-error"
+						<a href="/logout" rel="external" class="mr-4 text-error"
 							><Fa icon={faSignOut} class="mr-1 text-error" /> Log out</a
 						>
 					</li>

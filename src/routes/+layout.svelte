@@ -4,6 +4,8 @@
 	import Navbar from '$lib/components/common/Navbar.svelte';
 	import BottomNav from '$lib/components/common/BottomNav.svelte';
 
+	import "@fontsource-variable/inter"
+
 	//import { navigating } from '$app/stores';
 </script>
 
