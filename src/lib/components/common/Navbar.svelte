@@ -36,12 +36,15 @@
 						<span>{$page.data.user.username}</span>
 					</li>
 					<li>
-						<a href="/user/{$page.data.user.id}"><Fa icon={faUser} class="mr-1" /> Profile</a>
+						<a href="/users/{$page.data.user.id}"><Fa icon={faUser} class="mr-1" /> Profile</a>
 					</li>
 					<li>
-						<form action="/logout" method="POST">
-							<button type="submit"><Fa icon={faSignOut} class="mr-1 text-error" /> Log out</button>
-						</form>
+						<a
+							href="/logout"
+							rel="external"
+							class="btn btn-primary btn-sm normal-case mr-4 text-error"
+							><Fa icon={faSignOut} class="mr-1 text-error" /> Log out</a
+						>
 					</li>
 				</ul>
 			</div>
