@@ -1,8 +1,6 @@
 <script lang="ts">
 	import type { UserInfo } from '$lib/models/UserData';
-	import UserBadge from './UserBadge.svelte';
-
-	import teamBadgeIcon from '$lib/assets/wavebreaker_icon_white.svg';
+	import UserRoleBadge from './UserRoleBadge.svelte';
 
 	export let targetUser: UserInfo;
 </script>
@@ -20,14 +18,6 @@
 		<h1 class="max-w-sm lg:max-w-4xl text-3xl md:text-5xl font-bold break-all">
 			{targetUser.username}
 		</h1>
-        {#if targetUser.accountType == 3}
-			<UserBadge
-				classExt="bg-gradient-to-r from-teal-400 to-primary"
-				imgSrc={teamBadgeIcon}
-				label={'Wavebreaker Team'}
-			/>
-		{:else if targetUser.accountType == 2}
-			<UserBadge classExt="bg-error" label={'Moderator'} />
-		{/if}
+		<UserRoleBadge {targetUser} />
 	</div>
 </div>
