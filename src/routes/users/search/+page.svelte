@@ -71,6 +71,10 @@
 	onDestroy(pageUnsubscribe);
 </script>
 
+<svelte:head>
+	<title>Wavebreaker | User search</title>
+</svelte:head>
+
 <input
 	on:input={(e) => searchUpdated(e.currentTarget.value)}
 	type="text"
