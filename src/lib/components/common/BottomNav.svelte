@@ -1,16 +1,18 @@
 <script lang="ts">
-	import { faHome, faChartColumn, faUser, faMusic } from '@fortawesome/free-solid-svg-icons';
+	import { faHome, faUser, faMusic } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
+
+	import { page } from '$app/stores';
 </script>
 
 <div class="btm-nav z-50 drop-shadow-xl lg:hidden">
-	<button class="text-primary">
+	<a href="/" class="text-primary" class:active={$page.url.pathname == "/"}>
 		<Fa icon={faHome} />
-	</button>
-	<button class="text-primary">
+	</a>
+	<a href="/users/search" class="text-primary" class:active={$page.url.pathname.startsWith('/users')}>
 		<Fa icon={faUser} />
-	</button>
-	<button class="text-primary">
+	</a>
+	<a href="/songs/search" class="text-primary" class:active={$page.url.pathname.startsWith('/songs')}>
 		<Fa icon={faMusic} />
-	</button>
+	</a>
 </div>
