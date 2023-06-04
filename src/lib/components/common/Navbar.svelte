@@ -42,7 +42,7 @@
 						<a
 							href="/logout"
 							rel="external"
-							class="btn btn-primary btn-sm normal-case mr-4 text-error"
+							class="btn mr-4 text-error"
 							><Fa icon={faSignOut} class="mr-1 text-error" /> Log out</a
 						>
 					</li>
