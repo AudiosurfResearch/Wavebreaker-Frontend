@@ -1,5 +1,8 @@
 <script>
 	import logo from '$lib/assets/wavebreaker_icon.svg';
+	import Fa from 'svelte-fa/src/fa.svelte';
+	import { faSteam } from '@fortawesome/free-brands-svg-icons';
+	import { faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
@@ -32,16 +35,20 @@
 					<li class="menu-title">
 						<span>{$page.data.user.username}</span>
 					</li>
-					<li><a href="/user/{$page.data.user.id}">Profile</a></li>
+					<li>
+						<a href="/user/{$page.data.user.id}"><Fa icon={faUser} class="mr-1" /> Profile</a>
+					</li>
 					<li>
 						<form action="/logout" method="POST">
-							<button type="submit">Log out</button>
+							<button type="submit"><Fa icon={faSignOut} class="mr-1 text-error" /> Log out</button>
 						</form>
 					</li>
 				</ul>
 			</div>
 		{:else}
-			<a href="/login" rel="external" class="btn btn-primary btn-sm normal-case mr-4">Sign in</a>
+			<a href="/login" rel="external" class="btn btn-primary btn-sm normal-case mr-4"
+				><Fa icon={faSteam} class="mr-1" /> Sign in</a
+			>
 		{/if}
 	</div>
 </div>

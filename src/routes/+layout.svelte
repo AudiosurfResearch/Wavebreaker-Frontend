@@ -2,6 +2,7 @@
 	import '../app.postcss';
 	import Footer from '$lib/components/common/Footer.svelte';
 	import Navbar from '$lib/components/common/Navbar.svelte';
+	import BottomNav from '$lib/components/common/BottomNav.svelte';
 
 	//import { navigating } from '$app/stores';
 </script>
@@ -22,3 +23,4 @@
 	</div>
 	<Footer />
 </div>
+<BottomNav />

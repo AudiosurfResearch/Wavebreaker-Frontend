@@ -10,7 +10,7 @@ const config = {
   content: ["./src/**/*.{html,js,svelte,ts}"],
   theme: {
     fontFamily: {
-      'sans': ['Inter', 'system-ui', 'sans-serif'],
+      'sans': ['Inter', 'system-ui', 'sans-serif', "FontAwesome"],
     },
     extend: {}
   },
