@@ -19,13 +19,25 @@
 		</a>
 	</div>
 	<div class="navbar-center hidden lg:block">
-		<a href="/" class="btn btn-sm btn-ghost normal-case" class:text-primary={$page.url.pathname == "/"}>
+		<a
+			href="/"
+			class="btn btn-sm btn-ghost normal-case"
+			class:text-primary={$page.url.pathname == '/'}
+		>
 			<Fa class="mr-2" icon={faHome} /> Home
 		</a>
-		<a href="/users/search" class="btn btn-sm btn-ghost normal-case" class:text-primary={$page.url.pathname.startsWith('/users')}>
+		<a
+			href="/users/search"
+			class="btn btn-sm btn-ghost normal-case"
+			class:text-primary={$page.url.pathname.startsWith('/users')}
+		>
 			<Fa class="mr-2" icon={faUser} /> Users
 		</a>
-		<a href="/songs/search" class="btn btn-sm btn-ghost normal-case" class:text-primary={$page.url.pathname.startsWith('/songs')}>
+		<a
+			href="/songs/search"
+			class="btn btn-sm btn-ghost normal-case"
+			class:text-primary={$page.url.pathname.startsWith('/songs')}
+		>
 			<Fa class="mr-2" icon={faMusic} /> Songs
 		</a>
 	</div>

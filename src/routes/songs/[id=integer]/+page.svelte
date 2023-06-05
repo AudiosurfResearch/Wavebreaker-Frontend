@@ -132,7 +132,11 @@
 	{/if}
 	{#if $leaderboards}
 		{#each $leaderboards.scores as score, i}
-			<ScoreBox placement={(i + 1) * $pageQuery.page} targetEntity={score.player} targetScore={score} />
+			<ScoreBox
+				placement={(i + 1) * $pageQuery.page}
+				targetEntity={score.player}
+				targetScore={score}
+			/>
 		{/each}
 		<div class="self-center shadow">
 			<ClassicPagination
