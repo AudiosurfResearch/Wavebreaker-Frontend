@@ -4,6 +4,7 @@
 	import { format } from 'timeago.js';
 	import { characterList } from '$lib/characterUtils';
 	import ScoreTable from '$lib/components/scores/ScoreTable.svelte';
+	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 
 	export let data: PageData;
 </script>
@@ -54,10 +55,18 @@
 	</div>
 	<div class="mt-3">
 		<h1 class="text-3xl font-bold mb-2">Latest scores</h1>
-		<ScoreTable targetScores={data.latestScoresResult.scores} showSong={true} showPlayer={false} />
+		<div class="flex flex-col gap-y-2">
+			{#each data.latestScoresResult.scores as score}
+				<ScoreBox targetEntity={score.song} targetScore={score} />
+			{/each}
+		</div>
 	</div>
 	<div class="mt-3">
 		<h1 class="text-3xl font-bold mb-2">Best scores</h1>
-		<ScoreTable targetScores={data.bestScoresResult.scores} showSong={true} showPlayer={false} />
+		<div class="flex flex-col gap-y-2">
+			{#each data.bestScoresResult.scores as score, i}
+				<ScoreBox placement={i + 1} targetEntity={score.song} targetScore={score} />
+			{/each}
+		</div>
 	</div>
 </div>

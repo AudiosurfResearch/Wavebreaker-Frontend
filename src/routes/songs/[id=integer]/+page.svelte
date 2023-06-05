@@ -13,6 +13,7 @@
 	import { requestCancel, updateCancelToken } from '$lib/utils/accio/canceler';
 	import { useAccio } from '$lib/utils/accio';
 	import { fetcher } from '$lib/api';
+	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 
 	export let data: PageData;
 
@@ -130,7 +131,9 @@
 		<p class="text-error">{$leaderboardsError.message}</p>
 	{/if}
 	{#if $leaderboards}
-		<ScoreTable showSong={false} showPlayer={true} targetScores={$leaderboards.scores} />
+		{#each $leaderboards.scores as score, i}
+			<ScoreBox placement={(i + 1) * $pageQuery.page} targetEntity={score.player} targetScore={score} />
+		{/each}
 		<div class="self-center shadow">
 			<ClassicPagination
 				totalItems={$leaderboards.totalCount}
