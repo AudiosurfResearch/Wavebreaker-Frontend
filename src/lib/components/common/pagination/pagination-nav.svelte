@@ -8,6 +8,8 @@
 	import { createEventDispatcher } from 'svelte';
 
 	import generateNavigationOptions, { PaginationOptions } from './generateNavigationOptions';
+	import Fa from 'svelte-fa/src/fa.svelte';
+	import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 	const PREVIOUS_PAGE = 'PREVIOUS_PAGE';
 	const NEXT_PAGE = 'NEXT_PAGE';
@@ -72,10 +74,11 @@
 				</slot>
 			{:else if option.type === 'symbol' && option.symbol === PREVIOUS_PAGE}
 				<slot name="prev">
-					<i class="fas fa-angle-left" />
+					<Fa icon={faAngleLeft} />
 				</slot>
 			{:else if option.type === 'symbol' && option.symbol === NEXT_PAGE}
 				<slot name="next">
+					<Fa icon={faAngleRight} />
 					<i class="fas fa-angle-right" />
 				</slot>
 			{/if}
