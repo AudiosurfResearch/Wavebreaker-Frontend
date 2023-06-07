@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-    <title>Wavebreaker | Home</title> 
+	<title>Wavebreaker | Home</title>
 </svelte:head>
 
 <div class="hero">
