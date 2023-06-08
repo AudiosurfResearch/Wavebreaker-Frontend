@@ -22,24 +22,32 @@
 	}
 </script>
 
-<!--TODO: Make image not move slightly when text overflows-->
 <div
 	class="bg-[position:0px] bg-no-repeat bg-cover rounded-xl"
 	style="background-image: url('{entityImage}');"
 >
+	<!--TODO: Find a better solution to fix the weird corner bleeding-->
 	<div
-		class="grid md:flex h-full p-3 shadow rounded-xl gap-x-3 gap-y-1 items-center {entityImage &&
+		class="grid md:flex h-full p-3 shadow rounded-xl gap-x-3 gap-y-2 items-center {entityImage &&
 			'bg-gradient-to-r from-neutral/80 to-75% to-neutral'}"
 		class:bg-neutral={!entityImage}
+		style="width: calc(100% + 1px);"
 	>
-		<div class="flex flex-row items-center gap-x-3">
+		<div class="flex md:hidden flex-row items-center">
 			{#if placement}
-				<p class="text-3xl font-bold text-center w-8">{placement}</p>
+				<b>#{placement}</b>
+				<pre> — </pre>
+			{/if}
+			<span>{formatter.format(targetScore.score)}</span>
+		</div>
+		<div class="flex flex-row items-center gap-x-3 w-full md:max-w-md">
+			{#if placement}
+				<p class="hidden md:block text-3xl font-bold text-center w-8 min-w-[2rem]">{placement}</p>
 			{/if}
 			{#if entityImage}
 				<img class="w-12 h-12 rounded-xl" src={entityImage} alt="Score entry" />
 			{/if}
-			<div class="max-w-md overflow-hidden">
+			<div class="overflow-hidden">
 				{#if 'title' in targetEntity}
 					<a
 						href={`/songs/${targetEntity.id}`}
@@ -55,8 +63,13 @@
 					</a>
 				{/if}
 			</div>
+			<div class="block md:hidden ml-auto">
+				<button class="btn btn-square btn-sm btn-ghost"><Fa icon={faInfoCircle} /> </button>
+			</div>
 		</div>
-		<div class="flex flex-row items-center gap-x-2 justify-self-end mt-px ml-auto text-right">
+		<div
+			class="hidden md:flex flex-row items-center justify-self-end gap-x-2 ml-auto text-right"
+		>
 			<div class="flex flex-col">
 				<p title="Score">
 					{formatter.format(targetScore.score)}
