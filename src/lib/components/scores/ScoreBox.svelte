@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { characterList } from '$lib/characterUtils';
 	import type { Score } from '$lib/models/ScoreData';
 	import type { Song } from '$lib/models/SongData';
 	import type { UserInfo } from '$lib/models/UserData';
 	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { format } from 'timeago.js';
+	import Modal from '../common/Modal.svelte';
 
 	export let placement: number = undefined;
 	export let targetEntity: UserInfo | Song;
@@ -20,6 +22,8 @@
 	} else {
 		entityImage = '';
 	}
+
+	let modalOpen = false;
 </script>
 
 <div
@@ -40,7 +44,7 @@
 			{/if}
 			<span>{formatter.format(targetScore.score)}</span>
 		</div>
-		<div class="flex flex-row items-center gap-x-3 w-full md:max-w-md">
+		<div class="flex flex-row items-center gap-x-3 w-full md:max-w-2xl">
 			{#if placement}
 				<p class="hidden md:block text-3xl font-bold text-center w-8 min-w-[2rem]">{placement}</p>
 			{/if}
@@ -64,12 +68,12 @@
 				{/if}
 			</div>
 			<div class="block md:hidden ml-auto">
-				<button class="btn btn-square btn-sm btn-ghost"><Fa icon={faInfoCircle} /> </button>
+				<button class="btn btn-square btn-sm btn-ghost" on:click={() => (modalOpen = true)}
+					><Fa icon={faInfoCircle} />
+				</button>
 			</div>
 		</div>
-		<div
-			class="hidden md:flex flex-row items-center justify-self-end gap-x-2 ml-auto text-right"
-		>
+		<div class="hidden md:flex flex-row items-center justify-self-end gap-x-2 ml-auto text-right">
 			<div class="flex flex-col">
 				<p title="Score">
 					{formatter.format(targetScore.score)}
@@ -78,7 +82,26 @@
 					{format(targetScore.rideTime)}
 				</p>
 			</div>
-			<button class="btn btn-square btn-sm btn-ghost"><Fa icon={faInfoCircle} /> </button>
+
+			<button class="btn btn-square btn-sm btn-ghost" on:click={() => (modalOpen = true)}
+				><Fa icon={faInfoCircle} />
+			</button>
 		</div>
 	</div>
 </div>
+
+<Modal bind:showModal={modalOpen}>
+	<h2 class="font-bold text-xl">Score details</h2>
+	<p>
+		<b>Character: </b>
+		{characterList[targetScore.vehicleId]}<br />
+		<b>Feats:</b>
+		{targetScore.feats}<br />
+		<b>Density: </b>
+		{targetScore.density}<br />
+		<b>Gold threshold: </b>
+		{formatter.format(targetScore.goldThreshold)}<br />
+		<b>Total times played:</b>
+		{targetScore.playCount}<br />
+	</p>
+</Modal>

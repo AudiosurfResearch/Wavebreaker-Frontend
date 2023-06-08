@@ -18,7 +18,7 @@ const config = {
     themes: [{
       dark: {
         //Based on the VSCode Moonlight II theme.
-        ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
+        ...require("daisyui/src/theming/themes")["[data-theme=dark]"],
         primary: wavebreakerBrandColor,
         neutral: "#212337",
         "base-100": "#1E2030",
@@ -31,7 +31,7 @@ const config = {
     },
     {
       light: {
-        ...require("daisyui/src/colors/themes")["[data-theme=light]"],
+        ...require("daisyui/src/theming/themes")["[data-theme=light]"],
         primary: wavebreakerBrandColor,
         "base-content": "#000000"
       },
