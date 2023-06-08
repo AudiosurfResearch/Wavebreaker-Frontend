@@ -5,15 +5,21 @@
 	import queryString from 'query-string';
 	import { browser } from '$app/environment';
 	import { onDestroy } from 'svelte';
+	import { enhance } from '$app/forms';
 
 	import ClassicPagination from '$lib/components/common/pagination/classic-pagination.svelte';
 	import ScoreTable from '$lib/components/scores/ScoreTable.svelte';
 	import type { GetScoresResponse } from '$lib/models/ScoreData';
+	import Fa from 'svelte-fa/src/fa.svelte';
+	import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 	import { requestCancel, updateCancelToken } from '$lib/utils/accio/canceler';
 	import { useAccio } from '$lib/utils/accio';
 	import { fetcher } from '$lib/api';
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
+	import Modal from '$lib/components/common/Modal.svelte';
+
+	let metadataReportModalOpen = false;
 
 	export let data: PageData;
 
@@ -80,7 +86,7 @@
 	<div class="flex mx-5 gap-y-2 items-center flex-col md:flex-row md:space-x-5">
 		{#if data.songResult.coverUrl}
 			<div class="avatar">
-				<div class="max-w-xs rounded-3xl shadow">
+				<div class="max-w-[20rem] rounded-3xl shadow">
 					<img
 						src={data.songResult.coverUrl}
 						alt="Cover of {data.songResult.musicbrainzArtist ?? data.songResult.artist} - {data
@@ -103,6 +109,11 @@
 				</i>
 			{/if}
 		</div>
+	</div>
+	<div class="rounded-xl bg-neutral shadow p-4">
+		<button class="btn btn-error" on:click={() => (metadataReportModalOpen = true)}
+			><Fa icon={faTriangleExclamation} />Report incorrect metadata</button
+		>
 	</div>
 	<div class="tabs tabs-boxed self-center shadow">
 		<button
@@ -148,3 +159,28 @@
 		</div>
 	{/if}
 </div>
+
+<Modal bind:showModal={metadataReportModalOpen}>
+	<div class="flex flex-col gap-y-3 w-full">
+		<h2 class="font-bold text-xl">Report incorrect metadata</h2>
+		<p>
+			"Missing or incorrect info? On <i>my</i> song page?"<br />It's more likely than you think. So,
+			help out by telling us what's wrong!
+		</p>
+		<p>
+			<b>Note: Only submit a report if there's really something wrong!</b> Thank you for your understanding.
+		</p>
+		<p>If possible, please enter additional info (like the correct MusicBrainz ID) below.</p>
+		<form method="POST" action="?/reportMetadata">
+			<div class="join min-w-full mt-1">
+				<input
+					name="additionalInfo"
+					type="text"
+					placeholder="Additional info..."
+					class="join-item input input-bordered max-w-xs w-full"
+				/>
+				<button class="join-item btn btn-primary" on:click={() => (metadataReportModalOpen = false)}>Submit</button>
+			</div>
+		</form>
+	</div>
+</Modal>

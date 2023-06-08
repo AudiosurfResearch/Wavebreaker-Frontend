@@ -44,7 +44,7 @@
 			{/if}
 			<span>{formatter.format(targetScore.score)}</span>
 		</div>
-		<div class="flex flex-row items-center gap-x-3 w-full md:max-w-2xl">
+		<div class="flex flex-row items-center gap-x-3 w-full md:max-w-xl">
 			{#if placement}
 				<p class="hidden md:block text-3xl font-bold text-center w-8 min-w-[2rem]">{placement}</p>
 			{/if}
