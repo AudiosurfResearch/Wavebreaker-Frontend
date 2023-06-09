@@ -11,24 +11,22 @@
 	export let placement: number = undefined;
 	export let targetEntity: UserInfo | Song;
 	export let targetScore: Score;
-	let entityImage: string;
 
-	let formatter = Intl.NumberFormat('en');
-
+	let entityImage = undefined;
 	if ('avatarUrl' in targetEntity) {
 		entityImage = targetEntity.avatarUrl;
 	} else if ('coverUrl' in targetEntity) {
 		entityImage = targetEntity.coverUrl;
-	} else {
-		entityImage = '';
 	}
+
+	let formatter = Intl.NumberFormat('en');
 
 	let modalOpen = false;
 </script>
 
 <div
 	class="bg-[position:0px] bg-no-repeat bg-cover rounded-xl"
-	style="background-image: url('{entityImage}');"
+	style={entityImage && 'background-image: url(' + entityImage + ');'}
 >
 	<!--TODO: Find a better solution to fix the weird corner bleeding-->
 	<div
