@@ -75,23 +75,25 @@
 	<title>Wavebreaker | User search</title>
 </svelte:head>
 
-<input
-	on:input={(e) => searchUpdated(e.currentTarget.value)}
-	type="text"
-	placeholder="Search users..."
-	class="input w-full self-center bg-neutral shadow"
-/>
+<div class="flex flex-col">
+	<input
+		on:input={(e) => searchUpdated(e.currentTarget.value)}
+		type="text"
+		placeholder="Search users..."
+		class="input w-full self-center bg-neutral shadow"
+	/>
 
-{#if !$searchResponse && !$searchError}
-	<p>Loading...</p>
-{/if}
-{#if $searchError && $searchError.status != 400}
-	<p class="text-error">{$searchError.message}</p>
-{/if}
-{#if $searchResponse}
-	<div class="flex flex-col gap-y-3 my-5 mx-3">
-		{#each $searchResponse.results as user}
-			<UserDisplaySmall targetUser={user} />
-		{/each}
-	</div>
-{/if}
+	{#if !$searchResponse && !$searchError}
+		<div class="loading loading-spinner loading-lg self-center" />
+	{/if}
+	{#if $searchError && $searchError.status != 400}
+		<p class="text-error">{$searchError.message}</p>
+	{/if}
+	{#if $searchResponse}
+		<div class="flex flex-col gap-y-3 my-5 mx-3">
+			{#each $searchResponse.results as user}
+				<UserDisplaySmall targetUser={user} />
+			{/each}
+		</div>
+	{/if}
+</div>

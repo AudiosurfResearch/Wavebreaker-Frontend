@@ -31,7 +31,7 @@
 			<div class="stat-value text-3xl lg:text-4xl">{data.userResult.totalPlays}</div>
 		</div>
 
-		{#if data.userResult.favoriteCharacter}
+		{#if data.userResult.favoriteCharacter != undefined}
 			<div class="stat">
 				<div class="stat-title">Favorite character</div>
 				<div class="stat-value text-3xl lg:text-4xl">
@@ -53,20 +53,26 @@
 			{/if}
 		-->
 	</div>
-	<div class="mt-3">
-		<h1 class="text-3xl font-bold mb-2">Latest scores</h1>
-		<div class="flex flex-col gap-y-2">
-			{#each data.latestScoresResult.scores as score}
-				<ScoreBox targetEntity={score.song} targetScore={score} />
-			{/each}
+	{#if data.latestScoresResult != undefined}
+		<div class="mt-3">
+			<h1 class="text-3xl font-bold mb-2">Latest scores</h1>
+			<div class="flex flex-col gap-y-2 p-3">
+				{#each data.latestScoresResult.scores as score}
+					<ScoreBox targetEntity={score.song} targetScore={score} />
+				{/each}
+			</div>
 		</div>
-	</div>
-	<div class="mt-3">
-		<h1 class="text-3xl font-bold mb-2">Best scores</h1>
-		<div class="flex flex-col gap-y-2">
-			{#each data.bestScoresResult.scores as score, i}
-				<ScoreBox placement={i + 1} targetEntity={score.song} targetScore={score} />
-			{/each}
+		<div class="mt-3">
+			<h1 class="text-3xl font-bold mb-2">Best scores</h1>
+			<div class="flex flex-col gap-y-2 p-3">
+				{#each data.bestScoresResult.scores as score, i}
+					<ScoreBox placement={i + 1} targetEntity={score.song} targetScore={score} />
+				{/each}
+			</div>
 		</div>
-	</div>
+	{:else}
+		<div class="mt-3">
+			<h1 class="text-3xl font-bold mb-2 text-center">No scores yet!</h1>
+		</div>
+	{/if}
 </div>

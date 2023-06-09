@@ -62,7 +62,7 @@
 						<a href="/users/{$page.data.user.id}"><Fa icon={faUser} class="mr-1" /> Profile</a>
 					</li>
 					<li>
-						<a href="/logout" rel="external" class="mr-4 text-error"
+						<a href="/logout" rel="external" class="text-error"
 							><Fa icon={faSignOut} class="mr-1 text-error" /> Log out</a
 						>
 					</li>

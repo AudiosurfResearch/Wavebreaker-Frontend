@@ -136,7 +136,7 @@
 		</button>
 	</div>
 	{#if !$leaderboards && !$leaderboardsError}
-		<p>Loading...</p>
+		<div class="loading loading-spinner loading-lg self-center" />
 	{/if}
 	{#if $leaderboardsError}
 		<p class="text-error">{$leaderboardsError.message}</p>
@@ -179,7 +179,9 @@
 					placeholder="Additional info..."
 					class="join-item input input-bordered max-w-xs w-full"
 				/>
-				<button class="join-item btn btn-primary" on:click={() => (metadataReportModalOpen = false)}>Submit</button>
+				<button class="join-item btn btn-primary" on:click={() => (metadataReportModalOpen = false)}
+					>Submit</button
+				>
 			</div>
 		</form>
 	</div>
