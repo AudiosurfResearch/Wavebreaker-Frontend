@@ -1,4 +1,4 @@
-import { error } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
 import { fetcher, poster } from '$lib/api';
 import { isAxiosError } from 'axios';
 import type { Song } from '$lib/models/SongData.js';
@@ -25,8 +25,13 @@ export const actions = {
 		const additionalInfo = data.get('additionalInfo');
 		const id: number = +params.id;
 		const authToken = cookies.get('Authorization');
-		
-		poster('/api/songs/reportMetadata', { id, additionalInfo }, authToken);
+
+		try {
+			await poster('/api/songs/reportMetadata', { id, additionalInfo }, authToken);
+		} catch (e) {
+			if (isAxiosError(e) && e.response)
+				return fail(e.response?.status, { message: e.response.data.error });
+		}
 
 		return { success: true };
 	}

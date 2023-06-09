@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { ActionData, PageData } from './$types';
 	import UserDisplay from '$lib/components/users/UserDisplay.svelte';
 	import { format } from 'timeago.js';
 	import { characterList } from '$lib/characterUtils';
@@ -31,7 +31,7 @@
 			<div class="stat-value text-3xl lg:text-4xl">{data.userResult.totalPlays}</div>
 		</div>
 
-		{#if data.userResult.favoriteCharacter != undefined}
+		{#if data.userResult.favoriteCharacter}
 			<div class="stat">
 				<div class="stat-title">Favorite character</div>
 				<div class="stat-value text-3xl lg:text-4xl">

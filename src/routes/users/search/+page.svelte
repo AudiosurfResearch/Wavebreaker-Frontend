@@ -84,7 +84,7 @@
 	/>
 
 	{#if !$searchResponse && !$searchError}
-		<div class="loading loading-spinner loading-lg self-center" />
+		<div class="loading loading-spinner loading-lg self-center my-5" />
 	{/if}
 	{#if $searchError && $searchError.status != 400}
 		<p class="text-error">{$searchError.message}</p>

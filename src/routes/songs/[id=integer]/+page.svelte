@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { ActionData, PageData } from './$types';
 	import { pageQueryStore } from '$lib/stores/query-store';
 	import { page } from '$app/stores';
 	import queryString from 'query-string';
@@ -20,6 +20,9 @@
 	import Modal from '$lib/components/common/Modal.svelte';
 
 	let metadataReportModalOpen = false;
+	let metadataReportInfo: string = '';
+	let reportInfoMaxLength: number = 150;
+	$: reportInfoLength = metadataReportInfo.length;
 
 	export let data: PageData;
 
@@ -110,11 +113,14 @@
 			{/if}
 		</div>
 	</div>
-	<div class="rounded-xl bg-neutral shadow p-4">
-		<button class="btn btn-error" on:click={() => (metadataReportModalOpen = true)}
-			><Fa icon={faTriangleExclamation} />Report incorrect metadata</button
-		>
-	</div>
+	{#if $page.data.user}
+		<div class="rounded-xl bg-neutral shadow p-4">
+			<button class="btn btn-error" on:click={() => (metadataReportModalOpen = true)}
+				><Fa icon={faTriangleExclamation} />Report incorrect metadata</button
+			>
+		</div>
+	{/if}
+
 	<div class="tabs tabs-boxed self-center shadow">
 		<button
 			on:click={() => changeLeagueId(0)}
@@ -160,7 +166,7 @@
 	{/if}
 </div>
 
-<Modal bind:showModal={metadataReportModalOpen}>
+<Modal bind:showModal={metadataReportModalOpen} responsive={false}>
 	<div class="flex flex-col gap-y-3 w-full">
 		<h2 class="font-bold text-xl">Report incorrect metadata</h2>
 		<p>
@@ -173,14 +179,26 @@
 		<p>If possible, please enter additional info (like the correct MusicBrainz ID) below.</p>
 		<form method="POST" action="?/reportMetadata">
 			<div class="join min-w-full mt-1">
-				<input
-					name="additionalInfo"
-					type="text"
-					placeholder="Additional info..."
-					class="join-item input input-bordered max-w-xs w-full"
-				/>
-				<button class="join-item btn btn-primary" on:click={() => (metadataReportModalOpen = false)}
-					>Submit</button
+				<div class="form-control">
+					<input
+						bind:value={metadataReportInfo}
+						name="additionalInfo"
+						type="text"
+						placeholder="Additional info..."
+						class="join-item input input-bordered max-w-xs w-full"
+					/>
+					<!-- svelte-ignore a11y-label-has-associated-control -->
+					<label class="label">
+						<span class="label-text-alt" class:text-error={reportInfoLength >= reportInfoMaxLength}
+							>{reportInfoMaxLength - reportInfoLength}</span
+						>
+					</label>
+				</div>
+				<button
+					class="join-item btn {reportInfoLength >= reportInfoMaxLength
+						? 'btn-disabled'
+						: 'btn-primary'}"
+					on:click={() => (metadataReportModalOpen = false)}>Submit</button
 				>
 			</div>
 		</form>
