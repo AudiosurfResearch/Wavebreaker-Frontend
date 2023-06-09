@@ -23,10 +23,10 @@ export const actions = {
 	reportMetadata: async ({ request, cookies, params }) => {
 		const data = await request.formData();
 		const additionalInfo = data.get('additionalInfo');
-		const songId: number = +params.id;
+		const id: number = +params.id;
 		const authToken = cookies.get('Authorization');
-		//TODO: Implement endpoint in backend!!
-		poster("/api/songs/reportMetadata", { songId, additionalInfo }, authToken)
+		
+		poster('/api/songs/reportMetadata', { id, additionalInfo }, authToken);
 
 		return { success: true };
 	}

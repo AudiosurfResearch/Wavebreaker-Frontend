@@ -6,6 +6,7 @@ export type Song = {
     musicbrainzTitle?: string;
     musicbrainzArtist?: string;
     musicbrainzLength?: number;
+    mistagLock: boolean;
     coverUrl?: string;
     smallCoverUrl?: string;
 }
