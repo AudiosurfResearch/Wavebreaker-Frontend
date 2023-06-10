@@ -26,9 +26,3 @@
 	<Footer />
 </div>
 <BottomNav />
-
-<style>
-	:global(body) {
-		font-family: 'Inter', 'system-ui', sans-serif, 'FontAwesome';
-	}
-</style>
