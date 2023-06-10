@@ -1,10 +1,10 @@
 <script lang="ts">
+	import '@fontsource-variable/inter';
+
 	import '../app.postcss';
 	import Footer from '$lib/components/common/Footer.svelte';
 	import Navbar from '$lib/components/common/Navbar.svelte';
 	import BottomNav from '$lib/components/common/BottomNav.svelte';
-
-	import "@fontsource-variable/inter"
 
 	//import { navigating } from '$app/stores';
 </script>
@@ -26,3 +26,9 @@
 	<Footer />
 </div>
 <BottomNav />
+
+<style>
+	:global(body) {
+		font-family: 'Inter', 'system-ui', sans-serif, 'FontAwesome';
+	}
+</style>

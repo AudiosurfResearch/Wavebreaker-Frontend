@@ -7,6 +7,8 @@
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 
 	export let data: PageData;
+
+	let formatter = Intl.NumberFormat('en');
 </script>
 
 <svelte:head>
@@ -23,7 +25,7 @@
 
 		<div class="stat">
 			<div class="stat-title">Total score</div>
-			<div class="stat-value text-3xl lg:text-4xl">{data.userResult.totalScore}</div>
+			<div class="stat-value text-3xl lg:text-4xl">{formatter.format(data.userResult.totalScore)}</div>
 		</div>
 
 		<div class="stat">
