@@ -60,6 +60,7 @@
 		pageQuery.updateSingle('leagueId', newLeagueId);
 	}
 
+	//TODO: Make it use default leagueId and page values
 	const pageUnsubscribe = page.subscribe((p) => {
 		if (browser) {
 			refreshLeaderboards({
@@ -118,6 +119,26 @@
 			<button class="btn btn-error" on:click={() => (metadataReportModalOpen = true)}
 				><Fa icon={faTriangleExclamation} />Report incorrect metadata</button
 			>
+			{#if $page.data.user.accountType == 3}
+				<h2 class="text-xl md:text-2xl font-bold mt-3">Admin</h2>
+
+				<div class="flex flex-row mt-1 gap-x-3 gap-y-2 flex-wrap">
+					<form method="POST" action="?/applyMBID">
+						<div class="join">
+							<input
+								name="mbid"
+								type="text"
+								placeholder="New MBID"
+								class="join-item input input-bordered max-w-xs w-full"
+							/>
+							<button class="join-item btn btn-primary">Retag</button>
+						</div>
+					</form>
+					<form method="POST" action="?/markMistag">
+						<button class="btn btn-warning">Mark as mistagged</button>
+					</form>
+				</div>
+			{/if}
 		</div>
 	{/if}
 
