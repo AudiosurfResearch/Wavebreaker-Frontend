@@ -1,13 +1,14 @@
 import { error, fail } from '@sveltejs/kit';
-import { fetcher, poster } from '$lib/api';
+import { poster } from '$lib/api';
 import { isAxiosError } from 'axios';
 import type { Song } from '$lib/models/SongData.js';
 import type { Actions } from './$types';
+import { loadMetadata } from '$lib/stores/metadata-store';
 
 export async function load({ params }) {
 	const id: number = +params.id;
 	try {
-		const songResult: Song = await fetcher<Song>(`/api/songs/getSong?id=${id}`);
+		const songResult: Song = await loadMetadata(fetch, `/api/songs/getSong?id=${id}`);
 
 		return {
 			songResult

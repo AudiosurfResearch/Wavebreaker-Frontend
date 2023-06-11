@@ -1,9 +1,8 @@
 <script lang="ts">
-	import type { ActionData, PageData } from './$types';
+	import type { PageData } from './$types';
 	import UserDisplay from '$lib/components/users/UserDisplay.svelte';
 	import { format } from 'timeago.js';
 	import { characterList } from '$lib/characterUtils';
-	import ScoreTable from '$lib/components/scores/ScoreTable.svelte';
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 
 	export let data: PageData;

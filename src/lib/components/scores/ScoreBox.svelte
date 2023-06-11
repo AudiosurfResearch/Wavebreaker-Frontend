@@ -56,7 +56,16 @@
 						class="hover:underline"
 						title="Song title and artist"
 					>
-						<p class="font-bold">{targetEntity.musicbrainzTitle ?? targetEntity.title}</p>
+						<div class="flex items-center gap-x-2">
+							<b>{targetEntity.musicbrainzTitle ?? targetEntity.title}</b>
+							{#if 'tags' in targetEntity && targetEntity.tags}
+								<div class="hidden md:flex flex-row flex-wrap gap-1">
+									{#each targetEntity.tags as tag}
+										<div class="badge badge-ghost">{tag}</div>
+									{/each}
+								</div>
+							{/if}
+						</div>
 						<p class="text-sm">{targetEntity.musicbrainzArtist ?? targetEntity.artist}</p>
 					</a>
 				{:else}
@@ -65,6 +74,7 @@
 					</a>
 				{/if}
 			</div>
+
 			<div class="block md:hidden ml-auto">
 				<button class="btn btn-square btn-sm btn-ghost" on:click={() => (modalOpen = true)}
 					><Fa icon={faInfoCircle} />
@@ -76,7 +86,7 @@
 				<p title="Score">
 					{formatter.format(targetScore.score)}
 				</p>
-				<p title="Time played" class="text-neutral-content text-sm">
+				<p title="Time played" class="text-neutral-content text-sm w-max">
 					{format(targetScore.rideTime)}
 				</p>
 			</div>
@@ -85,6 +95,13 @@
 				><Fa icon={faInfoCircle} />
 			</button>
 		</div>
+		{#if 'tags' in targetEntity && targetEntity.tags}
+			<div class="md:hidden flex flex-row flex-wrap gap-2">
+				{#each targetEntity.tags as tag}
+					<div class="badge badge-ghost">{tag}</div>
+				{/each}
+			</div>
+		{/if}
 	</div>
 </div>
 

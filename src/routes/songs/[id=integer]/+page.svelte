@@ -1,14 +1,12 @@
 <script lang="ts">
-	import type { ActionData, PageData } from './$types';
+	import type { PageData } from './$types';
 	import { pageQueryStore } from '$lib/stores/query-store';
 	import { page } from '$app/stores';
 	import queryString from 'query-string';
 	import { browser } from '$app/environment';
 	import { onDestroy } from 'svelte';
-	import { enhance } from '$app/forms';
 
 	import ClassicPagination from '$lib/components/common/pagination/classic-pagination.svelte';
-	import ScoreTable from '$lib/components/scores/ScoreTable.svelte';
 	import type { GetScoresResponse } from '$lib/models/ScoreData';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
@@ -77,6 +75,7 @@
 	});
 
 	onDestroy(pageUnsubscribe);
+	console.log(data.songResult.tags);
 </script>
 
 <svelte:head>
@@ -112,6 +111,11 @@
 					{data.songResult.artist} - {data.songResult.title}
 				</i>
 			{/if}
+			<div class="flex flex-row flex-wrap gap-2 mt-3 justify-center">
+				{#each data.songResult.tags as tag}
+					<div class="badge badge-ghost">{tag}</div>
+				{/each}
+			</div>
 		</div>
 	</div>
 	{#if $page.data.user}
