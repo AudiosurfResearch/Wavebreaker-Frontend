@@ -7,6 +7,7 @@
 	import { faUserPlus, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 	import Fa from 'svelte-fa/src/fa.svelte';
+	import { enhance } from '$app/forms';
 	import { fetcher } from '$lib/api';
 	import type { IsRivalResponse } from '$lib/models/UserData';
 
@@ -32,13 +33,13 @@
 
 	{#if data.isRivalResponse != undefined}
 		{#if !data.isRivalResponse.isRival && data.user.id != data.userResult.id}
-			<form method="POST" action="?/addRival">
+			<form method="POST" action="?/addRival" use:enhance>
 				<button class="btn btn-success w-full md:w-44" on:click={refreshIsRival}
 					><Fa icon={faUserPlus} />Add rival</button
 				>
 			</form>
 		{:else}
-			<form method="POST" action="?/removeRival">
+			<form method="POST" action="?/removeRival" use:enhance>
 				<button class="btn btn-error w-full md:w-44" on:click={refreshIsRival}
 					><Fa icon={faUserMinus} />Remove rival</button
 				>
