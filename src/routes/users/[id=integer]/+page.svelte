@@ -16,7 +16,7 @@
 	let formatter = Intl.NumberFormat('en');
 
 	function refreshIsRival() {
-		fetcher<IsRivalResponse>(`/api/users/${data.userResult.id}/isRival`, undefined, {
+		fetcher<IsRivalResponse>(`/api/users/isRival?id=${data.userResult.id}`, undefined, {
 			withCredentials: true
 		}).then((res) => {
 			data.isRivalResponse = res;

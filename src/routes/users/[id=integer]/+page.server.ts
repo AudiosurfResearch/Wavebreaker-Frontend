@@ -7,7 +7,11 @@ import { isAxiosError } from 'axios';
 
 export async function load({ params, cookies, locals }) {
 	const id: number = +params.id;
-	const userResult: ExtendedUserInfo = await loadMetadata(fetch, `/api/users/getUser?id=${id}&getExtendedInfo=true`);
+	const userResult: ExtendedUserInfo = await loadMetadata(
+		fetch,
+		`/api/users/getUser?id=${id}&getExtendedInfo=true`
+	);
+	const authCookie = cookies.get('Authorization');
 
 	if (!userResult) {
 		console.log('User not found');
@@ -25,12 +29,11 @@ export async function load({ params, cookies, locals }) {
 
 	let rivalsAndChallengersPromise: Promise<GetOwnRivalsResponse>;
 	let isRivalPromise: Promise<IsRivalResponse>;
+
 	if (locals.user && locals.user.id == parseInt(params.id)) {
-		const authCookie = cookies.get('Authorization');
 		rivalsAndChallengersPromise = fetcher(`/api/users/getOwnRivals`, authCookie);
 	} else if (locals.user) {
-		const authCookie = cookies.get('Authorization');
-		isRivalPromise = fetcher<IsRivalResponse>(`/api/users/isRival?id=${locals.user.id}`, authCookie);
+		isRivalPromise = fetcher<IsRivalResponse>(`/api/users/isRival?id=${params.id}`, authCookie);
 	}
 
 	return {
