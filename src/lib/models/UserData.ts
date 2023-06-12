@@ -1,4 +1,4 @@
-import type { Song } from "./SongData";
+import type { Song } from './SongData';
 
 export interface UserInfo {
 	id: number;
@@ -22,4 +22,13 @@ export interface ExtendedUserInfo extends UserInfo {
 
 export interface UserTokenResponse {
 	token: string;
+}
+
+export interface GetOwnRivalsResponse {
+	rivals: UserInfo[];
+	challengers: UserInfo[];
+}
+
+export interface IsRivalResponse {
+	isRival: boolean;
 }

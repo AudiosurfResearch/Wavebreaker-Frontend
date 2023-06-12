@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { UserInfo } from '$lib/models/UserData';
-	import UserRoleBadge from './UserRoleBadge.svelte';
 
 	export let targetUser: UserInfo;
 </script>
