@@ -9,12 +9,22 @@
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { page } from '$app/stores';
 	import { enhance } from '$app/forms';
+	import { fetcher } from '$lib/api';
+	import type { IsRivalResponse } from '$lib/models/UserData';
 
 	export let data: PageData;
 
 	let formatter = Intl.NumberFormat('en');
-	let isRival = undefined;
-	if (data.isRivalResponse) isRival = data.isRivalResponse.isRival;
+
+	let isRivalResponsePromise: Promise<IsRivalResponse>;
+
+	async function updateRivalStatus() {
+		return fetcher<IsRivalResponse>(`/api/users/isRival?id=${data.userResult.id}`, undefined, {
+			withCredentials: true
+		});
+	}
+
+	if (data.user) isRivalResponsePromise = updateRivalStatus();
 </script>
 
 <svelte:head>
@@ -24,17 +34,23 @@
 <div class="flex p-4 gap-4 justify-center items-stretch w-full flex-col">
 	<UserDisplay targetUser={data.userResult} />
 
-	{#if isRival != undefined}
-		{#if !isRival}
-			<form method="POST" action="?/addRival" use:enhance>
-				<button class="btn btn-success w-full md:w-44"><Fa icon={faUserPlus} />Add rival</button>
-			</form>
-		{:else}
-			<form method="POST" action="?/removeRival" use:enhance>
-				<button class="btn btn-error w-full md:w-44"><Fa icon={faUserMinus} />Remove rival</button>
-			</form>
+	{#await isRivalResponsePromise then isRivalResponse}
+		{#if isRivalResponse != undefined}
+			{#if !isRivalResponse.isRival}
+				<form method="POST" action="?/addRival" use:enhance>
+					<button class="btn btn-success w-full md:w-44" on:click={updateRivalStatus}
+						><Fa icon={faUserPlus} />Add rival</button
+					>
+				</form>
+			{:else}
+				<form method="POST" action="?/removeRival" use:enhance>
+					<button class="btn btn-error w-full md:w-44" on:click={updateRivalStatus}
+						><Fa icon={faUserMinus} />Remove rival</button
+					>
+				</form>
+			{/if}
 		{/if}
-	{/if}
+	{/await}
 
 	<div class="stats stats-vertical rounded-3xl bg-neutral lg:stats-horizontal grow shadow">
 		<div class="stat">
@@ -79,7 +95,7 @@
 
 	{#if data.rivalsAndChallengers}
 		{#if data.rivalsAndChallengers.rivals.length > 0}
-			<h1 class="text-3xl font-bold mb-2">Rivals</h1>
+			<h1 class="text-3xl font-bold">Rivals</h1>
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 p-3">
 				{#each data.rivalsAndChallengers.rivals as rival}
 					<UserDisplaySmall targetUser={rival} />
@@ -87,7 +103,7 @@
 			</div>
 		{/if}
 		{#if data.rivalsAndChallengers.challengers.length > 0}
-			<h1 class="text-3xl font-bold mb-2">Challengers</h1>
+			<h1 class="text-3xl font-bold">Challengers</h1>
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 p-3">
 				{#each data.rivalsAndChallengers.challengers as challenger}
 					<UserDisplaySmall targetUser={challenger} />

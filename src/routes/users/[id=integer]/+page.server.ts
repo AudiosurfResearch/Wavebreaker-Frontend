@@ -24,20 +24,15 @@ export async function load({ params, cookies, locals }) {
 	);
 
 	let rivalsAndChallengers: Promise<GetOwnRivalsResponse>;
-	let isRival: Promise<IsRivalResponse>;
 	if (locals.user && locals.user.id == parseInt(params.id)) {
 		const authCookie = cookies.get('Authorization');
 		rivalsAndChallengers = fetcher(`/api/users/getOwnRivals`, authCookie);
-	} else if (locals.user) {
-		const authCookie = cookies.get('Authorization');
-		isRival = fetcher(`/api/users/isRival?id=${params.id}`, authCookie);
 	}
 
 	return {
 		userResult,
 		latestScoresResult: Promise.resolve(latestScoresPromise),
 		bestScoresResult: Promise.resolve(bestScoresPromise),
-		isRivalResponse: Promise.resolve(isRival),
 		rivalsAndChallengers: Promise.resolve(rivalsAndChallengers)
 	};
 }
