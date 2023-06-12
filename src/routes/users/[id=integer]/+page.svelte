@@ -23,7 +23,7 @@
 	<UserDisplay targetUser={data.userResult} />
 
 	{#if data.isRival != undefined}
-		{#if data.isRival}
+		{#if !data.isRival}
 			<form method="POST" action="?/addRival" use:enhance>
 				<button class="btn btn-success w-full md:w-44"><Fa icon={faUserPlus} />Add rival</button>
 			</form>
