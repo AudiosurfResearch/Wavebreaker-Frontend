@@ -13,6 +13,8 @@
 	export let data: PageData;
 
 	let formatter = Intl.NumberFormat('en');
+	let isRival = undefined;
+	if (data.isRivalResponse) isRival = data.isRivalResponse.isRival;
 </script>
 
 <svelte:head>
@@ -22,8 +24,8 @@
 <div class="flex p-4 gap-4 justify-center items-stretch w-full flex-col">
 	<UserDisplay targetUser={data.userResult} />
 
-	{#if data.isRival != undefined}
-		{#if !data.isRival}
+	{#if isRival != undefined}
+		{#if !isRival}
 			<form method="POST" action="?/addRival" use:enhance>
 				<button class="btn btn-success w-full md:w-44"><Fa icon={faUserPlus} />Add rival</button>
 			</form>
@@ -99,7 +101,11 @@
 			<h1 class="text-3xl font-bold mb-2">Latest scores</h1>
 			<div class="flex flex-col gap-y-2 p-3">
 				{#each data.latestScoresResult.scores as score}
-					<ScoreBox targetEntity={score.song} targetScore={score} />
+					<ScoreBox
+						targetEntity={score.song}
+						targetScore={score}
+						entityImage={score.song.coverUrl}
+					/>
 				{/each}
 			</div>
 		</div>
@@ -107,7 +113,12 @@
 			<h1 class="text-3xl font-bold mb-2">Best scores</h1>
 			<div class="flex flex-col gap-y-2 p-3">
 				{#each data.bestScoresResult.scores as score, i}
-					<ScoreBox placement={i + 1} targetEntity={score.song} targetScore={score} />
+					<ScoreBox
+						placement={i + 1}
+						targetEntity={score.song}
+						targetScore={score}
+						entityImage={score.song.coverUrl}
+					/>
 				{/each}
 			</div>
 		</div>

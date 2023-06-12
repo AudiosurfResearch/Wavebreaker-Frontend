@@ -7,10 +7,7 @@ import { isAxiosError } from 'axios';
 
 export async function load({ params, cookies, locals }) {
 	const id: number = +params.id;
-	const userResult: ExtendedUserInfo = await loadMetadata(
-		fetch,
-		`/api/users/getUser?id=${id}&getExtendedInfo=true`
-	);
+	const userResult: ExtendedUserInfo = await loadMetadata(fetch, `/api/users/getUser?id=${id}&getExtendedInfo=true`);
 
 	if (!userResult) {
 		console.log('User not found');
@@ -40,8 +37,8 @@ export async function load({ params, cookies, locals }) {
 		userResult,
 		latestScoresResult: Promise.resolve(latestScoresPromise),
 		bestScoresResult: Promise.resolve(bestScoresPromise),
-		...(rivalsAndChallengers && { rivalsAndChallengers: Promise.resolve(rivalsAndChallengers) }),
-		...(isRival && { isRival: (await isRival).isRival })
+		isRivalResponse: Promise.resolve(isRival),
+		rivalsAndChallengers: Promise.resolve(rivalsAndChallengers)
 	};
 }
 

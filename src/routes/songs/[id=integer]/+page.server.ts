@@ -8,10 +8,10 @@ import { loadMetadata } from '$lib/stores/metadata-store';
 export async function load({ params }) {
 	const id: number = +params.id;
 	try {
-		const songResult: Song = await loadMetadata(fetch, `/api/songs/getSong?id=${id}`);
+		const songResultPromise: Promise<Song> = loadMetadata(fetch, `/api/songs/getSong?id=${id}`);
 
 		return {
-			songResult
+			songResult: Promise.resolve(songResultPromise)
 		};
 	} catch (e) {
 		if (isAxiosError(e) && e.response)

@@ -11,12 +11,14 @@
 	export let placement: number = undefined;
 	export let targetEntity: UserInfo | Song;
 	export let targetScore: Score;
+	export let entityImage: string = undefined;
 
-	let entityImage = undefined;
-	if ('avatarUrl' in targetEntity) {
-		entityImage = targetEntity.avatarUrl;
-	} else if ('coverUrl' in targetEntity) {
-		entityImage = targetEntity.coverUrl;
+	if (!entityImage) {
+		if ('avatarUrl' in targetEntity) {
+			entityImage = targetEntity.avatarUrl;
+		} else if ('coverUrl' in targetEntity) {
+			entityImage = targetEntity.coverUrl;
+		}
 	}
 
 	let formatter = Intl.NumberFormat('en');
