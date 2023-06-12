@@ -11,20 +11,11 @@
 	import { enhance } from '$app/forms';
 	import { fetcher } from '$lib/api';
 	import type { IsRivalResponse } from '$lib/models/UserData';
+	import UserBadge from '$lib/components/users/UserBadge.svelte';
 
 	export let data: PageData;
 
 	let formatter = Intl.NumberFormat('en');
-
-	let isRivalResponsePromise: Promise<IsRivalResponse>;
-
-	async function updateRivalStatus() {
-		return fetcher<IsRivalResponse>(`/api/users/isRival?id=${data.userResult.id}`, undefined, {
-			withCredentials: true
-		});
-	}
-
-	if (data.user) isRivalResponsePromise = updateRivalStatus();
 </script>
 
 <svelte:head>
@@ -34,23 +25,17 @@
 <div class="flex p-4 gap-4 justify-center items-stretch w-full flex-col">
 	<UserDisplay targetUser={data.userResult} />
 
-	{#await isRivalResponsePromise then isRivalResponse}
-		{#if isRivalResponse != undefined}
-			{#if !isRivalResponse.isRival}
-				<form method="POST" action="?/addRival" use:enhance>
-					<button class="btn btn-success w-full md:w-44" on:click={updateRivalStatus}
-						><Fa icon={faUserPlus} />Add rival</button
-					>
-				</form>
-			{:else}
-				<form method="POST" action="?/removeRival" use:enhance>
-					<button class="btn btn-error w-full md:w-44" on:click={updateRivalStatus}
-						><Fa icon={faUserMinus} />Remove rival</button
-					>
-				</form>
-			{/if}
+	{#if data.isRivalResponse != undefined}
+		{#if !data.isRivalResponse.isRival && data.user.id != data.userResult.id}
+			<form method="POST" action="?/addRival" use:enhance>
+				<button class="btn btn-success w-full md:w-44"><Fa icon={faUserPlus} />Add rival</button>
+			</form>
+		{:else}
+			<form method="POST" action="?/removeRival" use:enhance>
+				<button class="btn btn-error w-full md:w-44"><Fa icon={faUserMinus} />Remove rival</button>
+			</form>
 		{/if}
-	{/await}
+	{/if}
 
 	<div class="stats stats-vertical rounded-3xl bg-neutral lg:stats-horizontal grow shadow">
 		<div class="stat">

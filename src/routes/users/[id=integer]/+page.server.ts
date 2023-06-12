@@ -23,17 +23,22 @@ export async function load({ params, cookies, locals }) {
 		`/api/scores/getScores?userId=${id}&scoreSort=desc`
 	);
 
-	let rivalsAndChallengers: Promise<GetOwnRivalsResponse>;
+	let rivalsAndChallengersPromise: Promise<GetOwnRivalsResponse>;
+	let isRivalPromise: Promise<IsRivalResponse>;
 	if (locals.user && locals.user.id == parseInt(params.id)) {
 		const authCookie = cookies.get('Authorization');
-		rivalsAndChallengers = fetcher(`/api/users/getOwnRivals`, authCookie);
+		rivalsAndChallengersPromise = fetcher(`/api/users/getOwnRivals`, authCookie);
+	} else if (locals.user) {
+		const authCookie = cookies.get('Authorization');
+		fetcher<IsRivalResponse>(`/api/users/isRival?id=${locals.user.id}`, authCookie);
 	}
 
 	return {
 		userResult,
 		latestScoresResult: Promise.resolve(latestScoresPromise),
 		bestScoresResult: Promise.resolve(bestScoresPromise),
-		rivalsAndChallengers: Promise.resolve(rivalsAndChallengers)
+		rivalsAndChallengers: Promise.resolve(rivalsAndChallengersPromise),
+		isRivalResponse: Promise.resolve(isRivalPromise)
 	};
 }
 
