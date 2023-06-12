@@ -30,7 +30,7 @@ export async function load({ params, cookies, locals }) {
 		rivalsAndChallengersPromise = fetcher(`/api/users/getOwnRivals`, authCookie);
 	} else if (locals.user) {
 		const authCookie = cookies.get('Authorization');
-		fetcher<IsRivalResponse>(`/api/users/isRival?id=${locals.user.id}`, authCookie);
+		isRivalPromise = fetcher<IsRivalResponse>(`/api/users/isRival?id=${locals.user.id}`, authCookie);
 	}
 
 	return {
