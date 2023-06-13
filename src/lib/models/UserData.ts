@@ -32,3 +32,7 @@ export interface GetOwnRivalsResponse {
 export interface IsRivalResponse {
 	isRival: boolean;
 }
+
+export interface AddOrRemoveRivalResponse {
+	success: boolean;
+}

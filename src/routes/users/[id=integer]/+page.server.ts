@@ -1,5 +1,10 @@
 import { error, type Actions, fail } from '@sveltejs/kit';
-import type { ExtendedUserInfo, GetOwnRivalsResponse, IsRivalResponse } from '$lib/models/UserData';
+import type {
+	AddOrRemoveRivalResponse,
+	ExtendedUserInfo,
+	GetOwnRivalsResponse,
+	IsRivalResponse
+} from '$lib/models/UserData';
 import type { GetScoresResponse } from '$lib/models/ScoreData';
 import { loadMetadata } from '$lib/stores/metadata-store';
 import { fetcher, poster } from '$lib/api.js';
@@ -49,25 +54,27 @@ export const actions = {
 	addRival: async ({ cookies, params }) => {
 		const id: number = +params.id;
 		const authToken = cookies.get('Authorization');
+		let addRivalResult: AddOrRemoveRivalResponse;
 
 		try {
-			await poster('/api/users/addRival', { id }, authToken);
+			addRivalResult = await poster('/api/users/addRival', { id }, authToken);
 		} catch (e) {
 			if (isAxiosError(e) && e.response)
-				return fail(e.response?.status, { message: e.response.data.error });
+				return fail(e.response?.status, { success: false, message: e.response.data.error });
 		}
-		return { success: true };
+		return { success: addRivalResult.success };
 	},
 	removeRival: async ({ cookies, params }) => {
 		const id: number = +params.id;
 		const authToken = cookies.get('Authorization');
+		let removeRivalResult: AddOrRemoveRivalResponse;
 
 		try {
-			await poster('/api/users/removeRival', { id }, authToken);
+			removeRivalResult = await poster('/api/users/removeRival', { id }, authToken);
 		} catch (e) {
 			if (isAxiosError(e) && e.response)
-				return fail(e.response?.status, { message: e.response.data.error });
+				return fail(e.response?.status, { success: false, message: e.response.data.error });
 		}
-		return { success: true };
+		return { success: removeRivalResult.success };
 	}
 } satisfies Actions;

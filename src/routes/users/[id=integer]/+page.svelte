@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { ActionData, PageData } from './$types';
 	import UserDisplay from '$lib/components/users/UserDisplay.svelte';
 	import UserDisplaySmall from '$lib/components/users/UserDisplaySmall.svelte';
 	import { format } from 'timeago.js';
@@ -13,16 +13,11 @@
 	import UserBadge from '$lib/components/users/UserBadge.svelte';
 
 	export let data: PageData;
+	export let form: ActionData;
+
+	if (form?.success) data.isRivalResponse.isRival = !data.isRivalResponse.isRival;
 
 	let formatter = Intl.NumberFormat('en');
-
-	function refreshIsRival() {
-		fetcher<IsRivalResponse>(`/api/users/isRival?id=${data.userResult.id}`, undefined, {
-			withCredentials: true
-		}).then((res) => {
-			data.isRivalResponse = res;
-		});
-	}
 </script>
 
 <svelte:head>
@@ -35,15 +30,11 @@
 	{#if data.isRivalResponse != undefined}
 		{#if !data.isRivalResponse.isRival && data.user.id != data.userResult.id}
 			<form method="POST" action="?/addRival" use:enhance>
-				<button class="btn btn-success w-full md:w-44" on:click={refreshIsRival}
-					><Fa icon={faUserPlus} />Add rival</button
-				>
+				<button class="btn btn-success w-full md:w-44"><Fa icon={faUserPlus} />Add rival</button>
 			</form>
 		{:else}
 			<form method="POST" action="?/removeRival" use:enhance>
-				<button class="btn btn-error w-full md:w-44" on:click={refreshIsRival}
-					><Fa icon={faUserMinus} />Remove rival</button
-				>
+				<button class="btn btn-error w-full md:w-44"><Fa icon={faUserMinus} />Remove rival</button>
 			</form>
 		{/if}
 	{/if}
