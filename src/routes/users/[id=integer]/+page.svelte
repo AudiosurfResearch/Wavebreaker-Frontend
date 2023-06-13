@@ -10,6 +10,7 @@
 	import { enhance } from '$app/forms';
 	import { fetcher } from '$lib/api';
 	import type { IsRivalResponse } from '$lib/models/UserData';
+	import UserBadge from '$lib/components/users/UserBadge.svelte';
 
 	export let data: PageData;
 
@@ -91,7 +92,7 @@
 	{#if data.rivalsAndChallengers}
 		{#if data.rivalsAndChallengers.rivals.length > 0}
 			<h1 class="text-3xl font-bold">Rivals</h1>
-			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 p-3">
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 px-3">
 				{#each data.rivalsAndChallengers.rivals as rival}
 					<UserDisplaySmall targetUser={rival} />
 				{/each}
@@ -99,7 +100,7 @@
 		{/if}
 		{#if data.rivalsAndChallengers.challengers.length > 0}
 			<h1 class="text-3xl font-bold">Challengers</h1>
-			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 p-3">
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 px-3">
 				{#each data.rivalsAndChallengers.challengers as challenger}
 					<UserDisplaySmall targetUser={challenger} />
 				{/each}

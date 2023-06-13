@@ -9,7 +9,7 @@
 	class="flex gap-y-2 gap-x-2 items-center flex-row bg-neutral rounded-xl shadow p-2"
 >
 	<div class="avatar">
-		<div class="rounded-xl w-12">
+		<div class="rounded-xl w-12 h-12">
 			<img src={targetUser.avatarUrl} alt="Avatar of {targetUser.username}" />
 		</div>
 	</div>
