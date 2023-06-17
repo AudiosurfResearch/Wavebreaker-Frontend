@@ -21,7 +21,8 @@
 	<title>Wavebreaker | {data.userResult.username}</title>
 	<meta
 		name="description"
-		content="User page of {data.userResult.username} on Wavebreaker, an Audiosurf 1 server reimplementation."
+		content="User page of {data.userResult
+			.username} on Wavebreaker, an Audiosurf 1 server reimplementation."
 	/>
 </svelte:head>
 
@@ -109,6 +110,7 @@
 						targetEntity={score.song}
 						targetScore={score}
 						entityImage={score.song.coverUrl}
+						entityImageSmall={score.song.smallCoverUrl}
 					/>
 				{/each}
 			</div>
@@ -122,6 +124,7 @@
 						targetEntity={score.song}
 						targetScore={score}
 						entityImage={score.song.coverUrl}
+						entityImageSmall={score.song.smallCoverUrl}
 					/>
 				{/each}
 			</div>

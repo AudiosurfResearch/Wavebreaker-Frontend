@@ -1,6 +1,4 @@
 <script lang="ts">
-	import '@fontsource-variable/inter';
-
 	import '../app.postcss';
 	import Footer from '$lib/components/common/Footer.svelte';
 	import Navbar from '$lib/components/common/Navbar.svelte';
