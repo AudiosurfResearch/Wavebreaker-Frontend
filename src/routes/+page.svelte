@@ -4,6 +4,10 @@
 
 <svelte:head>
 	<title>Wavebreaker | Home</title>
+	<meta
+		name="description"
+		content="Home page of Wavebreaker, an open-source Audiosurf 1 server reimplementation."
+	/>
 </svelte:head>
 
 <div class="flex flex-col items-center lg:flex-row-reverse px-7 max-w-full">

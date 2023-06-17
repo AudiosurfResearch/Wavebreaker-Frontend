@@ -83,6 +83,12 @@
 		>Wavebreaker | {data.songResult.musicbrainzArtist ?? data.songResult.artist} - {data.songResult
 			.musicbrainzTitle ?? data.songResult.title}</title
 	>
+	<meta
+		name="description"
+		content="Song page of {data.songResult.musicbrainzTitle ?? data.songResult.title} by {data
+			.songResult.musicbrainzArtist ??
+			data.songResult.artist} on Wavebreaker, an Audiosurf 1 server reimplementation"
+	/>
 </svelte:head>
 
 <div class="flex p-4 gap-4 justify-center items-stretch w-full flex-col">

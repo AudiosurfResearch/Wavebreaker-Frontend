@@ -73,6 +73,10 @@
 
 <svelte:head>
 	<title>Wavebreaker | User search</title>
+	<meta
+		name="description"
+		content="User search page for Wavebreaker. Search for users and view their profiles."
+	/>
 </svelte:head>
 
 <div class="flex flex-col">

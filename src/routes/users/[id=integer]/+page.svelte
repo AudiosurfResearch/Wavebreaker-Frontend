@@ -19,6 +19,10 @@
 
 <svelte:head>
 	<title>Wavebreaker | {data.userResult.username}</title>
+	<meta
+		name="description"
+		content="User page of {data.userResult.username} on Wavebreaker, an Audiosurf 1 server reimplementation."
+	/>
 </svelte:head>
 
 <div class="flex p-4 gap-4 justify-center items-stretch w-full flex-col">
