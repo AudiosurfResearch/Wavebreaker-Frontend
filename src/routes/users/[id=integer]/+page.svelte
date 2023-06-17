@@ -8,9 +8,6 @@
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { enhance } from '$app/forms';
-	import { fetcher } from '$lib/api';
-	import type { IsRivalResponse } from '$lib/models/UserData';
-	import UserBadge from '$lib/components/users/UserBadge.svelte';
 
 	export let data: PageData;
 	export let form: ActionData;
