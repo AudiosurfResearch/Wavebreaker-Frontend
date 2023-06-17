@@ -7,6 +7,22 @@
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { format } from 'timeago.js';
 	import Modal from '../common/Modal.svelte';
+	import { Line } from 'svelte-chartjs';
+	import {
+		Chart as ChartJS,
+		Title,
+		Tooltip,
+		Legend,
+		LineElement,
+		LinearScale,
+		PointElement,
+		CategoryScale
+	} from 'chart.js';
+	ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale, PointElement, CategoryScale);
+	ChartJS.defaults.font.family = 'Inter, sans-serif';
+	ChartJS.defaults.color = '#C8D3F5';
+	ChartJS.defaults.borderColor = '#2f334d';
+	ChartJS.defaults.backgroundColor = '#009EFF';
 
 	export let placement: number = undefined;
 	export let targetEntity: UserInfo | Song;
@@ -22,8 +38,21 @@
 	}
 
 	let formatter = Intl.NumberFormat('en');
-
 	let modalOpen = false;
+	console.log(targetScore.trackShape);
+	let trackShapeNumbers = targetScore.trackShape.split('x').map(function (item) {
+		return Math.abs(parseInt(item) - 103);
+	});
+	const trackShapeData = {
+		labels: new Array(trackShapeNumbers.length - 1).fill(''),
+		datasets: [
+			{
+				label: 'Height',
+				data: trackShapeNumbers,
+				borderColor: '#009EFF'
+			}
+		]
+	};
 </script>
 
 <div
@@ -108,7 +137,42 @@
 </div>
 
 <Modal bind:showModal={modalOpen}>
-	<h2 class="font-bold text-xl">Score details</h2>
+	<h2 class="font-bold text-xl mb-3">Score details</h2>
+	<Line
+		data={trackShapeData}
+		options={{
+			responsive: true,
+			scales: {
+				x: {
+					border: {
+						display: true
+					},
+					ticks: {
+						stepSize: 100,
+						maxTicksLimit: 10
+					}
+				},
+				y: {
+					border: {
+						display: true
+					},
+					ticks: {
+						display: false,
+						stepSize: 13
+					},
+					max: 104
+				}
+			},
+			elements: {
+				point: {
+					radius: 0
+				}
+			},
+			plugins: {
+				legend: { display: false }
+			}
+		}}
+	/>
 	<p>
 		<b>Character: </b>
 		{characterList[targetScore.vehicleId]}<br />
