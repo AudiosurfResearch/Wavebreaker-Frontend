@@ -147,9 +147,10 @@
 						display: true
 					},
 					ticks: {
-						stepSize: 100,
-						maxTicksLimit: 10
-					}
+						stepSize: 5,
+						maxTicksLimit: 51
+					},
+					max: 256
 				},
 				y: {
 					border: {
@@ -157,9 +158,10 @@
 					},
 					ticks: {
 						display: false,
+						maxTicksLimit: 9,
 						stepSize: 13
 					},
-					max: 104
+					max: 103
 				}
 			},
 			elements: {
