@@ -39,7 +39,6 @@
 
 	let formatter = Intl.NumberFormat('en');
 	let modalOpen = false;
-	console.log(targetScore.trackShape);
 	let trackShapeNumbers = targetScore.trackShape.split('x').map(function (item) {
 		return Math.abs(parseInt(item) - 103);
 	});
