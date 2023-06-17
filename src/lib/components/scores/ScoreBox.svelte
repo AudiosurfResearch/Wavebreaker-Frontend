@@ -28,12 +28,21 @@
 	export let targetEntity: UserInfo | Song;
 	export let targetScore: Score;
 	export let entityImage: string = undefined;
+	export let entityImageSmall: string = undefined;
 
 	if (!entityImage) {
 		if ('avatarUrl' in targetEntity) {
 			entityImage = targetEntity.avatarUrl;
 		} else if ('coverUrl' in targetEntity) {
 			entityImage = targetEntity.coverUrl;
+		}
+	}
+
+	if (!entityImageSmall) {
+		if ('avatarUrl' in targetEntity) {
+			entityImageSmall = targetEntity.avatarUrlMedium;
+		} else if ('coverUrl' in targetEntity) {
+			entityImageSmall = targetEntity.smallCoverUrl;
 		}
 	}
 
@@ -76,8 +85,8 @@
 			{#if placement}
 				<p class="hidden md:block text-3xl font-bold text-center w-8 min-w-[2rem]">{placement}</p>
 			{/if}
-			{#if entityImage}
-				<img class="w-12 h-12 rounded-xl" src={entityImage} alt="Score entry" />
+			{#if entityImageSmall}
+				<img class="w-12 h-12 rounded-xl" src={entityImageSmall} alt="Score entry" />
 			{/if}
 			<div class="overflow-hidden">
 				{#if 'title' in targetEntity}
@@ -106,7 +115,10 @@
 			</div>
 
 			<div class="block md:hidden ml-auto">
-				<button class="btn btn-square btn-sm btn-ghost" on:click={() => (modalOpen = true)}
+				<button
+					aria-label="More score info"
+					class="btn btn-square btn-sm btn-ghost"
+					on:click={() => (modalOpen = true)}
 					><Fa icon={faInfoCircle} />
 				</button>
 			</div>
@@ -120,8 +132,10 @@
 					{format(targetScore.rideTime)}
 				</p>
 			</div>
-
-			<button class="btn btn-square btn-sm btn-ghost" on:click={() => (modalOpen = true)}
+			<button
+				aria-label="More score info"
+				class="btn btn-square btn-sm btn-ghost"
+				on:click={() => (modalOpen = true)}
 				><Fa icon={faInfoCircle} />
 			</button>
 		</div>
