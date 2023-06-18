@@ -30,22 +30,21 @@
 	<meta content="#009EFF" name="theme-color" />
 </svelte:head>
 
-{#if $page.data.user != undefined}
+{#if $page.data.user == undefined}
 	<h1 class="text-2xl lg:text-5xl">Welcome back, <b>{$page.data.user?.username}</b>.</h1>
 	<div class="flex flex-row flex-wrap my-4 gap-3">
 		<div class="bg-neutral rounded-xl p-4 shadow">
 			<div class="flex flex-row items-center gap-x-2">
 				<h2 class="text-xl font-bold">Wavebreaker Radio songs</h2>
 				<div
-					class="tooltip tooltip-warning tooltip-right"
+					class="tooltip tooltip-warning before:w-[8rem] before:content-[attr(data-tip)]"
 					data-tip="We do NOT own the rights to these songs!
-					We suggest that, if you like them, you should go buy them from the artist directly using the links below.
-					Or at the very least send some kind words their way, tell other people, etc."
+							  If you like them, buy them."
 				>
 					<Fa icon={faCircleInfo} />
 				</div>
 			</div>
-			{#if data.radioSongs != undefined}
+			{#if data.radioSongs}
 				{#each data.radioSongs.songs as song}
 					<div class="flex flex-row items-center self-center p-2">
 						<SongDisplaySmall targetSong={song} />
