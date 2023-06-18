@@ -95,7 +95,7 @@
 	{#if $searchResponse}
 		<div class="flex flex-col gap-y-3 my-5 mx-3">
 			{#each $searchResponse.results as song}
-				<SongDisplaySmall targetSong={song} />
+				<div class="bg-neutral rounded-xl p-2 shadow"><SongDisplaySmall targetSong={song} /></div>
 			{/each}
 		</div>
 	{/if}

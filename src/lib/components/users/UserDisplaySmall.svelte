@@ -14,7 +14,7 @@
 		</div>
 	</div>
 	<h1
-		class="break-all font-bold
+		class="break-all font-semibold
             {targetUser.accountType == 3 &&
 			'text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-primary'}
             {targetUser.accountType == 2 && 'text-error'}"

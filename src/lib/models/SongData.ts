@@ -11,3 +11,11 @@ export type Song = {
 	coverUrl?: string;
 	smallCoverUrl?: string;
 };
+
+export type SongWithExternalUrl = Song & {
+	externalUrl: string;
+};
+
+export interface GetRadioSongsResponse {
+	songs: SongWithExternalUrl[];
+}

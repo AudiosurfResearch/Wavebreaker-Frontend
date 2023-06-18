@@ -45,7 +45,8 @@
 			query: queryString.parse(
 				$page.url.searchParams.toString() +
 					'&includePlayer=true&pageSize=14&scoreSort=desc&songId=' +
-					data.songResult.id + (!$page.url.searchParams.has('leagueId') ? '&leagueId=2' : '')
+					data.songResult.id +
+					(!$page.url.searchParams.has('leagueId') ? '&leagueId=2' : '')
 			)
 		}),
 		{ fetcher: fetcher }
@@ -72,7 +73,8 @@
 					query: queryString.parse(
 						p.url.searchParams.toString() +
 							'&includePlayer=true&pageSize=14&scoreSort=desc&songId=' +
-							data.songResult.id + (!$page.url.searchParams.has('leagueId') ? '&leagueId=2' : '')
+							data.songResult.id +
+							(!$page.url.searchParams.has('leagueId') ? '&leagueId=2' : '')
 					)
 				})
 			});

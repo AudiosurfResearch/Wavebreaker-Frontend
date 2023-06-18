@@ -6,7 +6,7 @@
 
 <a
 	href="/songs/{targetSong.id}"
-	class="flex gap-y-2 gap-x-2 items-center flex-row bg-neutral rounded-xl shadow p-2"
+	class="flex gap-y-2 gap-x-2 items-center flex-row hover:underline"
 >
 	{#if targetSong.smallCoverUrl}
 		<img
@@ -18,7 +18,7 @@
 	{/if}
 	<div class="flex flex-row items-center gap-x-2">
 		<div>
-			<b>{targetSong.musicbrainzTitle ?? targetSong.title}</b>
+			<p class="font-semibold">{targetSong.musicbrainzTitle ?? targetSong.title}</p>
 			<p class="text-sm">{targetSong.musicbrainzArtist ?? targetSong.artist}</p>
 		</div>
 		{#if targetSong.tags}
