@@ -4,7 +4,7 @@
 	import { page } from '$app/stores';
 	import queryString from 'query-string';
 	import { browser } from '$app/environment';
-	import { onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	import ClassicPagination from '$lib/components/common/pagination/classic-pagination.svelte';
 	import type { GetScoresResponse } from '$lib/models/ScoreData';
@@ -16,6 +16,7 @@
 	import { fetcher } from '$lib/api';
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 	import Modal from '$lib/components/common/Modal.svelte';
+	import { get } from 'svelte/store';
 
 	let metadataReportModalOpen = false;
 	let metadataReportInfo: string = '';
@@ -23,18 +24,6 @@
 	$: reportInfoLength = metadataReportInfo.length;
 
 	export let data: PageData;
-
-	const {
-		data: leaderboards,
-		error: leaderboardsError,
-		refresh: refreshLeaderboards
-	} = useAccio<GetScoresResponse>(
-		queryString.stringifyUrl({
-			url: '/api/scores/getScores',
-			query: queryString.parse($page.url.searchParams.toString())
-		}),
-		{ fetcher: fetcher }
-	);
 
 	type leaderboardsQuery = {
 		page: number;
@@ -45,6 +34,22 @@
 		page: 1,
 		leagueId: 2
 	});
+
+	const {
+		data: leaderboards,
+		error: leaderboardsError,
+		refresh: refreshLeaderboards
+	} = useAccio<GetScoresResponse>(
+		queryString.stringifyUrl({
+			url: '/api/scores/getScores',
+			query: queryString.parse(
+				$page.url.searchParams.toString() +
+					'&includePlayer=true&pageSize=14&scoreSort=desc&songId=' +
+					data.songResult.id + (!$page.url.searchParams.has('leagueId') ? '&leagueId=2' : '')
+			)
+		}),
+		{ fetcher: fetcher }
+	);
 
 	function changePage(newPage: number) {
 		$requestCancel.cancel('Filter Changed');
@@ -67,7 +72,7 @@
 					query: queryString.parse(
 						p.url.searchParams.toString() +
 							'&includePlayer=true&pageSize=14&scoreSort=desc&songId=' +
-							data.songResult.id
+							data.songResult.id + (!$page.url.searchParams.has('leagueId') ? '&leagueId=2' : '')
 					)
 				})
 			});
@@ -75,7 +80,6 @@
 	});
 
 	onDestroy(pageUnsubscribe);
-	console.log(data.songResult.tags);
 </script>
 
 <svelte:head>
