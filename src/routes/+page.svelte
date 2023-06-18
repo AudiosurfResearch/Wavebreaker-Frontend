@@ -30,7 +30,7 @@
 	<meta content="#009EFF" name="theme-color" />
 </svelte:head>
 
-{#if $page.data.user == undefined}
+{#if $page.data.user != undefined}
 	<h1 class="text-2xl lg:text-5xl">Welcome back, <b>{$page.data.user?.username}</b>.</h1>
 	<div class="flex flex-row flex-wrap my-4 gap-3">
 		<div class="bg-neutral rounded-xl p-4 shadow">
