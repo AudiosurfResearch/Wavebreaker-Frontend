@@ -69,17 +69,17 @@
 >
 	<!--TODO: Find a better solution to fix the weird corner bleeding-->
 	<div
-		class="grid md:flex h-full p-3 shadow rounded-xl gap-x-3 gap-y-2 items-center {entityImage &&
+		class="flex flex-col md:flex-row h-full p-3 shadow rounded-xl gap-x-3 gap-y-2 items-center {entityImage &&
 			'bg-gradient-to-r from-neutral/80 to-75% to-neutral'}"
 		class:bg-neutral={!entityImage}
 		style="width: calc(100% + 1px);"
 	>
-		<div class="flex md:hidden flex-row items-center">
+		<div class="flex md:hidden self-start w-full">
 			{#if placement}
-				<b>#{placement}</b>
-				<pre> — </pre>
+				#{placement} —
 			{/if}
-			<span>{formatter.format(targetScore.score)}</span>
+			{formatter.format(targetScore.score)}
+			<div class="ml-auto text-neutral-content">{format(targetScore.rideTime)}</div>
 		</div>
 		<div class="flex flex-row items-center gap-x-3 w-full md:max-w-xl">
 			{#if placement}
@@ -88,32 +88,29 @@
 			{#if entityImageSmall}
 				<img class="w-12 h-12 rounded-xl" src={entityImageSmall} alt="Score entry" />
 			{/if}
-			<div class="overflow-hidden">
-				{#if 'title' in targetEntity}
-					<a
-						href={`/songs/${targetEntity.id}`}
-						class="hover:underline"
-						title="Song title and artist"
-					>
-						<div class="flex items-center gap-x-2">
-							<b>{targetEntity.musicbrainzTitle ?? targetEntity.title}</b>
-							{#if 'tags' in targetEntity && targetEntity.tags}
-								<div class="hidden md:flex flex-row flex-wrap gap-1">
-									{#each targetEntity.tags as tag}
-										<div class="badge badge-ghost">{tag}</div>
-									{/each}
-								</div>
-							{/if}
-						</div>
-						<p class="text-sm">{targetEntity.musicbrainzArtist ?? targetEntity.artist}</p>
-					</a>
-				{:else}
-					<a href={`/users/${targetEntity.id}`} class="hover:underline">
-						<p class="font-bold">{targetEntity.username}</p>
-					</a>
-				{/if}
-			</div>
-
+			{#if 'title' in targetEntity}
+				<a
+					href={`/songs/${targetEntity.id}`}
+					class="hover:underline overflow-hidden"
+					title="Song title and artist"
+				>
+					<div class="font-semibold">
+						{targetEntity.musicbrainzTitle ?? targetEntity.title}
+					</div>
+					<p class="text-sm">{targetEntity.musicbrainzArtist ?? targetEntity.artist}</p>
+				</a>
+			{:else}
+				<a href={`/users/${targetEntity.id}`} class="hover:underline overflow-hidden font-semibold">
+					{targetEntity.username}
+				</a>
+			{/if}
+			{#if 'tags' in targetEntity && targetEntity.tags}
+				<div class="md:hidden flex flex-row flex-wrap gap-2">
+					{#each targetEntity.tags as tag}
+						<div class="badge badge-ghost">{tag}</div>
+					{/each}
+				</div>
+			{/if}
 			<div class="block md:hidden ml-auto">
 				<button
 					aria-label="More score info"
@@ -188,16 +185,11 @@
 			}
 		}}
 	/>
-	<p>
-		<b>Character: </b>
-		{characterList[targetScore.vehicleId]}<br />
-		<b>Feats:</b>
-		{targetScore.feats}<br />
-		<b>Density: </b>
-		{targetScore.density}<br />
-		<b>Gold threshold: </b>
-		{formatter.format(targetScore.goldThreshold)}<br />
-		<b>Total times played:</b>
-		{targetScore.playCount}<br />
+	<p class="whitespace-pre-line">
+		Character: {characterList[targetScore.vehicleId]}
+		Feats: {targetScore.feats}
+		Density: {targetScore.density}
+		Gold threshold: {formatter.format(targetScore.goldThreshold)}
+		Total times played: {targetScore.playCount}
 	</p>
 </Modal>

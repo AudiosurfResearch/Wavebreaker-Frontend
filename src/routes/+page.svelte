@@ -5,12 +5,7 @@
 	import SongDisplaySmall from '$lib/components/songs/SongDisplaySmall.svelte';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import type { PageData } from './$types';
-	import {
-		faCircleInfo,
-		faExternalLink,
-		faInfo,
-		faInfoCircle
-	} from '@fortawesome/free-solid-svg-icons';
+	import { faCircleInfo, faExternalLink } from '@fortawesome/free-solid-svg-icons';
 
 	export let data: PageData;
 </script>
