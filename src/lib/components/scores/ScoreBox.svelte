@@ -105,7 +105,7 @@
 				</a>
 			{/if}
 			{#if 'tags' in targetEntity && targetEntity.tags}
-				<div class="md:hidden flex flex-row flex-wrap gap-2">
+				<div class="hidden md:flex flex-row flex-wrap gap-2">
 					{#each targetEntity.tags as tag}
 						<div class="badge badge-ghost">{tag}</div>
 					{/each}
@@ -137,7 +137,7 @@
 			</button>
 		</div>
 		{#if 'tags' in targetEntity && targetEntity.tags}
-			<div class="md:hidden flex flex-row flex-wrap gap-2">
+			<div class="md:hidden flex flex-row flex-wrap gap-2 self-start">
 				{#each targetEntity.tags as tag}
 					<div class="badge badge-ghost">{tag}</div>
 				{/each}
