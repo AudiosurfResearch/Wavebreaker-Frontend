@@ -7,17 +7,13 @@ import { loadMetadata } from '$lib/stores/metadata-store';
 
 export async function load({ params }) {
 	const id: number = +params.id;
-	try {
-		const songResultPromise: Promise<Song> = loadMetadata(fetch, `/api/songs/getSong?id=${id}`);
+	const songResult: Promise<Song> = await loadMetadata(fetch, `/api/songs/getSong?id=${id}`);
 
-		return {
-			songResult: Promise.resolve(songResultPromise)
-		};
-	} catch (e) {
-		if (isAxiosError(e) && e.response)
-			throw error(e.response?.status, { message: e.response.data.error });
-		else throw e;
-	}
+	if (!songResult) throw error(404, { message: 'Song not found' });
+
+	return {
+		songResult
+	};
 }
 
 export const actions = {

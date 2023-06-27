@@ -11,10 +11,10 @@ export const load = async ({ url, cookies, locals }: ServerLoadEvent) => {
 	const tokenResponse = await fetcher<UserTokenResponse>(
 		'/api/auth/steam/return?' + url.searchParams.toString()
 	);
-
+	
 	cookies.set('Authorization', tokenResponse.token, {
 		path: '/',
-		expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 14), // 2 weeks
+		expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 28), // 4 weeks
 		secure: !dev,
 	});
 
