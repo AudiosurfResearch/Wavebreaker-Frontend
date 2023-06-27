@@ -27,7 +27,7 @@ export const load = async ({ url, cookies, locals }: ServerLoadEvent) => {
 		throw redirect(307, '/');
 	} catch (e) {
 		if (isAxiosError(e) && e.response)
-			return error(e.response?.status, { message: e.response.data.error });
+			throw error(e.response?.status, { message: e.response.data.error });
 		else throw e;
 	}
 };
