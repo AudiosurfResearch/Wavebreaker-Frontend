@@ -8,6 +8,8 @@
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { enhance } from '$app/forms';
+	import type { Score } from '$lib/models/ScoreData';
+	import ScoreDetailModal from '$lib/components/scores/ScoreDetailModal.svelte';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -15,6 +17,13 @@
 	if (form?.success) data.isRivalResponse.isRival = !data.isRivalResponse.isRival;
 
 	let formatter = Intl.NumberFormat('en');
+
+	let modalOpen = false;
+	let modalScore: Score = undefined;
+	function modalFunction(scoreData: Score) {
+		modalScore = scoreData;
+		modalOpen = true;
+	}
 </script>
 
 <svelte:head>
@@ -111,6 +120,7 @@
 						targetScore={score}
 						entityImage={score.song.coverUrl}
 						entityImageSmall={score.song.smallCoverUrl}
+						{modalFunction}
 					/>
 				{/each}
 			</div>
@@ -125,6 +135,7 @@
 						targetScore={score}
 						entityImage={score.song.coverUrl}
 						entityImageSmall={score.song.smallCoverUrl}
+						{modalFunction}
 					/>
 				{/each}
 			</div>
@@ -135,3 +146,7 @@
 		</div>
 	{/if}
 </div>
+
+{#if modalScore}
+	<ScoreDetailModal bind:showModal={modalOpen} targetScore={modalScore} />
+{/if}

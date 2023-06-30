@@ -1,34 +1,17 @@
 <script lang="ts">
-	import { characterList } from '$lib/characterUtils';
 	import type { Score } from '$lib/models/ScoreData';
 	import type { Song } from '$lib/models/SongData';
 	import type { UserInfo } from '$lib/models/UserData';
 	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { format } from 'timeago.js';
-	import Modal from '../common/Modal.svelte';
-	import { Line } from 'svelte-chartjs';
-	import {
-		Chart as ChartJS,
-		Title,
-		Tooltip,
-		Legend,
-		LineElement,
-		LinearScale,
-		PointElement,
-		CategoryScale
-	} from 'chart.js';
-	ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale, PointElement, CategoryScale);
-	ChartJS.defaults.font.family = 'Inter, sans-serif';
-	ChartJS.defaults.color = '#C8D3F5';
-	ChartJS.defaults.borderColor = '#2f334d';
-	ChartJS.defaults.backgroundColor = '#009EFF';
 
 	export let placement: number = undefined;
 	export let targetEntity: UserInfo | Song;
 	export let targetScore: Score;
 	export let entityImage: string = undefined;
 	export let entityImageSmall: string = undefined;
+	export let modalFunction: (scoreData: Score) => void = undefined;
 
 	if (!entityImage) {
 		if ('avatarUrl' in targetEntity) {
@@ -47,7 +30,6 @@
 	}
 
 	let formatter = Intl.NumberFormat('en');
-	let modalOpen = false;
 	let trackShapeNumbers = targetScore.trackShape.split('x').map(function (item) {
 		return Math.abs(parseInt(item) - 103);
 	});
@@ -111,14 +93,16 @@
 					{/each}
 				</div>
 			{/if}
-			<div class="block md:hidden ml-auto">
-				<button
-					aria-label="More score info"
-					class="btn btn-square btn-sm btn-ghost"
-					on:click={() => (modalOpen = true)}
-					><Fa icon={faInfoCircle} />
-				</button>
-			</div>
+			{#if modalFunction}
+				<div class="block md:hidden ml-auto">
+					<button
+						aria-label="More score info"
+						class="btn btn-square btn-sm btn-ghost"
+						on:click={() => modalFunction(targetScore)}
+						><Fa icon={faInfoCircle} />
+					</button>
+				</div>
+			{/if}
 		</div>
 		<div class="hidden md:flex flex-row items-center justify-self-end gap-x-2 ml-auto text-right">
 			<div class="flex flex-col">
@@ -129,12 +113,14 @@
 					{format(targetScore.rideTime)}
 				</p>
 			</div>
-			<button
-				aria-label="More score info"
-				class="btn btn-square btn-sm btn-ghost"
-				on:click={() => (modalOpen = true)}
-				><Fa icon={faInfoCircle} />
-			</button>
+			{#if modalFunction}
+				<button
+					aria-label="More score info"
+					class="btn btn-square btn-sm btn-ghost"
+					on:click={() => modalFunction(targetScore)}
+					><Fa icon={faInfoCircle} />
+				</button>
+			{/if}
 		</div>
 		{#if 'tags' in targetEntity && targetEntity.tags}
 			<div class="md:hidden flex flex-row flex-wrap gap-2 self-start">
@@ -145,51 +131,3 @@
 		{/if}
 	</div>
 </div>
-
-<Modal bind:showModal={modalOpen}>
-	<h2 class="font-bold text-xl mb-3">Score details</h2>
-	<Line
-		data={trackShapeData}
-		options={{
-			responsive: true,
-			scales: {
-				x: {
-					border: {
-						display: true
-					},
-					ticks: {
-						stepSize: 5,
-						maxTicksLimit: 51
-					},
-					max: 256
-				},
-				y: {
-					border: {
-						display: true
-					},
-					ticks: {
-						display: false,
-						maxTicksLimit: 9,
-						stepSize: 13
-					},
-					max: 103
-				}
-			},
-			elements: {
-				point: {
-					radius: 0
-				}
-			},
-			plugins: {
-				legend: { display: false }
-			}
-		}}
-	/>
-	<p class="whitespace-pre-line">
-		Character: {characterList[targetScore.vehicleId]}
-		Feats: {targetScore.feats}
-		Density: {targetScore.density}
-		Gold threshold: {formatter.format(targetScore.goldThreshold)}
-		Total times played: {targetScore.playCount}
-	</p>
-</Modal>

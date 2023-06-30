@@ -4,10 +4,10 @@
 	import { page } from '$app/stores';
 	import queryString from 'query-string';
 	import { browser } from '$app/environment';
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy } from 'svelte';
 
 	import ClassicPagination from '$lib/components/common/pagination/classic-pagination.svelte';
-	import type { GetScoresResponse } from '$lib/models/ScoreData';
+	import type { GetScoresResponse, Score } from '$lib/models/ScoreData';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,7 +16,7 @@
 	import { fetcher } from '$lib/api';
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 	import Modal from '$lib/components/common/Modal.svelte';
-	import { get } from 'svelte/store';
+	import ScoreDetailModal from '$lib/components/scores/ScoreDetailModal.svelte';
 
 	let metadataReportModalOpen = false;
 	let metadataReportInfo: string = '';
@@ -82,6 +82,13 @@
 	});
 
 	onDestroy(pageUnsubscribe);
+
+	let modalOpen = false;
+	let modalScore: Score = undefined;
+	function modalFunction(scoreData: Score) {
+		modalScore = scoreData;
+		modalOpen = true;
+	}
 </script>
 
 <svelte:head>
@@ -190,6 +197,7 @@
 				placement={(i + 1) * $pageQuery.page}
 				targetEntity={score.player}
 				targetScore={score}
+				{modalFunction}
 			/>
 		{/each}
 		<div class="self-center shadow">
@@ -241,3 +249,7 @@
 		</form>
 	</div>
 </Modal>
+
+{#if modalScore}
+	<ScoreDetailModal bind:showModal={modalOpen} targetScore={modalScore} />
+{/if}
