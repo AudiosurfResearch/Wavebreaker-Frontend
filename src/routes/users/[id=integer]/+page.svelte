@@ -10,6 +10,7 @@
 	import { enhance } from '$app/forms';
 	import type { Score } from '$lib/models/ScoreData';
 	import ScoreDetailModal from '$lib/components/scores/ScoreDetailModal.svelte';
+	import { env } from '$env/dynamic/public';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -33,6 +34,18 @@
 		content="User page of {data.userResult
 			.username} on Wavebreaker, an Audiosurf 1 server reimplementation."
 	/>
+
+	<meta content="Wavebreaker" property="og:site_name" />
+	<meta content={data.userResult.username} property="og:title" />
+	<meta
+		content="Profile of {data.userResult
+			.username} on Wavebreaker, an open-source Audiosurf server reimplementation."
+		property="og:description"
+	/>
+	<meta content={data.userResult.avatarUrl} property="og:image" />
+
+	<meta content={env.PUBLIC_FRONTEND_URL + '/users/' + data.userResult.id} property="og:url" />
+	<meta content="#009EFF" name="theme-color" />
 </svelte:head>
 
 <div class="flex p-4 gap-4 justify-center items-stretch w-full flex-col">

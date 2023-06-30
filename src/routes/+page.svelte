@@ -14,13 +14,16 @@
 	<title>Wavebreaker | Home</title>
 	<meta
 		name="description"
-		content="Home page of Wavebreaker, an open-source Audiosurf 1 server reimplementation."
+		content="An open-source reimplementation of Audiosurf's server. View your scores, songs and rivals!"
 	/>
-	<meta content="Wavebreaker" property="og:title" />
+
+	<meta content="Wavebreaker" property="og:site_name" />
+	<meta content="Home" property="og:title" />
 	<meta
 		content="An open-source reimplementation of Audiosurf's server. View your scores, songs and rivals!"
 		property="og:description"
 	/>
+	
 	<meta content={env.PUBLIC_FRONTEND_URL} property="og:url" />
 	<meta content="#009EFF" name="theme-color" />
 </svelte:head>
