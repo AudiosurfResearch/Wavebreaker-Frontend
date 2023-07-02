@@ -61,7 +61,7 @@
 				#{placement} —
 			{/if}
 			{formatter.format(targetScore.score)}
-			<div class="ml-auto text-neutral-content">{format(targetScore.rideTime)}</div>
+			<div class="ml-auto text-base-content/60">{format(targetScore.rideTime)}</div>
 		</div>
 		<div class="flex flex-row items-center gap-x-3 w-full md:max-w-xl">
 			{#if placement}
@@ -109,7 +109,7 @@
 				<p title="Score">
 					{formatter.format(targetScore.score)}
 				</p>
-				<p title="Time played" class="text-neutral-content text-sm w-max">
+				<p title="Time played" class="text-base-content/60 text-sm w-max">
 					{format(targetScore.rideTime)}
 				</p>
 			</div>

@@ -33,6 +33,8 @@ const config = {
       light: {
         ...require("daisyui/src/theming/themes")["[data-theme=light]"],
         primary: wavebreakerBrandColor,
+        "primary-content": "#FFFFFF",
+        neutral: "#F5F7FA",
         "base-content": "#000000"
       },
     },
