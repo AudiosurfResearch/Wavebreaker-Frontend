@@ -5,7 +5,7 @@
 	import SongDisplaySmall from '$lib/components/songs/SongDisplaySmall.svelte';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import type { PageData } from './$types';
-	import { faCircleInfo, faExternalLink } from '@fortawesome/free-solid-svg-icons';
+	import { faCircleInfo, faDownload, faExternalLink } from '@fortawesome/free-solid-svg-icons';
 
 	export let data: PageData;
 </script>
@@ -23,14 +23,14 @@
 		content="An open-source reimplementation of Audiosurf's server. View your scores, songs and rivals!"
 		property="og:description"
 	/>
-	
+
 	<meta content={env.PUBLIC_FRONTEND_URL} property="og:url" />
 	<meta content="#009EFF" name="theme-color" />
 </svelte:head>
 
 {#if $page.data.user != undefined}
 	<h1 class="text-2xl lg:text-5xl">Welcome back, <b>{$page.data.user?.username}</b>.</h1>
-	<div class="flex flex-row flex-wrap my-4 gap-3">
+	<div class="flex flex-col md:flex-row flex-wrap my-4 gap-3">
 		<div class="bg-neutral rounded-xl p-4 shadow">
 			<div class="flex flex-row items-center gap-x-2">
 				<h2 class="text-xl font-bold">Wavebreaker Radio songs</h2>
@@ -54,19 +54,38 @@
 						</a>
 					</div>
 				{/each}
+			{:else}
+				<p class="text-center text-base-content/60 my-5"><i>No songs available.</i></p>
 			{/if}
 		</div>
 	</div>
 {:else}
-	<div class="flex flex-col items-center lg:flex-row-reverse px-7 max-w-full">
+	<div class="flex flex-col items-center lg:flex-row-reverse px-7 my-4 max-w-full">
 		<img src={logo} class="py-14 max-w-xs lg:max-w-sm" alt="Wavebreaker logo" />
 		<div>
 			<h1 class="text-5xl font-bold">Welcome to Wavebreaker</h1>
 			<p class="py-6">
-				Wavebreaker is a WIP open-source reimplementation of Audiosurf's online services. It aims to
-				provide the same functionality as the original server, while being more modern and adding a
-				few things on top.
+				Wavebreaker is an open-source reimplementation of Audiosurf's online services that is being
+				actively developed. It aims to provide the same functionality as the original server, while
+				being more modern and adding a few things on top.
 			</p>
+			<p>So, what are you waiting for? <a href="https://github.com/AudiosurfResearch/Wavebreaker-Hook/releases/latest" class="btn btn-link btn-primary btn-sm normal-case"><Fa icon={faDownload}/>Jump in!</a></p>
 		</div>
 	</div>
 {/if}
+<div class="flex">
+	<div class="stats stats-vertical md:stats-horizontal grow rounded-xl bg-neutral shadow">
+		<div class="stat">
+			<div class="stat-value text-3xl lg:text-4xl">{data.serverStats.userCount}</div>
+			<div class="stat-title">players registered</div>
+		</div>
+		<div class="stat">
+			<div class="stat-value text-3xl lg:text-4xl">{data.serverStats.songCount}</div>
+			<div class="stat-title">songs registered</div>
+		</div>
+		<div class="stat">
+			<div class="stat-value text-3xl lg:text-4xl">{data.serverStats.scoreCount}</div>
+			<div class="stat-title">scores submitted</div>
+		</div>
+	</div>
+</div>
