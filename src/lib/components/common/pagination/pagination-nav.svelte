@@ -79,7 +79,6 @@
 			{:else if option.type === 'symbol' && option.symbol === NEXT_PAGE}
 				<slot name="next">
 					<Fa icon={faAngleRight} />
-					<i class="fas fa-angle-right" />
 				</slot>
 			{/if}
 		</span>
