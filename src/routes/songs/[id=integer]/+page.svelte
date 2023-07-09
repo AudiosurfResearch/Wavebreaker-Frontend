@@ -18,6 +18,7 @@
 	import Modal from '$lib/components/common/Modal.svelte';
 	import ScoreDetailModal from '$lib/components/scores/ScoreDetailModal.svelte';
 	import ShoutsSection from '$lib/components/shouts/ShoutsSection.svelte';
+	import { env } from '$env/dynamic/public';
 
 	let metadataReportModalOpen = false;
 	let metadataReportInfo: string = '';
@@ -103,6 +104,23 @@
 			.songResult.musicbrainzArtist ??
 			data.songResult.artist} on Wavebreaker, an Audiosurf 1 server reimplementation"
 	/>
+
+	<meta content="Wavebreaker" property="og:site_name" />
+	<meta
+		content="{data.songResult.musicbrainzArtist ?? data.songResult.artist} - {data.songResult
+			.musicbrainzTitle ?? data.songResult.title}"
+		property="og:title"
+	/>
+	<meta
+		content="View scores set on {data.songResult.musicbrainzTitle ?? data.songResult.title} by {data
+			.songResult.musicbrainzArtist ??
+			data.songResult.artist} on Wavebreaker, an open-source Audiosurf server reimplementation."
+		property="og:description"
+	/>
+	<meta content={data.songResult.coverUrl} property="og:image" />
+
+	<meta content={env.PUBLIC_FRONTEND_URL + '/songs/' + data.songResult.id} property="og:url" />
+	<meta content="#009EFF" name="theme-color" />
 </svelte:head>
 
 <div class="flex p-4 gap-4 justify-center items-stretch w-full flex-col">
@@ -212,7 +230,7 @@
 	{/if}
 
 	<h2 class="text-3xl font-bold mb-2">Shouts</h2>
-	<ShoutsSection songId={data.songResult.id}></ShoutsSection>
+	<ShoutsSection songId={data.songResult.id} />
 </div>
 
 <Modal bind:showModal={metadataReportModalOpen} responsive={false}>
