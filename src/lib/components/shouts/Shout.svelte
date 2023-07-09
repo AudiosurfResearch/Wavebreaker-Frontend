@@ -6,14 +6,14 @@
 </script>
 
 <div class="flex flex-row gap-x-2">
-	<div class="avatar w-12 h-12 min-w-[3rem]">
-		<img class="rounded-xl" src={shout.author.avatarUrl} alt="avatar" />
-	</div>
-	<div class="flex flex-col">
+	<img class="avatar w-12 h-12 shrink-0 rounded-xl" src={shout.author.avatarUrlMedium} alt="avatar" />
+	<div class="flex flex-col min-w-0">
 		<div class="flex flex-row gap-x-2">
-			<p class="font-semibold">{shout.author.username}</p>
+			<a href="/users/{shout.authorId}" class="font-semibold">{shout.author.username}</a>
 			<p class="text-base-content/60">{format(shout.timeCreated)}</p>
 		</div>
-		<p>{shout.content}</p>
+		<p class="break-words">
+			{shout.content}
+        </p>
 	</div>
 </div>
