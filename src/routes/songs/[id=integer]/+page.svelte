@@ -17,6 +17,7 @@
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 	import Modal from '$lib/components/common/Modal.svelte';
 	import ScoreDetailModal from '$lib/components/scores/ScoreDetailModal.svelte';
+	import ShoutsSection from '$lib/components/shouts/ShoutsSection.svelte';
 
 	let metadataReportModalOpen = false;
 	let metadataReportInfo: string = '';
@@ -64,7 +65,7 @@
 		pageQuery.updateSingle('leagueId', newLeagueId);
 	}
 
-	//TODO: Make it use default leagueId and page values
+	//TODO: Make it use default page values
 	const pageUnsubscribe = page.subscribe((p) => {
 		if (browser) {
 			refreshLeaderboards({
@@ -209,6 +210,9 @@
 			/>
 		</div>
 	{/if}
+
+	<h2 class="text-3xl font-bold mb-2">Shouts</h2>
+	<ShoutsSection songId={data.songResult.id}></ShoutsSection>
 </div>
 
 <Modal bind:showModal={metadataReportModalOpen} responsive={false}>

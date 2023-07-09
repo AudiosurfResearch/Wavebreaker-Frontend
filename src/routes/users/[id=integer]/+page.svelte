@@ -106,7 +106,7 @@
 
 	{#if data.rivalsAndChallengers}
 		{#if data.rivalsAndChallengers.rivals.length > 0}
-			<h1 class="text-3xl font-bold">Rivals</h1>
+			<h2 class="text-3xl font-bold">Rivals</h2>
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 px-3">
 				{#each data.rivalsAndChallengers.rivals as rival}
 					<UserDisplaySmall targetUser={rival} />
@@ -114,7 +114,7 @@
 			</div>
 		{/if}
 		{#if data.rivalsAndChallengers.challengers.length > 0}
-			<h1 class="text-3xl font-bold">Challengers</h1>
+			<h2 class="text-3xl font-bold">Challengers</h2>
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 px-3">
 				{#each data.rivalsAndChallengers.challengers as challenger}
 					<UserDisplaySmall targetUser={challenger} />
@@ -125,7 +125,7 @@
 
 	{#if data.latestScoresResult != undefined}
 		<div class="mt-3">
-			<h1 class="text-3xl font-bold mb-2">Latest scores</h1>
+			<h2 class="text-3xl font-bold mb-2">Latest scores</h2>
 			<div class="flex flex-col gap-y-2 p-3">
 				{#each data.latestScoresResult.scores as score}
 					<ScoreBox
@@ -139,7 +139,7 @@
 			</div>
 		</div>
 		<div class="mt-3">
-			<h1 class="text-3xl font-bold mb-2">Best scores</h1>
+			<h2 class="text-3xl font-bold mb-2">Best scores</h2>
 			<div class="flex flex-col gap-y-2 p-3">
 				{#each data.bestScoresResult.scores as score, i}
 					<ScoreBox
@@ -155,7 +155,7 @@
 		</div>
 	{:else}
 		<div class="mt-3">
-			<h1 class="text-3xl font-bold mb-2 text-center">No scores yet!</h1>
+			<div class="text-3xl font-bold mb-2 text-center">No scores yet!</div>
 		</div>
 	{/if}
 </div>
