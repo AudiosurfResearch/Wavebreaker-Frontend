@@ -8,8 +8,8 @@
 
 	import ClassicPagination from '$lib/components/common/pagination/classic-pagination.svelte';
 	import type { GetScoresResponse, Score } from '$lib/models/ScoreData';
-	import Fa from 'svelte-fa/src/fa.svelte';
-	import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
+	import { faPaperPlane, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 	import { requestCancel, updateCancelToken } from '$lib/utils/accio/canceler';
 	import { useAccio } from '$lib/utils/accio';
@@ -265,7 +265,7 @@
 					class="join-item btn {reportInfoLength >= reportInfoMaxLength
 						? 'btn-disabled'
 						: 'btn-primary'}"
-					on:click={() => (metadataReportModalOpen = false)}>Submit</button
+					on:click={() => (metadataReportModalOpen = false)}><Fa icon={faPaperPlane}/></button
 				>
 			</div>
 		</form>

@@ -4,6 +4,7 @@ import type { GetRadioSongsResponse } from '$lib/models/SongData.js';
 import { fetcher } from '$lib/api.js';
 import { loadMetadata } from '$lib/stores/metadata-store.js';
 import type { ServerStats } from '$lib/models/ServerStats.js';
+import type { ExtendedScoreInfo } from '$lib/models/ScoreData.js';
 
 export async function load({ locals, cookies }) {
 	try {
@@ -14,14 +15,23 @@ export async function load({ locals, cookies }) {
 				'/api/server/getRadioSongs',
 				authToken
 			);
-			
+			const rivalScores: Promise<ExtendedScoreInfo[]> = fetcher(
+				'/api/scores/getRivalActivity',
+				authToken
+			);
+			const recentScores = fetcher<ExtendedScoreInfo[]>('/api/scores/getRecentActivity');
+
 			return {
 				radioSongs: Promise.resolve(radioSongs),
+				rivalScores: Promise.resolve(rivalScores),
+				recentScores: Promise.resolve(recentScores),
 				serverStats: Promise.resolve(serverStats)
 			};
 		}
 		return {
 			radioSongs: undefined,
+			rivalScores: undefined,
+			recentScores: undefined,
 			serverStats: Promise.resolve(serverStats)
 		};
 	} catch (e) {

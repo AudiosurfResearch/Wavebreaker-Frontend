@@ -3,9 +3,10 @@
 	import { env } from '$env/dynamic/public';
 	import logo from '$lib/assets/wavebreaker_icon.svg';
 	import SongDisplaySmall from '$lib/components/songs/SongDisplaySmall.svelte';
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 	import type { PageData } from './$types';
 	import { faCircleInfo, faDownload, faExternalLink } from '@fortawesome/free-solid-svg-icons';
+	import ActivityEntry from '$lib/components/scores/ActivityEntry.svelte';
 
 	export let data: PageData;
 </script>
@@ -30,8 +31,8 @@
 
 {#if $page.data.user != undefined}
 	<h1 class="text-2xl lg:text-5xl">Welcome back, <b>{$page.data.user?.username}</b>.</h1>
-	<div class="flex flex-col md:flex-row flex-wrap my-4 gap-3">
-		<div class="bg-neutral rounded-xl p-4 shadow">
+	<div class="flex flex-row flex-wrap my-4 gap-3">
+		<div class="bg-neutral rounded-xl p-4 shadow grow">
 			<div class="flex flex-row items-center gap-x-2">
 				<h2 class="text-xl font-bold">Wavebreaker Radio songs</h2>
 				<div
@@ -58,6 +59,26 @@
 				<p class="text-center text-base-content/60 my-5"><i>No songs available.</i></p>
 			{/if}
 		</div>
+		{#if data.recentScores}
+			<div class="bg-neutral rounded-xl p-4 shadow grow">
+				<h2 class="text-xl font-bold">Recent activity</h2>
+				<div class="flex flex-col p-2 gap-y-3">
+					{#each data.recentScores as score}
+						<ActivityEntry score={score} />
+					{/each}
+				</div>
+			</div>
+		{/if}
+		{#if data.rivalScores}
+			<div class="bg-neutral rounded-xl p-4 shadow grow">
+				<h2 class="text-xl font-bold">Rivals' activity</h2>
+				<div class="flex flex-col p-2 gap-y-3">
+					{#each data.rivalScores as score}
+						<ActivityEntry score={score} />
+					{/each}
+				</div>
+			</div>
+		{/if}
 	</div>
 {:else}
 	<div class="flex flex-col items-center lg:flex-row-reverse px-7 my-4 max-w-full">
@@ -69,7 +90,12 @@
 				actively developed. It aims to provide the same functionality as the original server, while
 				being more modern and adding a few things on top.
 			</p>
-			<p>So, what are you waiting for? <a href="https://github.com/AudiosurfResearch/Wavebreaker-Hook/releases/latest" class="btn btn-link btn-primary btn-sm normal-case"><Fa icon={faDownload}/>Jump in!</a></p>
+			<p>
+				So, what are you waiting for? <a
+					href="https://github.com/AudiosurfResearch/Wavebreaker-Hook/releases/latest"
+					class="btn btn-link btn-primary btn-sm normal-case"><Fa icon={faDownload} />Jump in!</a
+				>
+			</p>
 		</div>
 	</div>
 {/if}

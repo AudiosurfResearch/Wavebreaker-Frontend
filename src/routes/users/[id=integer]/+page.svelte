@@ -6,7 +6,7 @@
 	import { characterList } from '$lib/characterUtils';
 	import { faUserPlus, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 	import { enhance } from '$app/forms';
 	import type { Score } from '$lib/models/ScoreData';
 	import ScoreDetailModal from '$lib/components/scores/ScoreDetailModal.svelte';

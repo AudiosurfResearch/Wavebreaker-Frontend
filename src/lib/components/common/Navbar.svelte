@@ -1,6 +1,6 @@
 <script>
 	import logo from '$lib/assets/wavebreaker_icon.svg';
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 	import { faSteam } from '@fortawesome/free-brands-svg-icons';
 	import { faHome, faMusic, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 

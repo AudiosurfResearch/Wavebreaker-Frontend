@@ -3,7 +3,7 @@
 	import type { Song } from '$lib/models/SongData';
 	import type { UserInfo } from '$lib/models/UserData';
 	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 	import { format } from 'timeago.js';
 
 	export let placement: number = undefined;

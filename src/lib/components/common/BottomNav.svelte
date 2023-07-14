@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { faHome, faUser, faMusic } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 
 	import { page } from '$app/stores';
 </script>

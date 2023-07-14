@@ -8,7 +8,7 @@
 	import { createEventDispatcher } from 'svelte';
 
 	import generateNavigationOptions, { PaginationOptions } from './generateNavigationOptions';
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 	import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 	const PREVIOUS_PAGE = 'PREVIOUS_PAGE';
