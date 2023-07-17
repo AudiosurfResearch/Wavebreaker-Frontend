@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ServerStats from '../lib/components/home/ServerStats.svelte';
+
 	import { page } from '$app/stores';
 	import { env } from '$env/dynamic/public';
 	import logo from '$lib/assets/wavebreaker_icon.svg';
@@ -60,11 +62,11 @@
 			{/if}
 		</div>
 		{#if data.recentScores}
-			<div class="bg-neutral rounded-xl p-4 shadow grow">
+			<div class="bg-neutral rounded-xl p-4 shadow grow max-w-[36rem]">
 				<h2 class="text-xl font-bold">Recent activity</h2>
 				<div class="flex flex-col p-2 gap-y-3">
 					{#each data.recentScores as score}
-						<ActivityEntry score={score} />
+						<ActivityEntry {score} />
 					{/each}
 				</div>
 			</div>
@@ -74,11 +76,16 @@
 				<h2 class="text-xl font-bold">Rivals' activity</h2>
 				<div class="flex flex-col p-2 gap-y-3">
 					{#each data.rivalScores as score}
-						<ActivityEntry score={score} />
+						<ActivityEntry {score} />
 					{/each}
 				</div>
 			</div>
 		{/if}
+		<ServerStats
+			userCount={data.serverStats.userCount}
+			songCount={data.serverStats.songCount}
+			scoreCount={data.serverStats.scoreCount}
+		/>
 	</div>
 {:else}
 	<div class="flex flex-col items-center lg:flex-row-reverse px-7 my-4 max-w-full">
@@ -98,20 +105,9 @@
 			</p>
 		</div>
 	</div>
+	<ServerStats
+		userCount={data.serverStats.userCount}
+		songCount={data.serverStats.songCount}
+		scoreCount={data.serverStats.scoreCount}
+	/>
 {/if}
-<div class="flex">
-	<div class="stats stats-vertical md:stats-horizontal grow rounded-xl bg-neutral shadow">
-		<div class="stat">
-			<div class="stat-value text-3xl lg:text-4xl">{data.serverStats.userCount}</div>
-			<div class="stat-title">players registered</div>
-		</div>
-		<div class="stat">
-			<div class="stat-value text-3xl lg:text-4xl">{data.serverStats.songCount}</div>
-			<div class="stat-title">songs registered</div>
-		</div>
-		<div class="stat">
-			<div class="stat-value text-3xl lg:text-4xl">{data.serverStats.scoreCount}</div>
-			<div class="stat-title">scores submitted</div>
-		</div>
-	</div>
-</div>
