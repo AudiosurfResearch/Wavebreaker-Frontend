@@ -8,7 +8,7 @@
 </script>
 
 <div class="grid grid-cols-3 items-center">
-	<div class="flex flex-row gap-x-2">
+	<a href="/users/{score.userId}" class="flex flex-row gap-x-2 hover:underline">
 		<img
 			class="avatar w-12 h-12 rounded-xl"
 			alt="Avatar of {score.player.username}"
@@ -18,12 +18,12 @@
 			<div class="font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis">{score.player.username}</div>
 			<span class="hidden md:block">{formatter.format(score.score)}</span>
 		</div>
-	</div>
+	</a>
 	<div class="flex flex-col items-center">
 		<Fa icon={faArrowRight} />
 		<span class="md:hidden">{formatter.format(score.score)}</span>
 	</div>
-	<div class="flex flex-row gap-x-2">
+	<a href="/songs/{score.songId}" class="flex flex-row gap-x-2 hover:underline">
 		{#if score.song.smallCoverUrl}
 			<img class="avatar w-12 h-12 rounded-xl" alt="Song cover" src={score.song.smallCoverUrl} />
 		{/if}
@@ -37,5 +37,5 @@
 				{score.song.musicbrainzArtist ?? score.song.artist}
 			</span>
 		</div>
-	</div>
+	</a>
 </div>
