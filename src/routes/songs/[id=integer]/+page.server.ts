@@ -61,5 +61,19 @@ export const actions = {
 		}
 
 		return { success: true };
+	},
+
+	deleteShout: async ({ cookies, params }) => {
+		const id: number = +params.id;
+		const authToken = cookies.get('Authorization');
+
+		try {
+			await poster('/api/shouts/deleteShout', { id }, authToken);
+		} catch (e) {
+			if (isAxiosError(e) && e.response)
+				return fail(e.response?.status, { message: e.response.data.error });
+		}
+
+		return { success: true };
 	}
 } satisfies Actions;

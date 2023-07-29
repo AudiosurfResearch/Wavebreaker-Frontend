@@ -231,7 +231,7 @@
 	{/if}
 
 	<h2 class="text-3xl font-bold mb-2">Shouts</h2>
-	<ShoutsSection songId={data.songResult.id} />
+	<ShoutsSection songId={data.songResult.id} currentUser={data.user} />
 </div>
 
 <Modal bind:showModal={metadataReportModalOpen} responsive={false}>

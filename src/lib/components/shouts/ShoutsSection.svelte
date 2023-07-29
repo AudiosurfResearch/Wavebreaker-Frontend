@@ -5,8 +5,10 @@
 	import type { GetSongShoutsResponse } from '$lib/models/ShoutData';
 	import { useAccio } from '$lib/utils/accio';
 	import queryString from 'query-string';
+	import type { UserInfo } from '$lib/models/UserData';
 
 	export let songId: number;
+	export let currentUser: undefined | UserInfo;
 
 	const {
 		data: shoutResponse,
@@ -33,7 +35,7 @@
 {#if $shoutResponse && !$shoutsError}
 	<div class="flex flex-col gap-y-3">
 		{#each $shoutResponse.shouts as shout}
-			<Shout {shout} />
+			<Shout {shout} {currentUser} />
 		{/each}
 	</div>
 {/if}
