@@ -10,8 +10,8 @@
     md:flex-row md:space-x-5"
 >
 	<div class="avatar">
-		<div class="w-[20rem] lg:w-[24rem] max-w-xs lg:max-w-sm rounded-3xl shadow">
-			<img class="w-[20rem] lg:w-[24rem]" src={targetUser.avatarUrl} alt="Avatar of {targetUser.username}" />
+		<div class="w-[11.5rem] h-[11.5rem] rounded-3xl shadow">
+			<img class="w-[11.5rem] h-[11.5rem]" src={targetUser.avatarUrl} alt="Avatar of {targetUser.username}" />
 		</div>
 	</div>
 	<div class="flex flex-col items-center md:items-start space-y-2">
