@@ -63,15 +63,16 @@ export const actions = {
 		return { success: true };
 	},
 
-	deleteShout: async ({ cookies, params }) => {
-		const id: number = +params.id;
+	deleteShout: async ({ request, cookies }) => {
+		const data = await request.formData();
+		const shoutId = data.get('additionalInfo');
 		const authToken = cookies.get('Authorization');
 
 		try {
-			await poster('/api/shouts/deleteShout', { id }, authToken);
+			await poster('/api/shouts/deleteShout', { id: Number(shoutId) }, authToken);
 		} catch (e) {
-			if (isAxiosError(e) && e.response)
-				return fail(e.response?.status, { message: e.response.data.error });
+			if (isAxiosError(e) && e.response) return fail(e.response?.status, { message: e.response.data.error });
+			else return fail(500, { message: 'Unknown error' });
 		}
 
 		return { success: true };
