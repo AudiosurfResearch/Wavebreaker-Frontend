@@ -2,7 +2,7 @@
 	import logo from '$lib/assets/wavebreaker_icon.svg';
 	import Fa from 'svelte-fa';
 	import { faSteam } from '@fortawesome/free-brands-svg-icons';
-	import { faHome, faMusic, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
+	import { faHome, faMedal, faMusic, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
@@ -39,6 +39,13 @@
 			class:text-primary={$page.url.pathname.startsWith('/songs')}
 		>
 			<Fa class="mr-2" icon={faMusic} /> Songs
+		</a>
+		<a
+			href="/rankings"
+			class="btn btn-sm btn-ghost normal-case"
+			class:text-primary={$page.url.pathname.startsWith('/rankings')}
+		>
+			<Fa class="mr-2" icon={faMedal} /> Rankings
 		</a>
 	</div>
 	<div class="navbar-end">

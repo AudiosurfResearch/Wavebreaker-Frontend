@@ -6,12 +6,12 @@
 </script>
 
 <div
-	class="flex mx-5 gap-y-2 items-center flex-col
+	class="flex gap-y-2 items-center flex-col
     md:flex-row md:space-x-5"
 >
 	<div class="avatar">
-		<div class="max-w-xs lg:max-w-sm rounded-3xl shadow">
-			<img src={targetUser.avatarUrl} alt="Avatar of {targetUser.username}" />
+		<div class="w-[20rem] lg:w-[24rem] max-w-xs lg:max-w-sm rounded-3xl shadow">
+			<img class="w-[20rem] lg:w-[24rem]" src={targetUser.avatarUrl} alt="Avatar of {targetUser.username}" />
 		</div>
 	</div>
 	<div class="flex flex-col items-center md:items-start space-y-2">

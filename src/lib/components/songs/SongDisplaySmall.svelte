@@ -10,6 +10,7 @@
 >
 	{#if targetSong.smallCoverUrl}
 		<img
+			loading="lazy"
 			src={targetSong.smallCoverUrl}
 			alt="Cover of {targetSong.musicbrainzArtist ??
 				targetSong.artist} - {targetSong.musicbrainzTitle ?? targetSong.title}"

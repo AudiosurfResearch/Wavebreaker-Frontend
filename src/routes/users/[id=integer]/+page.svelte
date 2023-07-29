@@ -48,7 +48,7 @@
 	<meta content="#009EFF" name="theme-color" />
 </svelte:head>
 
-<div class="flex p-4 gap-4 justify-center items-stretch w-full flex-col">
+<div class="flex gap-4 justify-center items-stretch w-full flex-col">
 	<UserDisplay targetUser={data.userResult} />
 
 	{#if data.isRivalResponse != undefined}

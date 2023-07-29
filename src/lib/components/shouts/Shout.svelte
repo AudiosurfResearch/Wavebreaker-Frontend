@@ -6,7 +6,7 @@
 </script>
 
 <div class="flex flex-row gap-x-2">
-	<img class="avatar w-12 h-12 shrink-0 rounded-xl" src={shout.author.avatarUrlMedium} alt="avatar" />
+	<img loading="lazy" class="avatar w-12 h-12 shrink-0 rounded-xl" src={shout.author.avatarUrlMedium} alt="Avatar" />
 	<div class="flex flex-col min-w-0">
 		<div class="flex flex-row gap-x-2">
 			<a href="/users/{shout.authorId}" class="font-semibold">{shout.author.username}</a>

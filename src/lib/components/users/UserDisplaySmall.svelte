@@ -10,7 +10,7 @@
 >
 	<div class="avatar">
 		<div class="rounded-xl w-12 h-12">
-			<img src={targetUser.avatarUrl} alt="Avatar of {targetUser.username}" />
+			<img loading="lazy" src={targetUser.avatarUrl} alt="Avatar of {targetUser.username}" />
 		</div>
 	</div>
 	<h1

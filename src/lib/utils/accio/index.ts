@@ -66,6 +66,7 @@ export class Accio {
 						});
 					}
 					rawData = await curRequest;
+					if (rawData === "") rawData = null; //get bodged
 					const expiry = new Date();
 					expiry.setTime(expiry.getTime() + parseInt(env.PUBLIC_CACHE_EXPIRY_IN_MINUTES) * 60000);
 					cache.set(key, new CacheItem({ data: rawData, expiresAt: expiry }));

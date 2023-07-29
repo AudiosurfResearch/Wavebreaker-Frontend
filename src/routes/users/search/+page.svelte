@@ -94,7 +94,7 @@
 		<p class="text-error">{$searchError.message}</p>
 	{/if}
 	{#if $searchResponse}
-		<div class="flex flex-col gap-y-3 my-5 mx-3">
+		<div class="flex flex-col gap-y-3 my-3">
 			{#each $searchResponse.results as user}
 				<UserDisplaySmall targetUser={user} />
 			{/each}

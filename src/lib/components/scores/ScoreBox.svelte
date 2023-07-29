@@ -68,7 +68,7 @@
 				<p class="hidden md:block text-3xl font-bold text-center w-8 min-w-[2rem]">{placement}</p>
 			{/if}
 			{#if entityImageSmall}
-				<img class="w-12 h-12 rounded-xl" src={entityImageSmall} alt="Score entry" />
+				<img loading="lazy" class="w-12 h-12 rounded-xl" src={entityImageSmall} alt="Score entry" />
 			{/if}
 			{#if 'title' in targetEntity}
 				<a

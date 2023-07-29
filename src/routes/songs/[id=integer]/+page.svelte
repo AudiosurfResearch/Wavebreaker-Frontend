@@ -123,12 +123,13 @@
 	<meta content="#009EFF" name="theme-color" />
 </svelte:head>
 
-<div class="flex p-4 gap-4 justify-center items-stretch w-full flex-col">
-	<div class="flex mx-5 gap-y-2 items-center flex-col md:flex-row md:space-x-5">
+<div class="flex gap-4 justify-center items-stretch w-full flex-col">
+	<div class="flex gap-y-2 items-center flex-col md:flex-row md:space-x-5">
 		{#if data.songResult.coverUrl}
 			<div class="avatar">
-				<div class="max-w-[20rem] rounded-3xl shadow">
+				<div class="w-[20rem] lg:w-[24rem] max-w-[20rem] rounded-3xl shadow">
 					<img
+						class="w-[20rem] h-[20rem]"
 						src={data.songResult.coverUrl}
 						alt="Cover of {data.songResult.musicbrainzArtist ?? data.songResult.artist} - {data
 							.songResult.musicbrainzTitle ?? data.songResult.title}"
@@ -265,7 +266,7 @@
 					class="join-item btn {reportInfoLength >= reportInfoMaxLength
 						? 'btn-disabled'
 						: 'btn-primary'}"
-					on:click={() => (metadataReportModalOpen = false)}><Fa icon={faPaperPlane}/></button
+					on:click={() => (metadataReportModalOpen = false)}><Fa icon={faPaperPlane} /></button
 				>
 			</div>
 		</form>

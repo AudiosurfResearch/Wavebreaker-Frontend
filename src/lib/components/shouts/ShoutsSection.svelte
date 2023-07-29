@@ -5,7 +5,6 @@
 	import type { GetSongShoutsResponse } from '$lib/models/ShoutData';
 	import { useAccio } from '$lib/utils/accio';
 	import queryString from 'query-string';
-	import { format } from 'timeago.js';
 
 	export let songId: number;
 
@@ -22,13 +21,16 @@
 	);
 </script>
 
-{#if !$shoutResponse && !$shoutsError}
+{#if $shoutResponse === undefined && !$shoutsError}
 	<div class="loading loading-spinner loading-lg self-center" />
 {/if}
 {#if $shoutsError}
 	<p class="text-error">{$shoutsError.message}</p>
 {/if}
-{#if $shoutResponse}
+{#if $shoutResponse === null}
+	<i class="text-center">No shouts found.</i>
+{/if}
+{#if $shoutResponse && !$shoutsError}
 	<div class="flex flex-col gap-y-3">
 		{#each $shoutResponse.shouts as shout}
 			<Shout {shout} />
