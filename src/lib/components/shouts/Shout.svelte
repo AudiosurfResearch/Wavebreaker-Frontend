@@ -23,7 +23,7 @@
 			<p class="text-base-content/60">{format(shout.timeCreated)}</p>
 
 			{#if currentUser && (currentUser.id == shout.authorId || currentUser.accountType >= 2)}
-				<form method="POST" action="?/deleteShout">
+				<form method="POST" action="?/deleteShout" use:enhance>
 					<input type="hidden" name="shoutId" value={shout.id} />
 					<button class="btn btn-square btn-xs btn-ghost text-error"><Fa icon={faTrash} /></button>
 				</form>

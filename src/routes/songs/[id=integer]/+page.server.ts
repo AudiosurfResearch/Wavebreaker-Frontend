@@ -65,13 +65,14 @@ export const actions = {
 
 	deleteShout: async ({ request, cookies }) => {
 		const data = await request.formData();
-		const shoutId = data.get('additionalInfo');
+		const shoutId = data.get('shoutId');
 		const authToken = cookies.get('Authorization');
 
 		try {
 			await poster('/api/shouts/deleteShout', { id: Number(shoutId) }, authToken);
 		} catch (e) {
-			if (isAxiosError(e) && e.response) return fail(e.response?.status, { message: e.response.data.error });
+			if (isAxiosError(e) && e.response)
+				return fail(e.response?.status, { message: e.response.data.error });
 			else return fail(500, { message: 'Unknown error' });
 		}
 
