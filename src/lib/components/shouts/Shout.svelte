@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import type { Shout } from '$lib/models/ShoutData';
 	import type { UserInfo } from '$lib/models/UserData';
 	import { faTrash } from '@fortawesome/free-solid-svg-icons';

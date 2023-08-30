@@ -87,6 +87,8 @@
 		}}
 	/>
 	<p>
+		<b>Skill Points:</b>
+		{targetScore.skillPoints} <br />
 		<b>Character:</b>
 		{characterList[targetScore.vehicleId]} <br />
 		<b>Feats:</b>

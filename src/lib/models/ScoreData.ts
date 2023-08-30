@@ -14,6 +14,7 @@ export interface Score {
 	feats: string;
 	songLength: number;
 	goldThreshold: number;
+	skillPoints: number;
 	iss: number;
 	isj: number;
 	playCount: number;

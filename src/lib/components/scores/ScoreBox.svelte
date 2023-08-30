@@ -105,7 +105,7 @@
 			{/if}
 		</div>
 		<div class="hidden md:flex flex-row items-center justify-self-end gap-x-2 ml-auto text-right">
-			<div class="flex flex-col">
+			<div class="flex flex-col items-end">
 				<p title="Score">
 					{formatter.format(targetScore.score)}
 				</p>
