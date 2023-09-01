@@ -19,7 +19,6 @@ export async function load({ params, cookies, locals }) {
 	const authCookie = cookies.get('Authorization');
 
 	if (!userResult) {
-		console.log('User not found');
 		throw error(404, 'User not found');
 	}
 

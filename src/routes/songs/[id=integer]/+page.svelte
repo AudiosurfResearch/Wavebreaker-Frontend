@@ -213,12 +213,14 @@
 	{/if}
 	{#if $leaderboards}
 		{#each $leaderboards.scores as score, i}
-			<ScoreBox
-				placement={(i + 1) * $pageQuery.page}
-				targetEntity={score.player}
-				targetScore={score}
-				{modalFunction}
-			/>
+			{#key $leaderboards.scores}
+				<ScoreBox
+					placement={($pageQuery.page - 1) * 14 + (i + 1)}
+					targetEntity={score.player}
+					targetScore={score}
+					{modalFunction}
+				/>
+			{/key}
 		{/each}
 		<div class="self-center shadow">
 			<ClassicPagination

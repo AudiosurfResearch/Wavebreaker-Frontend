@@ -125,7 +125,12 @@
 
 	{#if data.latestScoresResult != undefined}
 		<div class="mt-3">
-			<h2 class="text-3xl font-bold mb-2">Latest scores</h2>
+			<h2 class="text-3xl font-bold mb-2">
+				Latest scores <a
+					href="/users/{data.userResult.id}/allScores"
+					class="link link-primary link-hover text-base align-middle font-normal"><i>view all</i></a
+				>
+			</h2>
 			<div class="flex flex-col gap-y-2 p-3">
 				{#each data.latestScoresResult.scores as score}
 					<ScoreBox

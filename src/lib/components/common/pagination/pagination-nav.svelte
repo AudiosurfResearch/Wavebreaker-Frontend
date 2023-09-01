@@ -61,7 +61,7 @@
 			class:next={option.type === 'symbol' && option.symbol === NEXT_PAGE}
 			class:disabled={isOptionDisabled(option)}
 			class:ellipsis={option.type === 'symbol' && option.symbol === ELLIPSIS}
-			class:active={option.type === 'number' && option.value == currentPage}
+			class:text-primary={option.type === 'number' && option.value == currentPage}
 			on:click={() => handleOptionClick(option)}
 		>
 			{#if option.type === 'number'}
