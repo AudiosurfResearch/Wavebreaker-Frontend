@@ -7,7 +7,7 @@ export interface UserInfo {
 	steamid32: string;
 	locationid: number;
 	accountType: number;
-	joinedAt: Date;
+	joinedAt: string;
 	avatarUrl: string;
 	avatarUrlMedium: string;
 	avatarUrlSmall: string;
@@ -18,6 +18,8 @@ export interface ExtendedUserInfo extends UserInfo {
 	totalPlays: number;
 	favoriteCharacter?: number;
 	favoriteSong?: Song;
+	rank: number;
+	totalSkillPoints: number;
 }
 
 export interface UserTokenResponse {

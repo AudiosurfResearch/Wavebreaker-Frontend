@@ -212,16 +212,18 @@
 		<p class="text-error">{$leaderboardsError.message}</p>
 	{/if}
 	{#if $leaderboards}
-		{#each $leaderboards.scores as score, i}
+		<div class="flex flex-col gap-y-2">
 			{#key $leaderboards.scores}
-				<ScoreBox
-					placement={($pageQuery.page - 1) * 14 + (i + 1)}
-					targetEntity={score.player}
-					targetScore={score}
-					{modalFunction}
-				/>
+				{#each $leaderboards.scores as score, i}
+					<ScoreBox
+						placement={($pageQuery.page - 1) * 14 + (i + 1)}
+						targetEntity={score.player}
+						targetScore={score}
+						{modalFunction}
+					/>
+				{/each}
 			{/key}
-		{/each}
+		</div>
 		<div class="self-center shadow">
 			<ClassicPagination
 				totalItems={$leaderboards.totalCount}

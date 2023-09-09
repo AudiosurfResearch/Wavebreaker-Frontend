@@ -10,7 +10,7 @@ export interface Score {
 	density: number;
 	vehicleId: number;
 	score: number;
-	rideTime: Date;
+	rideTime: string;
 	feats: string;
 	songLength: number;
 	goldThreshold: number;

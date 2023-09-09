@@ -41,7 +41,7 @@
 			<Fa class="mr-2" icon={faMusic} /> Songs
 		</a>
 		<a
-			href="/rankings"
+			href="/rankings/users"
 			class="btn btn-sm btn-ghost normal-case"
 			class:text-primary={$page.url.pathname.startsWith('/rankings')}
 		>

@@ -2,7 +2,7 @@
 	import type { ActionData, PageData } from './$types';
 	import UserDisplay from '$lib/components/users/UserDisplay.svelte';
 	import UserDisplaySmall from '$lib/components/users/UserDisplaySmall.svelte';
-	import { format } from 'timeago.js';
+	import { DateTime } from 'luxon';
 	import { characterList } from '$lib/characterUtils';
 	import { faUserPlus, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
@@ -18,6 +18,7 @@
 	if (form?.success) data.isRivalResponse.isRival = !data.isRivalResponse.isRival;
 
 	let formatter = Intl.NumberFormat('en');
+	const joinDate = DateTime.fromISO(data.userResult.joinedAt);
 
 	let modalOpen = false;
 	let modalScore: Score = undefined;
@@ -65,30 +66,26 @@
 
 	<div class="stats stats-vertical rounded-3xl bg-neutral lg:stats-horizontal grow shadow">
 		<div class="stat">
-			<div class="stat-title">Joined</div>
-			<div class="stat-value text-3xl lg:text-4xl">{format(data.userResult.joinedAt)}</div>
+			<div class="stat-title">Rank</div>
+			<div class="stat-value text-3xl lg:text-4xl">#{formatter.format(data.userResult.rank)}</div>
+			<div class="stat-desc">{formatter.format(data.userResult.totalSkillPoints)} Skill Points</div>
 		</div>
 
 		<div class="stat">
-			<div class="stat-title">Total score</div>
-			<div class="stat-value text-3xl lg:text-4xl">
-				{formatter.format(data.userResult.totalScore)}
-			</div>
+			<div class="stat-title">Joined</div>
+			<div class="stat-value text-3xl lg:text-4xl">{joinDate.setLocale('en').toRelative()}</div>
+			<div class="stat-desc">{joinDate.toLocaleString(DateTime.DATETIME_SHORT)}</div>
 		</div>
 
 		<div class="stat">
 			<div class="stat-title">Total plays</div>
 			<div class="stat-value text-3xl lg:text-4xl">{data.userResult.totalPlays}</div>
-		</div>
-
-		{#if data.userResult.favoriteCharacter}
-			<div class="stat">
-				<div class="stat-title">Favorite character</div>
-				<div class="stat-value text-3xl lg:text-4xl">
-					{characterList[data.userResult.favoriteCharacter]}
+			{#if data.userResult.favoriteCharacter}
+				<div class="stat-desc">
+					Favorite character: {characterList[data.userResult.favoriteCharacter]}
 				</div>
-			</div>
-		{/if}
+			{/if}
+		</div>
 
 		<!-- TODO: Redesign this
 			{#if data.userResult.favoriteSong}

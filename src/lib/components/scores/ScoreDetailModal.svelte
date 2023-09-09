@@ -13,6 +13,7 @@
 		PointElement,
 		CategoryScale
 	} from 'chart.js';
+	import { DateTime } from 'luxon';
 
 	ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale, PointElement, CategoryScale);
 	ChartJS.defaults.font.family = 'Inter, sans-serif';
@@ -24,6 +25,7 @@
 	export let showModal: boolean;
 
 	let formatter = Intl.NumberFormat('en');
+	const timeSet = DateTime.fromISO(targetScore.rideTime);
 
 	function updateTrackShape() {
 		trackShapeNumbers = targetScore.trackShape.split('x').map(function (item) {
@@ -87,6 +89,8 @@
 		}}
 	/>
 	<p>
+		<b>Time submitted:</b>
+		{timeSet.toLocaleString(DateTime.DATETIME_SHORT)} <br />
 		<b>Skill Points:</b>
 		{targetScore.skillPoints} <br />
 		<b>Character:</b>

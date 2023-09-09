@@ -5,7 +5,7 @@ export type Shout = {
     authorId: number;
     songId: number;
     content: string;
-    timeCreated: Date;
+    timeCreated: string;
     author?: UserInfo;
 };
 

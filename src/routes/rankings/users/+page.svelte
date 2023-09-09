@@ -1,0 +1,121 @@
+<script lang="ts">
+	import ClassicPagination from '$lib/components/common/pagination/classic-pagination.svelte';
+	import RankingsLayout from '../rankingsLayout.svelte';
+	import type { PageData } from '../$types';
+	import { pageQueryStore } from '$lib/stores/query-store';
+	import { useAccio } from '$lib/utils/accio';
+	import queryString from 'query-string';
+	import { page } from '$app/stores';
+	import { fetcher } from '$lib/api';
+	import { requestCancel, updateCancelToken } from '$lib/utils/accio/canceler';
+	import { browser } from '$app/environment';
+	import { onDestroy } from 'svelte';
+	import type { UserInfo } from '$lib/models/UserData';
+	import { env } from '$env/dynamic/public';
+
+	type rankingsQuery = {
+		page: number;
+	};
+
+	$: pageQuery = pageQueryStore<rankingsQuery>({
+		page: 1
+	});
+
+	type GetUserRankingsResponse = {
+		users: UserInfo[];
+		totalCount: number;
+	};
+
+	const {
+		data: rankings,
+		error: rankingsError,
+		refresh: refreshRankings
+	} = useAccio<GetUserRankingsResponse>(
+		queryString.stringifyUrl({
+			url: '/api/rankings/users',
+			query: queryString.parse($page.url.searchParams.toString() + '&pageSize=20')
+		}),
+		{ fetcher: fetcher }
+	);
+
+	function changePage(newPage: number) {
+		$requestCancel.cancel('Filter Changed');
+		updateCancelToken();
+		pageQuery.updateSingle('page', newPage);
+	}
+
+	const pageUnsubscribe = page.subscribe((p) => {
+		if (browser) {
+			refreshRankings({
+				newUrl: queryString.stringifyUrl({
+					url: '/api/rankings/users',
+					query: queryString.parse(p.url.searchParams.toString() + '&pageSize=20')
+				})
+			});
+		}
+	});
+
+	onDestroy(pageUnsubscribe);
+</script>
+
+<svelte:head>
+	<title>Wavebreaker | User rankings</title>
+	<meta
+		name="description"
+		content="A list of the best players on Wavebreaker, an open-source reimplementation of Audiosurf's server."
+	/>
+
+	<meta content="Wavebreaker" property="og:site_name" />
+	<meta content="User rankings" property="og:title" />
+	<meta
+		content="A list of the best players on Wavebreaker, an open-source reimplementation of Audiosurf's server."
+		property="og:description"
+	/>
+
+	<meta content={env.PUBLIC_FRONTEND_URL} property="og:url" />
+	<meta content="#009EFF" name="theme-color" />
+</svelte:head>
+
+<RankingsLayout>
+	{#if !$rankings && !$rankingsError}
+		<div class="loading loading-spinner loading-lg self-center" />
+	{/if}
+	{#if $rankingsError}
+		<p class="text-error">{$rankingsError.message}</p>
+	{/if}
+	{#if $rankings}
+		<div class="self-center shadow">
+			<ClassicPagination
+				totalItems={$rankings.totalCount}
+				pageSize={20}
+				currentPage={$pageQuery.page}
+				{changePage}
+			/>
+		</div>
+		<div class="flex flex-col">
+			{#key $rankings.users}
+				{#each $rankings.users as ranking, i}
+					<div class="flex flex-row items-center space-x-3 p-1">
+						<div class="font-semibold min-w-[2rem] text-center">
+							#{($pageQuery.page - 1) * 14 + (i + 1)}
+						</div>
+						<a
+							href="/users/{ranking.id}"
+							class="link link-hover flex flex-row items-center space-x-3 whitespace-nowrap overflow-hidden overflow-ellipsis"
+						>
+							<div class="avatar">
+								<div class="w-10 h-10 rounded-lg">
+									<img src={ranking.avatarUrl} alt="Avatar of {ranking.username}" />
+								</div>
+							</div>
+							<span class="whitespace-nowrap overflow-hidden overflow-ellipsis"
+								>{ranking.username}
+							</span>
+						</a>
+					</div>
+					{#if i != $rankings.users.length - 1}<div class="divider mt-0 mb-0" />{/if}
+				{/each}
+			{/key}
+		</div>
+	{/if}
+</RankingsLayout>

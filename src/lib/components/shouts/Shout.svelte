@@ -3,10 +3,12 @@
 	import type { UserInfo } from '$lib/models/UserData';
 	import { faTrash } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { format } from 'timeago.js';
+	import { DateTime } from 'luxon';
 
 	export let shout: Shout;
 	export let currentUser: undefined | UserInfo;
+
+	const postTime = DateTime.fromISO(shout.timeCreated);
 </script>
 
 <div class="flex flex-row gap-x-2">
@@ -19,7 +21,7 @@
 	<div class="flex flex-col min-w-0">
 		<div class="flex flex-row gap-x-2">
 			<a href="/users/{shout.authorId}" class="font-semibold">{shout.author.username}</a>
-			<p class="text-base-content/60">{format(shout.timeCreated)}</p>
+			<p class="text-base-content/60">{postTime.setLocale('en').toRelative()}</p>
 
 			{#if currentUser && (currentUser.id == shout.authorId || currentUser.accountType >= 2)}
 				<form method="POST" action="?/deleteShout">

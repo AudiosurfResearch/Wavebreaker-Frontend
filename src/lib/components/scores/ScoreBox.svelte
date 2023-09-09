@@ -3,8 +3,8 @@
 	import type { Song } from '$lib/models/SongData';
 	import type { UserInfo } from '$lib/models/UserData';
 	import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+	import { DateTime } from 'luxon';
 	import Fa from 'svelte-fa';
-	import { format } from 'timeago.js';
 
 	export let placement: number = undefined;
 	export let targetEntity: UserInfo | Song;
@@ -30,6 +30,7 @@
 	}
 
 	let formatter = Intl.NumberFormat('en');
+	const timeSet = DateTime.fromISO(targetScore.rideTime);
 	let trackShapeNumbers = targetScore.trackShape.split('x').map(function (item) {
 		return Math.abs(parseInt(item) - 103);
 	});
@@ -61,7 +62,7 @@
 				#{placement} —
 			{/if}
 			{formatter.format(targetScore.score)}
-			<div class="ml-auto text-base-content/60">{format(targetScore.rideTime)}</div>
+			<div class="ml-auto text-base-content/60">{timeSet.setLocale('en').toRelative()}</div>
 		</div>
 		<div class="flex flex-row items-center gap-x-3 w-full md:max-w-xl">
 			{#if placement}
@@ -110,7 +111,7 @@
 					{formatter.format(targetScore.score)}
 				</p>
 				<p title="Time played" class="text-base-content/60 text-sm w-max">
-					{format(targetScore.rideTime)}
+					{timeSet.setLocale('en').toRelative()}
 				</p>
 			</div>
 			{#if modalFunction}
