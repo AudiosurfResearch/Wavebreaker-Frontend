@@ -107,6 +107,7 @@
 								<div class="avatar">
 									<div class="w-10 h-10 rounded-lg">
 										<img
+											loading="lazy"
 											src={ranking.smallCoverUrl}
 											alt="Cover of {ranking.musicbrainzTitle || ranking.title}"
 										/>

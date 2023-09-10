@@ -105,7 +105,7 @@
 						>
 							<div class="avatar">
 								<div class="w-10 h-10 rounded-lg">
-									<img src={ranking.avatarUrl} alt="Avatar of {ranking.username}" />
+									<img loading="lazy" src={ranking.avatarUrl} alt="Avatar of {ranking.username}" />
 								</div>
 							</div>
 							<span class="whitespace-nowrap overflow-hidden overflow-ellipsis"
