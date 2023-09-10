@@ -24,7 +24,7 @@
 		<Fa icon={faMusic} />
 	</a>
 	<a
-		href="/rankings"
+		href="/rankings/users"
 		class="text-primary"
 		class:active={$page.url.pathname.startsWith('/rankings')}
 	>
