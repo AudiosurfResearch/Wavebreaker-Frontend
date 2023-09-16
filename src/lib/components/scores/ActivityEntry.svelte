@@ -4,7 +4,7 @@
 	import Fa from 'svelte-fa';
 
 	export let score: ExtendedScoreInfo;
-	let formatter = Intl.NumberFormat('en');
+	let formatter = Intl.NumberFormat();
 </script>
 
 <div class="grid grid-cols-3 items-center">

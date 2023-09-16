@@ -10,7 +10,7 @@
 	import { requestCancel, updateCancelToken } from '$lib/utils/accio/canceler';
 	import { browser } from '$app/environment';
 	import { onDestroy } from 'svelte';
-	import type { UserInfo } from '$lib/models/UserData';
+	import type { UserInfo, UserInfoWithRank } from '$lib/models/UserData';
 	import { env } from '$env/dynamic/public';
 
 	type rankingsQuery = {
@@ -22,7 +22,7 @@
 	});
 
 	type GetUserRankingsResponse = {
-		users: UserInfo[];
+		users: UserInfoWithRank[];
 		totalCount: number;
 	};
 
@@ -56,6 +56,8 @@
 	});
 
 	onDestroy(pageUnsubscribe);
+
+	let formatter = Intl.NumberFormat();
 </script>
 
 <svelte:head>
@@ -108,9 +110,15 @@
 									<img loading="lazy" src={ranking.avatarUrl} alt="Avatar of {ranking.username}" />
 								</div>
 							</div>
-							<span class="whitespace-nowrap overflow-hidden overflow-ellipsis"
+							<div class="flex flex-col">
+								<span class="whitespace-nowrap overflow-hidden overflow-ellipsis"
 								>{ranking.username}
 							</span>
+							<span class="whitespace-nowrap overflow-hidden overflow-ellipsis text-base-content/60"
+								>{formatter.format(ranking.totalSkillPoints)} skill points
+							</span>
+							</div>
+							
 						</a>
 					</div>
 					{#if i != $rankings.users.length - 1}<div class="divider mt-0 mb-0" />{/if}

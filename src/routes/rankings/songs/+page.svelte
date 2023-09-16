@@ -21,8 +21,14 @@
 		page: 1
 	});
 
+	type SongWithScoreCount = Song & {
+		_count: {
+			scores: number;
+		};
+	};
+
 	type GetSongRankingsResponse = {
-		songs: Song[];
+		songs: SongWithScoreCount[];
 		totalCount: number;
 	};
 
@@ -56,6 +62,8 @@
 	});
 
 	onDestroy(pageUnsubscribe);
+
+	let formatter = Intl.NumberFormat();
 </script>
 
 <svelte:head>
@@ -114,10 +122,16 @@
 									</div>
 								</div>
 							{/if}
-							<span class="whitespace-nowrap overflow-hidden overflow-ellipsis"
-								>{ranking.musicbrainzArtist || ranking.artist} - {ranking.musicbrainzTitle ||
-									ranking.title}
-							</span>
+							<div class="flex flex-col">
+								<span class="whitespace-nowrap overflow-hidden overflow-ellipsis"
+									>{ranking.musicbrainzArtist || ranking.artist} - {ranking.musicbrainzTitle ||
+										ranking.title}
+								</span>
+								<span
+									class="whitespace-nowrap overflow-hidden overflow-ellipsis text-base-content/60"
+									>{formatter.format(ranking._count.scores)} scores set
+								</span>
+							</div>
 						</a>
 					</div>
 					{#if i != $rankings.songs.length - 1}<div class="divider mt-0 mb-0" />{/if}

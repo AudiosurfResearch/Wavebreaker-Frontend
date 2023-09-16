@@ -17,7 +17,7 @@
 
 	if (form?.success) data.isRivalResponse.isRival = !data.isRivalResponse.isRival;
 
-	let formatter = Intl.NumberFormat('en');
+	let formatter = Intl.NumberFormat();
 	const joinDate = DateTime.fromISO(data.userResult.joinedAt);
 
 	let modalOpen = false;

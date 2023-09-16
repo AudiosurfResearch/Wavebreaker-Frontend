@@ -29,7 +29,7 @@
 		}
 	}
 
-	let formatter = Intl.NumberFormat('en');
+	let formatter = Intl.NumberFormat();
 	const timeSet = DateTime.fromISO(targetScore.rideTime);
 	let trackShapeNumbers = targetScore.trackShape.split('x').map(function (item) {
 		return Math.abs(parseInt(item) - 103);

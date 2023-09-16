@@ -13,13 +13,16 @@ export interface UserInfo {
 	avatarUrlSmall: string;
 }
 
-export interface ExtendedUserInfo extends UserInfo {
+export interface UserInfoWithRank extends UserInfo {
+	rank: number;
+	totalSkillPoints: number;
+}
+
+export interface ExtendedUserInfo extends UserInfoWithRank {
 	totalScore: number;
 	totalPlays: number;
 	favoriteCharacter?: number;
 	favoriteSong?: Song;
-	rank: number;
-	totalSkillPoints: number;
 }
 
 export interface UserTokenResponse {
