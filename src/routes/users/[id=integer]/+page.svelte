@@ -64,30 +64,33 @@
 		{/if}
 	{/if}
 
-	<div class="stats stats-vertical rounded-3xl bg-neutral lg:stats-horizontal grow shadow">
-		<div class="stat">
-			<div class="stat-title">Rank</div>
-			<div class="stat-value text-3xl lg:text-4xl">#{formatter.format(data.userResult.rank)}</div>
-			<div class="stat-desc">{formatter.format(data.userResult.totalSkillPoints)} Skill Points</div>
-		</div>
-
-		<div class="stat">
-			<div class="stat-title">Joined</div>
-			<div class="stat-value text-3xl lg:text-4xl">{joinDate.setLocale('en').toRelative()}</div>
-			<div class="stat-desc">{joinDate.toLocaleString(DateTime.DATETIME_SHORT)}</div>
-		</div>
-
-		<div class="stat">
-			<div class="stat-title">Total plays</div>
-			<div class="stat-value text-3xl lg:text-4xl">{data.userResult.totalPlays}</div>
-			{#if data.userResult.favoriteCharacter}
+	{#key data.userResult.id}
+		<div class="stats stats-vertical rounded-3xl bg-neutral lg:stats-horizontal grow shadow">
+			<div class="stat">
+				<div class="stat-title">Rank</div>
+				<div class="stat-value text-3xl lg:text-4xl">#{formatter.format(data.userResult.rank)}</div>
 				<div class="stat-desc">
-					Favorite character: {characterList[data.userResult.favoriteCharacter]}
+					{formatter.format(data.userResult.totalSkillPoints)} Skill Points
 				</div>
-			{/if}
-		</div>
+			</div>
 
-		<!-- TODO: Redesign this
+			<div class="stat">
+				<div class="stat-title">Joined</div>
+				<div class="stat-value text-3xl lg:text-4xl">{joinDate.setLocale('en').toRelative()}</div>
+				<div class="stat-desc">{joinDate.toLocaleString(DateTime.DATETIME_SHORT)}</div>
+			</div>
+
+			<div class="stat">
+				<div class="stat-title">Total plays</div>
+				<div class="stat-value text-3xl lg:text-4xl">{data.userResult.totalPlays}</div>
+				{#if data.userResult.favoriteCharacter}
+					<div class="stat-desc">
+						Favorite character: {characterList[data.userResult.favoriteCharacter]}
+					</div>
+				{/if}
+			</div>
+
+			<!-- TODO: Redesign this
 			{#if data.userResult.favoriteSong}
 				<div class="stat">
 					<div class="stat-title">Favorite song</div>
@@ -99,7 +102,8 @@
 				</div>
 			{/if}
 		-->
-	</div>
+		</div>
+	{/key}
 
 	{#if data.rivalsAndChallengers}
 		{#if data.rivalsAndChallengers.rivals.length > 0}
