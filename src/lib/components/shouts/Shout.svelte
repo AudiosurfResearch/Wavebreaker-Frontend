@@ -8,7 +8,7 @@
 	export let shout: Shout;
 	export let currentUser: undefined | UserInfo;
 
-	const postTime = DateTime.fromISO(shout.timeCreated);
+	$: postTime = DateTime.fromISO(shout.timeCreated);
 </script>
 
 <div class="flex flex-row gap-x-2">

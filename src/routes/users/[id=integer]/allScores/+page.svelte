@@ -68,7 +68,9 @@
 
 <div class="text-sm breadcrumbs">
 	<ul>
-		<li><a class="link-primary" href="/users/{data.userResult.id}">{data.userResult.username}</a></li>
+		<li>
+			<a class="link-primary" href="/users/{data.userResult.id}">{data.userResult.username}</a>
+		</li>
 		<li>All scores</li>
 	</ul>
 </div>
@@ -94,11 +96,7 @@
 		<div class="flex flex-col gap-y-2">
 			{#each $scores.scores as score, i}
 				{#key $scores.scores}
-					<ScoreBox
-						targetEntity={score.song}
-						targetScore={score}
-						{modalFunction}
-					/>
+					<ScoreBox targetEntity={score.song} targetScore={score} {modalFunction} />
 				{/key}
 			{/each}
 		</div>

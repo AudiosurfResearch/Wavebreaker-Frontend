@@ -25,7 +25,7 @@
 	export let showModal: boolean;
 
 	let formatter = Intl.NumberFormat();
-	const timeSet = DateTime.fromISO(targetScore.rideTime);
+	$: timeSet = DateTime.fromISO(targetScore.rideTime);
 
 	function updateTrackShape() {
 		trackShapeNumbers = targetScore.trackShape.split('x').map(function (item) {

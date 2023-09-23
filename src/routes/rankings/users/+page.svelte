@@ -112,13 +112,13 @@
 							</div>
 							<div class="flex flex-col">
 								<span class="whitespace-nowrap overflow-hidden overflow-ellipsis"
-								>{ranking.username}
-							</span>
-							<span class="whitespace-nowrap overflow-hidden overflow-ellipsis text-base-content/60"
-								>{formatter.format(ranking.totalSkillPoints)} skill points
-							</span>
+									>{ranking.username}
+								</span>
+								<span
+									class="whitespace-nowrap overflow-hidden overflow-ellipsis text-base-content/60"
+									>{formatter.format(ranking.totalSkillPoints)} skill points
+								</span>
 							</div>
-							
 						</a>
 					</div>
 					{#if i != $rankings.users.length - 1}<div class="divider mt-0 mb-0" />{/if}
