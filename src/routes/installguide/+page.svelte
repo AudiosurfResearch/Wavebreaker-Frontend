@@ -9,7 +9,7 @@
 	<meta content="Wavebreaker" property="og:site_name" />
 	<meta content="Install guide" property="og:title" />
 	<meta
-		content="An open-source reimplementation of Audiosurf's server. View your scores, songs and rivals!"
+		content="Guide to help you get set up and connected to Wavebreaker."
 		property="og:description"
 	/>
 
