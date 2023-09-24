@@ -88,23 +88,29 @@
 		/>
 	</div>
 {:else}
-	<div class="flex flex-col items-center lg:flex-row-reverse px-7 my-4 max-w-full">
-		<img src={logo} class="py-14 max-w-xs lg:max-w-sm" alt="Wavebreaker logo" />
-		<div>
-			<h1 class="text-5xl font-bold">Welcome to Wavebreaker</h1>
-			<p class="py-6">
-				Wavebreaker is an open-source reimplementation of Audiosurf's online services that is being
-				actively developed. It aims to provide the same functionality as the original server, while
-				being more modern and adding a few things on top.
-			</p>
-			<p>
-				So, what are you waiting for? <a
-					href="https://github.com/AudiosurfResearch/Wavebreaker-Hook/releases/latest"
-					class="btn btn-link btn-primary btn-sm normal-case"><Fa icon={faDownload} />Jump in!</a
-				>
-			</p>
-		</div>
+	<div class="prose mb-7 max-w-full">
+		<h1>Welcome to Wavebreaker</h1>
+		<p>
+			Wavebreaker is an open-source reimplementation of Audiosurf's online services that is being
+			actively developed. It aims to provide the same functionality as the original server, while
+			being more modern and adding a few things on top, such as:
+		</p>
+		<ul>
+			<li><b>Forced HTTPS</b>, so traffic between game and server is more secure</li>
+			<li>
+				<b>Additional metadata</b> (like cover art, artist/title with proper capitalization) on the website
+			</li>
+			<li>
+				<b>Custom Audiosurf Radio songs!</b>
+			</li>
+		</ul>
+		<p>Sound good?</p>
+		<a
+			href="/installguide"
+			class="btn btn-primary btn-sm normal-case"><Fa icon={faDownload} />Jump in!</a
+		>
 	</div>
+
 	<ServerStats
 		userCount={data.serverStats.userCount}
 		songCount={data.serverStats.songCount}
