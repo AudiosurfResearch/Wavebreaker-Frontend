@@ -51,6 +51,8 @@
 		</li>
 		<li>
 			If you get a warning from SmartScreen, click <b>"More info"</b> and then <b>"Run anyway"</b>.
+			<b>The installer isn't a virus!</b> I just can't pay for a signature and it's not been downloaded
+			often enough.
 		</li>
 		<li>The rest should be self-explanatory, let the installer guide you.</li>
 		<li>Have fun!</li>
@@ -73,8 +75,8 @@
 		</li>
 		<li>Navigate to your Audiosurf install location.</li>
 		<li>
-			<b>(Only applicable if upgrading from v1)</b> Delete files from the older version of the hook, if present.
-			These are:
+			<b>(Only applicable if upgrading from v1)</b> Delete files from the older version of the hook,
+			if present. These are:
 			<ul>
 				<li>engine\channels\Wavebreaker-Hook.dll</li>
 				<li>engine\Wavebreaker-Hook.ini</li>
@@ -85,8 +87,6 @@
 				>If it asks you to replace RadioBrowser.cgr, confirm it. This is needed for Audiosurf Radio.</b
 			>
 		</li>
-        <li>
-            Launch the game and enjoy!
-        </li>
+		<li>Launch the game and enjoy!</li>
 	</ol>
 </div>
