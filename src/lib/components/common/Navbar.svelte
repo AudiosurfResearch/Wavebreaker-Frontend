@@ -2,7 +2,14 @@
 	import logo from '$lib/assets/wavebreaker_icon.svg';
 	import Fa from 'svelte-fa';
 	import { faSteam } from '@fortawesome/free-brands-svg-icons';
-	import { faDownload, faHome, faMedal, faMusic, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faDownload,
+		faHome,
+		faMedal,
+		faMusic,
+		faSignOut,
+		faUser
+	} from '@fortawesome/free-solid-svg-icons';
 
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
