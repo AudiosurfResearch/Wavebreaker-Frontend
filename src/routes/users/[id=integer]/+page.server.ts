@@ -7,7 +7,7 @@ import type {
 } from '$lib/models/UserData';
 import type { GetScoresResponse } from '$lib/models/ScoreData';
 import { loadMetadata } from '$lib/stores/metadata-store';
-import { fetcher, poster } from '$lib/api.js';
+import { fetcher, poster } from '$lib/utils/api.js';
 import { isAxiosError } from 'axios';
 
 export async function load({ params, cookies, locals }) {

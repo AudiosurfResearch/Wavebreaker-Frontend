@@ -1,4 +1,4 @@
-import { apiBaseURL } from '$lib/api';
+import { apiBaseURL } from '$lib/utils/api';
 import { redirect } from '@sveltejs/kit';
 import type { ServerLoadEvent } from '@sveltejs/kit';
 

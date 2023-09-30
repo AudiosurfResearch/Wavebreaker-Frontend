@@ -7,7 +7,7 @@
 
 	import { requestCancel, updateCancelToken } from '$lib/utils/accio/canceler';
 	import { useAccio } from '$lib/utils/accio';
-	import { fetcher } from '$lib/api';
+	import { fetcher } from '$lib/utils/api';
 	import type { Song } from '$lib/models/SongData';
 	import SongDisplaySmall from '$lib/components/songs/SongDisplaySmall.svelte';
 

@@ -13,7 +13,7 @@
 
 	import { requestCancel, updateCancelToken } from '$lib/utils/accio/canceler';
 	import { useAccio } from '$lib/utils/accio';
-	import { fetcher } from '$lib/api';
+	import { fetcher } from '$lib/utils/api';
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 	import Modal from '$lib/components/common/Modal.svelte';
 	import ScoreDetailModal from '$lib/components/scores/ScoreDetailModal.svelte';

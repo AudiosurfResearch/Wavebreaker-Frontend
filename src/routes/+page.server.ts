@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { isAxiosError } from 'axios';
 import type { GetRadioSongsResponse } from '$lib/models/SongData.js';
-import { fetcher } from '$lib/api.js';
+import { fetcher } from '$lib/utils/api.js';
 import { loadMetadata } from '$lib/stores/metadata-store.js';
 import type { ServerStats } from '$lib/models/ServerStats.js';
 import type { ExtendedScoreInfo } from '$lib/models/ScoreData.js';

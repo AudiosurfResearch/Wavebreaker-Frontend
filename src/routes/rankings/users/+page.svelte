@@ -6,7 +6,7 @@
 	import { useAccio } from '$lib/utils/accio';
 	import queryString from 'query-string';
 	import { page } from '$app/stores';
-	import { fetcher } from '$lib/api';
+	import { fetcher } from '$lib/utils/api';
 	import { requestCancel, updateCancelToken } from '$lib/utils/accio/canceler';
 	import { browser } from '$app/environment';
 	import { onDestroy } from 'svelte';

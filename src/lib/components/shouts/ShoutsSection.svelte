@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Shout from './Shout.svelte';
 
-	import { fetcher } from '$lib/api';
+	import { fetcher } from '$lib/utils/api';
 	import type { GetSongShoutsResponse } from '$lib/models/ShoutData';
 	import { useAccio } from '$lib/utils/accio';
 	import queryString from 'query-string';

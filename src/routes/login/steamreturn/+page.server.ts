@@ -1,5 +1,5 @@
 import { dev } from '$app/environment';
-import { fetcher } from '$lib/api';
+import { fetcher } from '$lib/utils/api';
 import type { UserInfo, UserTokenResponse } from '$lib/models/UserData';
 import { error, redirect, type ServerLoadEvent } from '@sveltejs/kit';
 import { isAxiosError } from 'axios';

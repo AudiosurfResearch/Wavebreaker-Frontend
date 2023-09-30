@@ -9,7 +9,7 @@
 
 	import { requestCancel, updateCancelToken } from '$lib/utils/accio/canceler';
 	import { useAccio } from '$lib/utils/accio';
-	import { fetcher } from '$lib/api';
+	import { fetcher } from '$lib/utils/api';
 	import UserDisplaySmall from '$lib/components/users/UserDisplaySmall.svelte';
 
 	type userSearchQuery = {

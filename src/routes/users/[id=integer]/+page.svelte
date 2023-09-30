@@ -3,7 +3,7 @@
 	import UserDisplay from '$lib/components/users/UserDisplay.svelte';
 	import UserDisplaySmall from '$lib/components/users/UserDisplaySmall.svelte';
 	import { DateTime } from 'luxon';
-	import { characterList } from '$lib/characterUtils';
+	import { characterList } from '$lib/utils/characterUtils';
 	import { faUserPlus, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 	import ScoreBox from '$lib/components/scores/ScoreBox.svelte';
 	import Fa from 'svelte-fa';

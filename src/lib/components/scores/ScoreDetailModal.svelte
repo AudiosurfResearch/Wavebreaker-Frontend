@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { characterList } from '$lib/characterUtils';
+	import { characterList } from '$lib/utils/characterUtils';
 	import type { Score } from '$lib/models/ScoreData';
 	import Modal from '../common/Modal.svelte';
 	import { Line } from 'svelte-chartjs';

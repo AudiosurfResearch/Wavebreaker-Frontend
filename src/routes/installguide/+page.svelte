@@ -51,8 +51,8 @@
 		</li>
 		<li>
 			If you get a warning from SmartScreen, click <b>"More info"</b> and then <b>"Run anyway"</b>.
-			<b>The installer isn't a virus!</b> I just can't pay for a signature and it's not been downloaded
-			often enough.
+			<b>The installer isn't a virus!</b> Signatures are expensive and it's not been downloaded
+			often enough to be trusted automatically.
 		</li>
 		<li>The rest should be self-explanatory, let the installer guide you.</li>
 		<li>Have fun!</li>

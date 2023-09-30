@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { songQuoteList } from '$lib/songQuoteList';
+	import { songQuoteList } from '$lib/utils/songQuoteList';
 	const quote = songQuoteList[Math.floor(Math.random() * songQuoteList.length)];
 </script>
 

@@ -1,5 +1,5 @@
 import { error, fail } from '@sveltejs/kit';
-import { poster } from '$lib/api';
+import { poster } from '$lib/utils/api';
 import { isAxiosError } from 'axios';
 import type { Song } from '$lib/models/SongData.js';
 import type { Actions } from './$types';
