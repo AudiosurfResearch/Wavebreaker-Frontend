@@ -166,6 +166,8 @@
 	{/if}
 </div>
 
-{#if modalScore}
-	<ScoreDetailModal bind:showModal={modalOpen} targetScore={modalScore} />
-{/if}
+{#key modalScore}
+	{#if modalScore}
+		<ScoreDetailModal bind:showModal={modalOpen} targetScore={modalScore} />
+	{/if}
+{/key}
