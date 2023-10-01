@@ -132,11 +132,11 @@
 				<b>Dropped chains:</b>
 				{parsedStats.droppedChains} <br />
 				<b>Best cluster:</b>
-				{parsedStats.bestCluster} <br />
+				{formatter.format(parsedStats.bestCluster)} <br />
 				<b>Avg. cluster size:</b>
-				{parsedStats.avgClusterSize} <br />
+				{formatter.format(parsedStats.avgClusterSize)} <br />
 				<b>Avg. cluster color count:</b>
-				{parsedStats.avgClusterColorCount} <br />
+				{formatter.format(parsedStats.avgClusterColorCount)} <br />
 				<b>Max. consecutive blocks dodged:</b>
 				{parsedStats.maxConsecutiveBlocksDodged} <br />
 				<b>Max. consecutive blocks collected:</b>
