@@ -31,28 +31,48 @@
 	<h3>Prerequisites</h3>
 	<ul>
 		<li>
-			A machine with <b>Windows 10 or newer</b> (Linux support coming, but for now, use method 2)
+			A machine with <b>Windows 10 or newer</b>, <b>Linux</b> (tested on Arch) or <b>macOS</b>
+			(untested)
 		</li>
 		<li>
-			<b>WebView2.</b> This should be included with Windows 11, and you might already have it even
-			on Windows 10. <b>If the installer doesn't launch, you might be missing this, so</b>
+			(Windows only) <b>WebView2.</b> This should be included with Windows 11 and any recent-ish
+			versions of Windows 10. If the installer doesn't launch, you might be missing this, so
 			<a href="https://go.microsoft.com/fwlink/p/?LinkId=2124703">
 				download it from Microsoft and install it.
-			</a>
+			</a><br />
+			<b>Note:</b> Since WebView2 shares files with Microsoft Edge, if you've uninstalled Edge, the installer
+			won't work. Sorry, use Method 2.
 		</li>
 	</ul>
 	<h3>How to</h3>
 	<ol>
 		<li>
-			<a
-				href="https://github.com/AudiosurfResearch/Wavebreaker-Installer/releases/latest/download/wavebreaker-installer.exe"
-				>Download the installer</a
-			> and run it.
+			Download the installer and run it.
+			<ul>
+				<li>
+					<a
+						href="https://github.com/AudiosurfResearch/Wavebreaker-Installer/releases/latest/download/wavebreaker-installer.exe"
+						>Windows</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://github.com/AudiosurfResearch/Wavebreaker-Installer/releases/latest/download/wavebreaker-installer.AppImage"
+						>Linux (AppImage)</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://github.com/AudiosurfResearch/Wavebreaker-Installer/releases/latest/download/wavebreaker-installer.app.zip"
+						>macOS (.app)</a
+					>
+				</li>
+			</ul>
 		</li>
 		<li>
 			If you get a warning from SmartScreen, click <b>"More info"</b> and then <b>"Run anyway"</b>.
-			<b>The installer isn't a virus!</b> Signatures are expensive and it's not been downloaded
-			often enough to be trusted automatically.
+			<b>The installer isn't a virus!</b> Signatures are expensive and it's not been downloaded often
+			enough to be trusted automatically.
 		</li>
 		<li>The rest should be self-explanatory, let the installer guide you.</li>
 		<li>Have fun!</li>
