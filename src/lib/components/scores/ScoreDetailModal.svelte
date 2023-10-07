@@ -123,6 +123,24 @@
 					<b>Scooped powerups:</b>
 					{parsedStats.characterSpecific2} <br />
 				{/if}
+				{#if characterClass == CharacterClass.DoubleVision}
+					<b>Crossover matches:</b>
+					{parsedStats.characterSpecific1} <br />
+					<b>L/R score difference:</b>
+					{parsedStats.characterSpecific2} <br />
+				{/if}
+				{#if characterClass == CharacterClass.Vegas}
+					<b>Times shuffled:</b>
+					{parsedStats.characterSpecific1} <br />
+					<b>Avg. shuffle size:</b>
+					{parsedStats.characterSpecific2} <br />
+				{/if}
+				{#if characterClass == CharacterClass.Pusher}
+					<b>Left pushes:</b>
+					{parsedStats.characterSpecific1} <br />
+					<b>Right pushes:</b>
+					{parsedStats.characterSpecific2} <br />
+				{/if}
 			</p>
 			<p class="mt-2">
 				<b>Overfills:</b>
