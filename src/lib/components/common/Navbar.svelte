@@ -13,13 +13,21 @@
 
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
+
+	const date = new Date();
+	const month = date.getMonth() + 1;
+	const day = date.getDate();
 </script>
 
 <div class="navbar bg-base-100 sticky top-0 z-50">
 	<div class="navbar-start">
 		<a href="/" class="btn btn-ghost normal-case text-2xl gap-x-3">
 			<img src={logo} class="w-8 h-8" alt="Wavebreaker logo" />
-			<span class="hidden sm:block">Wavebreaker</span>
+			{#if month == 4 && day == 1}
+				<span class="hidden sm:block">audiosurf2.info</span>
+			{:else}
+				<span class="hidden sm:block">Wavebreaker</span>
+			{/if}
 			{#if dev}
 				<div class="badge badge-outline badge-warning badge-sm">dev</div>
 			{/if}
