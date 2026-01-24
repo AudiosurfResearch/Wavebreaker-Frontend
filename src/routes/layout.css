@@ -4,7 +4,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@import "@fontsource-variable/inter/wght.css";
+
 :root {
+    --default-font-family:
+        "Inter Variable", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
     --radius: 0.625rem;
     --background: oklch(1 0 0);
     --foreground: oklch(0.13 0.028 261.692);
@@ -43,9 +49,9 @@
 }
 
 .dark {
-    --background: oklch(26.4% 0.03744396983875425 279.1072138714039);
+    --background: oklch(25% 0.03744396983875425 279.1072138714039);
     --foreground: oklch(86.94% 0.04864156382029534 271.2054449373771);
-    --card: oklch(21% 0.03744396983875425 279.1072138714039);
+    --card: oklch(22% 0.03744396983875425 279.1072138714039);
     --card-foreground: oklch(90% 0.04864156382029534 271.2054449373771);
     --popover: oklch(0.21 0.034 264.665);
     --popover-foreground: oklch(0.985 0.002 247.839);
