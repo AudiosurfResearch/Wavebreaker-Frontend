@@ -15,9 +15,9 @@
     <link rel="icon" href={faviconSvg} type="image/svg+xml" />
     <link rel="icon" href={faviconPng} type="image/png" />
 </svelte:head>
-<div class="bg-background relative flex min-h-svh flex-col">
+<div class="bg-background relative flex min-h-svh flex-col items-center">
     <Navbar />
-    <main class="flex flex-1 flex-col">
+    <main class="flex flex-1 flex-col w-full max-w-7xl p-4">
         <Tooltip.Provider>
             {@render children()}
         </Tooltip.Provider>
