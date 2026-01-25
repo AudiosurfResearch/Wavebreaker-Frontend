@@ -15,16 +15,44 @@
 <div
     class="flex sm:hidden flex-row items-center justify-around w-full h-16 fixed left-0 bottom-0 right-0 z-50 bg-background drop-shadow-xl border-t"
 >
-    <a href="/" class="w-full" class:text-primary={isRoot}>
-        <HomeIcon class="m-auto" />
+    <a
+        href="/"
+        class={[
+            isRoot && "text-primary bg-accent",
+            "flex flex-col w-full items-center justify-center h-full space-y-1",
+        ]}
+    >
+        <HomeIcon />
+        <div class="text-xs">Home</div>
     </a>
-    <a href="/users/search" class="w-full" class:text-primary={isUserPage}>
-        <UserIcon class="m-auto" />
+    <a
+        href="/users/search"
+        class={[
+            isUserPage && "text-primary bg-accent",
+            "flex flex-col w-full items-center justify-center h-full space-y-1",
+        ]}
+    >
+        <UserIcon />
+        <div class="text-xs">Users</div>
     </a>
-    <a href="/songs/search" class="w-full" class:text-primary={isSongPage}>
-        <MusicIcon class="m-auto" />
+    <a
+        href="/songs/search"
+        class={[
+            isSongPage && "text-primary bg-accent",
+            "flex flex-col w-full items-center justify-center h-full space-y-1",
+        ]}
+    >
+        <MusicIcon />
+        <div class="text-xs">Songs</div>
     </a>
-    <a href="/rankings/users" class="w-full" class:text-primary={isRankingPage}>
-        <TrophyIcon class="m-auto" />
+    <a
+        href="/rankings/users"
+        class={[
+            isRankingPage && "text-primary bg-accent",
+            "flex flex-col w-full items-center justify-center h-full space-y-1",
+        ]}
+    >
+        <TrophyIcon />
+        <div class="text-xs">Rankings</div>
     </a>
 </div>
