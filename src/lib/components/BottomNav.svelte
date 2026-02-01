@@ -13,7 +13,7 @@
 </script>
 
 <div
-    class="flex sm:hidden flex-row items-center justify-around w-full h-16 fixed left-0 bottom-0 right-0 z-50 bg-background drop-shadow-xl border-t"
+    class="fixed flex sm:hidden flex-row items-center justify-around w-full h-16 left-0 bottom-0 right-0 z-50 bg-background border-t"
 >
     <a
         href="/"

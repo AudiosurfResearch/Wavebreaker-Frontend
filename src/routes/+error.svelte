@@ -26,7 +26,8 @@
             target="_blank"
             rel="noopener noreferrer"
             class="text-muted-foreground italic underline-offset-4 hover:underline"
-            >"{randomText.lyric}"
+        >
+            "{randomText.lyric}"
         </a>
     </div>
 </div>
