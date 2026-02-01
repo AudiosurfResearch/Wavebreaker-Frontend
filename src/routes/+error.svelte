@@ -15,18 +15,18 @@
     var randomText = textArray[Math.floor(Math.random() * textArray.length)];
 </script>
 
-<div class="flex flex-col items-center">
-    <h1
-        class="text-9xl font-extrabold m-auto bg-clip-text bg-linear-to-b from-foreground to-muted text-transparent"
-    >
-        {page.status}
-    </h1>
-    <div class="flex flex-col relative bottom-8 items-center">
-        <p class="text-xl">{page.error?.message}</p>
+<div
+    class="flex flex-col md:flex-row m-auto self-center items-center space-x-4"
+>
+    <h1 class="text-9xl font-bold">{page.status}</h1>
+    <div class="flex flex-col">
+        <h2 class="text-4xl">{page.error?.message}</h2>
         <a
-            href={randomText.url}
-            class="text-muted-foreground italic text-sm underline-offset-4 hover:underline"
-            >{randomText.lyric}</a
-        >
+            href={randomText.lyric}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-muted-foreground italic underline-offset-4 hover:underline"
+            >"{randomText.lyric}"
+        </a>
     </div>
 </div>

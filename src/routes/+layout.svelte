@@ -15,12 +15,15 @@
     <link rel="icon" href={faviconSvg} type="image/svg+xml" />
     <link rel="icon" href={faviconPng} type="image/png" />
 </svelte:head>
-<div class="bg-background relative flex min-h-svh flex-col items-center">
-    <Navbar />
-    <main class="flex flex-1 flex-col w-full max-w-7xl p-4">
+
+<Navbar />
+<div
+    class="relative flex sm:min-h-[calc(100svh-4rem)] min-h-[calc(100svh-8rem)] flex-col items-center justify-between"
+>
+    <main class="flex flex-1 flex-col w-full h-full self-center max-w-7xl p-4">
         <Tooltip.Provider>
             {@render children()}
         </Tooltip.Provider>
     </main>
-    <BottomNav />
 </div>
+<BottomNav />
