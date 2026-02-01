@@ -6,6 +6,7 @@
     import * as Tooltip from "$lib/components/ui/tooltip/index.js";
     import Navbar from "$lib/components/Navbar.svelte";
     import BottomNav from "$lib/components/BottomNav.svelte";
+    import Footer from "$lib/components/Footer.svelte";
 
     let { children } = $props();
 </script>
@@ -25,5 +26,6 @@
             {@render children()}
         </Tooltip.Provider>
     </main>
+    <Footer />
 </div>
 <BottomNav />
