@@ -1,18 +1,18 @@
 <script lang="ts">
-    import { page } from "$app/state";
+import { page } from "$app/state";
 
-    type LyricEntry = {
-        lyric: string;
-        url: string;
-    };
+type LyricEntry = {
+	lyric: string;
+	url: string;
+};
 
-    var textArray: LyricEntry[] = [
-        {
-            lyric: "Don't let me go!",
-            url: "https://soundcloud.com/asuzora/dont-ft-ranasol",
-        },
-    ];
-    var randomText = textArray[Math.floor(Math.random() * textArray.length)];
+var textArray: LyricEntry[] = [
+	{
+		lyric: "Don't let me go!",
+		url: "https://soundcloud.com/asuzora/dont-ft-ranasol",
+	},
+];
+var randomText = textArray[Math.floor(Math.random() * textArray.length)];
 </script>
 
 <div

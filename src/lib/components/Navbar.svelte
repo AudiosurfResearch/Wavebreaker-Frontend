@@ -1,23 +1,23 @@
 <script lang="ts">
-    import { dev } from "$app/environment";
+import { dev } from "$app/environment";
 
-    import HomeIcon from "@lucide/svelte/icons/home";
-    import UserIcon from "@lucide/svelte/icons/user";
-    import MusicIcon from "@lucide/svelte/icons/music";
-    import TrophyIcon from "@lucide/svelte/icons/trophy";
+import HomeIcon from "@lucide/svelte/icons/home";
+import UserIcon from "@lucide/svelte/icons/user";
+import MusicIcon from "@lucide/svelte/icons/music";
+import TrophyIcon from "@lucide/svelte/icons/trophy";
 
-    import { Button } from "$lib/components/ui/button/index.js";
-    import { Badge } from "$lib/components/ui/badge/index.js";
-    import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
-    import wavebreakerIcon from "$lib/assets/wavebreaker-icon.svg";
-    import DarkModeToggle from "$lib/components/DarkModeToggle.svelte";
+import { Button } from "$lib/components/ui/button/index.js";
+import { Badge } from "$lib/components/ui/badge/index.js";
+import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
+import wavebreakerIcon from "$lib/assets/wavebreaker-icon.svg";
+import DarkModeToggle from "$lib/components/DarkModeToggle.svelte";
 
-    import { page } from "$app/state";
+import { page } from "$app/state";
 
-    let isRoot = $derived(page.url.pathname == "/");
-    let isUserPage = $derived(page.url.pathname.startsWith("/users"));
-    let isSongPage = $derived(page.url.pathname.startsWith("/songs"));
-    let isRankingPage = $derived(page.url.pathname.startsWith("/rankings"));
+let isRoot = $derived(page.url.pathname == "/");
+let isUserPage = $derived(page.url.pathname.startsWith("/users"));
+let isSongPage = $derived(page.url.pathname.startsWith("/songs"));
+let isRankingPage = $derived(page.url.pathname.startsWith("/rankings"));
 </script>
 
 <header class="bg-background sticky top-0 z-50 w-full">

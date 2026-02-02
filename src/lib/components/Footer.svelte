@@ -1,5 +1,5 @@
 <script>
-    import Separator from "$lib/components/ui/separator/separator.svelte";
+import Separator from "$lib/components/ui/separator/separator.svelte";
 </script>
 
 <footer class="w-full flex">
