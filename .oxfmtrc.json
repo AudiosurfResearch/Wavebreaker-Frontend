@@ -1,5 +1,10 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "ignorePatterns": [],
-  "experimentalTailwindcss": {}
+  "experimentalTailwindcss": {
+    "stylesheet": "./src/routes/layout.css",
+    "attributes": ["class", "className"],
+    "functions": ["clsx", "cn", "tv"],
+    "preserveWhitespace": true
+  }
 }
