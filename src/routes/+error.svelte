@@ -11,6 +11,10 @@ var textArray: LyricEntry[] = [
 		lyric: "Don't let me go!",
 		url: "https://soundcloud.com/asuzora/dont-ft-ranasol",
 	},
+	{
+		lyric: "And I falter as an afterthought",
+		url: "https://www.youtube.com/watch?v=0iVlSNpq8i8",
+	},
 ];
 var randomText = textArray[Math.floor(Math.random() * textArray.length)];
 </script>
@@ -22,7 +26,7 @@ var randomText = textArray[Math.floor(Math.random() * textArray.length)];
     <div class="flex flex-col">
         <h2 class="text-4xl">{page.error?.message}</h2>
         <a
-            href={randomText.lyric}
+            href={randomText.url}
             target="_blank"
             rel="noopener noreferrer"
             class="text-muted-foreground italic underline-offset-4 hover:underline"
