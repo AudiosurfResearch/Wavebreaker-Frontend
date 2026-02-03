@@ -1,11 +1,6 @@
-import { http, HttpResponse } from "msw";
+import { fromOpenApi } from "@msw/source/open-api";
+import spec from "./api-1.json";
 
-export const handlers = [
-	http.get("https://api.example.com/user", () => {
-		return HttpResponse.json({
-			id: "abc-123",
-			firstName: "John",
-			lastName: "Maverick",
-		});
-	}),
-];
+export const handlers = await fromOpenApi(spec.toString());
+console.log(await fromOpenApi(spec.toString()));
+console.log(handlers);
