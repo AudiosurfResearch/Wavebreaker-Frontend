@@ -1675,7 +1675,23 @@
 						"type": "string",
 						"format": "date-time"
 					}
-				}
+				},
+				"examples": [
+					{
+						"aliasesArtist": ["JamieP"],
+						"aliasesTitle": null,
+						"coverUrl": "https://i.scdn.co/image/ab67616d0000b27356021e26fd463e7c1d062a9d",
+						"coverUrlSmall": "https://i.scdn.co/image/ab67616d0000485156021e26fd463e7c1d062a9d",
+						"id": 1,
+						"mbid": "6c7e91a6-9cba-4ddf-b262-b5bf7be72d44",
+						"mistagLock": false,
+						"musicbrainzArtist": "Jamie Paige",
+						"musicbrainzLength": 282315,
+						"musicbrainzTitle": "Dyad",
+						"songId": 2,
+						"updatedAt": "+002026-02-05T19:57:46.433184254Z"
+					}
+				]
 			},
 			"FavoriteCharacter": {
 				"type": "object",
@@ -1780,7 +1796,16 @@
 					"username": {
 						"type": "string"
 					}
-				}
+				},
+				"examples": [
+					{
+						"accountType": 2,
+						"avatarUrl": "https://avatars.akamai.steamstatic.com/fadb7d90654a38c196422ed308fc931f96440dde_full.jpg",
+						"id": 1,
+						"joinedAt": "+002023-05-23T18:56:24.000000000Z",
+						"username": "m1nt_"
+					}
+				]
 			},
 			"PlayerRankingResponse": {
 				"type": "object",
@@ -1912,7 +1937,19 @@
 					"rival": {
 						"$ref": "#/components/schemas/PlayerPublic"
 					}
-				}
+				},
+				"examples": [
+					{
+						"establishedAt": "+002023-05-23T18:56:24.000000000Z",
+						"rival": {
+							"accountType": 2,
+							"avatarUrl": "https://avatars.akamai.steamstatic.com/fadb7d90654a38c196422ed308fc931f96440dde_full.jpg",
+							"id": 1,
+							"joinedAt": "+002023-05-23T18:56:24.000000000Z",
+							"username": "m1nt_"
+						}
+					}
+				]
 			},
 			"Score": {
 				"type": "object",
@@ -2007,7 +2044,53 @@
 						},
 						"description": "Extra data about the play with meaning depending on the character used, sent by the game as a string of x-seperated numbers"
 					}
-				}
+				},
+				"examples": [
+					{
+						"density": 994,
+						"feats": [
+							"Ironmode",
+							"Clean Finish",
+							"Match21",
+							"Butter Ninja",
+							"Seeing Red"
+						],
+						"goldThreshold": 84490,
+						"id": 1,
+						"isj": 0,
+						"iss": 0,
+						"league": 2,
+						"playCount": 12,
+						"playerId": 1,
+						"score": 508143,
+						"songId": 2,
+						"songLength": 28224,
+						"submittedAt": "+002026-02-05T19:57:46.432874658Z",
+						"trackShape": [
+							68, 65, 62, 58, 54, 51, 51, 49, 48, 46, 44, 42, 41, 40, 39, 37,
+							37, 36, 34, 32, 31, 30, 29, 28, 28, 27, 27, 25, 26, 26, 25, 22,
+							19, 17, 16, 14, 11, 8, 5, 2, 0, 0, 0, 1, 2, 3, 3, 4, 5, 6, 6, 6,
+							6, 8, 9, 9, 10, 10, 11, 11, 12, 13, 15, 16, 18, 19, 20, 22, 23,
+							24, 26, 27, 28, 30, 31, 32, 33, 34, 36, 37, 39, 40, 41, 41, 40,
+							39, 38, 38, 37, 37, 36, 36, 37, 37, 37, 36, 36, 35, 34, 34, 34,
+							34, 34, 34, 34, 33, 33, 33, 33, 33, 33, 34, 35, 37, 39, 40, 41,
+							42, 44, 45, 44, 41, 39, 37, 36, 35, 33, 30, 28, 26, 23, 22, 22,
+							23, 24, 26, 26, 28, 29, 30, 31, 31, 32, 33, 34, 36, 37, 38, 39,
+							39, 40, 41, 43, 44, 46, 47, 50, 51, 52, 54, 55, 57, 59, 60, 61,
+							63, 64, 65, 67, 68, 70, 72, 74, 75, 77, 78, 79, 81, 82, 83, 81,
+							78, 74, 71, 67, 65, 66, 66, 67, 67, 66, 67, 68, 70, 73, 74, 73,
+							70, 67, 65, 64, 63, 60, 58, 56, 53, 51, 49, 49, 49, 50, 50, 50,
+							51, 52, 52, 52, 52, 53, 54, 54, 55, 56, 56, 56, 57, 57, 58, 60,
+							62, 64, 66, 67, 68, 70, 72, 73, 75, 76, 78, 80, 81, 83, 85, 87,
+							89, 91, 92, 94, 96, 98, 99, 100, 102, 103, 103
+						],
+						"vehicle": 10,
+						"xstats": [
+							478, 4, 0, 274, 2, 24612, 136, 21, 9, 21, 1804, 28, 1, 9, 100, 7,
+							41, 135, 16, 67, 144, 34, 97, 76, 27, 97, 26, 16, 87, 0, 4, 0, 0
+						]
+					}
+				]
 			},
 			"ScoreResponse": {
 				"allOf": [
@@ -2156,7 +2239,33 @@
 						"type": "string",
 						"format": "date-time"
 					}
-				}
+				},
+				"examples": [
+					{
+						"artist": "inverted silence",
+						"createdAt": "+002026-02-05T19:57:46.433161350Z",
+						"id": 1,
+						"modifiers": ["steep"],
+						"title": "sendoff",
+						"updatedAt": "+002026-02-05T19:57:46.433161981Z"
+					},
+					{
+						"artist": "jamie paige",
+						"createdAt": "+002026-02-05T19:57:46.433167552Z",
+						"id": 2,
+						"modifiers": [],
+						"title": "dyad",
+						"updatedAt": "+002026-02-05T19:57:46.433167742Z"
+					},
+					{
+						"artist": "reol",
+						"createdAt": "+002016-03-18T20:37:42.000000000Z",
+						"id": 3,
+						"modifiers": [],
+						"title": "no title",
+						"updatedAt": "+002026-02-05T19:57:46.433171409Z"
+					}
+				]
 			},
 			"SongResponse": {
 				"allOf": [
