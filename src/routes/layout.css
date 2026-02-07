@@ -1,10 +1,8 @@
 @import "tailwindcss";
-
 @import "tw-animate-css";
+@import "@fontsource-variable/inter/wght.css";
 
 @custom-variant dark (&:is(.dark *));
-
-@import "@fontsource-variable/inter/wght.css";
 
 :root {
 	--default-font-family:

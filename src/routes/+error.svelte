@@ -26,12 +26,12 @@ var randomText = textArray[Math.floor(Math.random() * textArray.length)];
     <div class="flex flex-col">
         <h2 class="text-4xl">{page.error?.message}</h2>
         <a
-            href={randomText.url}
+            href={randomText?.url}
             target="_blank"
             rel="noopener noreferrer"
             class="text-muted-foreground italic underline-offset-4 hover:underline"
         >
-            "{randomText.lyric}"
+            "{randomText?.lyric}"
         </a>
     </div>
 </div>

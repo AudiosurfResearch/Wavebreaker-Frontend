@@ -1,12 +1,12 @@
 <script lang="ts">
 import HomeIcon from "@lucide/svelte/icons/home";
-import UserIcon from "@lucide/svelte/icons/user";
 import MusicIcon from "@lucide/svelte/icons/music";
 import TrophyIcon from "@lucide/svelte/icons/trophy";
+import UserIcon from "@lucide/svelte/icons/user";
 
 import { page } from "$app/state";
 
-let isRoot = $derived(page.url.pathname == "/");
+let isRoot = $derived(page.url.pathname === "/");
 let isUserPage = $derived(page.url.pathname.startsWith("/users"));
 let isSongPage = $derived(page.url.pathname.startsWith("/songs"));
 let isRankingPage = $derived(page.url.pathname.startsWith("/rankings"));

@@ -6,7 +6,8 @@
 		"useIgnoreFile": true
 	},
 	"files": {
-		"ignoreUnknown": false
+		"ignoreUnknown": true,
+		"includes": ["**", "!api-1.json", "!**/static"]
 	},
 	"formatter": {
 		"enabled": true,

@@ -1,3 +1,4 @@
+// biome-ignore-all lint/suspicious/noShadowRestrictedNames: nothing noteworthy is being shadowed in this small file
 import Field from "./field.svelte";
 import Set from "./field-set.svelte";
 import Legend from "./field-legend.svelte";

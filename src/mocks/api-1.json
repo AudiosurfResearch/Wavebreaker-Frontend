@@ -1689,7 +1689,7 @@
 						"musicbrainzLength": 282315,
 						"musicbrainzTitle": "Dyad",
 						"songId": 2,
-						"updatedAt": "+002026-02-05T19:57:46.433184254Z"
+						"updatedAt": "+002026-02-06T22:46:34.773403332Z"
 					}
 				]
 			},
@@ -1821,7 +1821,24 @@
 						"type": "integer",
 						"format": "int64"
 					}
-				}
+				},
+				"examples": [
+					{
+						"results": [
+							{
+								"player": {
+									"accountType": 2,
+									"avatarUrl": "https://avatars.akamai.steamstatic.com/fadb7d90654a38c196422ed308fc931f96440dde_full.jpg",
+									"id": 1,
+									"joinedAt": "+002023-05-23T18:56:24.000000000Z",
+									"username": "m1nt_"
+								},
+								"skillPoints": 4649
+							}
+						],
+						"total": 1
+					}
+				]
 			},
 			"PlayerResponse": {
 				"allOf": [
@@ -1842,6 +1859,24 @@
 								]
 							}
 						}
+					}
+				],
+				"examples": [
+					{
+						"accountType": 2,
+						"avatarUrl": "https://avatars.akamai.steamstatic.com/fadb7d90654a38c196422ed308fc931f96440dde_full.jpg",
+						"id": 1,
+						"joinedAt": "+002023-05-23T18:56:24.000000000Z",
+						"stats": {
+							"favoriteCharacter": {
+								"character": 13,
+								"timesUsed": 187
+							},
+							"rank": 1,
+							"skillPoints": 4321,
+							"totalPlays": 2008
+						},
+						"username": "m1nt_"
 					}
 				]
 			},
@@ -1871,7 +1906,18 @@
 						"type": "integer",
 						"format": "int32"
 					}
-				}
+				},
+				"examples": [
+					{
+						"favoriteCharacter": {
+							"character": 13,
+							"timesUsed": 187
+						},
+						"rank": 1,
+						"skillPoints": 4321,
+						"totalPlays": 2008
+					}
+				]
 			},
 			"PlayerWithRanking": {
 				"type": "object",
@@ -1884,7 +1930,19 @@
 						"type": "integer",
 						"format": "int32"
 					}
-				}
+				},
+				"examples": [
+					{
+						"player": {
+							"accountType": 2,
+							"avatarUrl": "https://avatars.akamai.steamstatic.com/fadb7d90654a38c196422ed308fc931f96440dde_full.jpg",
+							"id": 1,
+							"joinedAt": "+002023-05-23T18:56:24.000000000Z",
+							"username": "m1nt_"
+						},
+						"skillPoints": 4649
+					}
+				]
 			},
 			"RadioSongResponse": {
 				"type": "object",
@@ -2065,7 +2123,7 @@
 						"score": 508143,
 						"songId": 2,
 						"songLength": 28224,
-						"submittedAt": "+002026-02-05T19:57:46.432874658Z",
+						"submittedAt": "+002026-02-06T22:46:34.773104728Z",
 						"trackShape": [
 							68, 65, 62, 58, 54, 51, 51, 49, 48, 46, 44, 42, 41, 40, 39, 37,
 							37, 36, 34, 32, 31, 30, 29, 28, 28, 27, 27, 25, 26, 26, 25, 22,
@@ -2243,19 +2301,19 @@
 				"examples": [
 					{
 						"artist": "inverted silence",
-						"createdAt": "+002026-02-05T19:57:46.433161350Z",
+						"createdAt": "+002026-02-06T22:46:34.773381581Z",
 						"id": 1,
 						"modifiers": ["steep"],
 						"title": "sendoff",
-						"updatedAt": "+002026-02-05T19:57:46.433161981Z"
+						"updatedAt": "+002026-02-06T22:46:34.773382222Z"
 					},
 					{
 						"artist": "jamie paige",
-						"createdAt": "+002026-02-05T19:57:46.433167552Z",
+						"createdAt": "+002026-02-06T22:46:34.773387603Z",
 						"id": 2,
 						"modifiers": [],
 						"title": "dyad",
-						"updatedAt": "+002026-02-05T19:57:46.433167742Z"
+						"updatedAt": "+002026-02-06T22:46:34.773387813Z"
 					},
 					{
 						"artist": "reol",
@@ -2263,7 +2321,7 @@
 						"id": 3,
 						"modifiers": [],
 						"title": "no title",
-						"updatedAt": "+002026-02-05T19:57:46.433171409Z"
+						"updatedAt": "+002026-02-06T22:46:34.773391510Z"
 					}
 				]
 			},
