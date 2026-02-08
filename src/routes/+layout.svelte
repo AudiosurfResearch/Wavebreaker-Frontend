@@ -1,12 +1,12 @@
 <script lang="ts">
 import "./layout.css";
+import { ModeWatcher } from "mode-watcher";
 import faviconPng from "$lib/assets/favicon.png";
 import faviconSvg from "$lib/assets/wavebreaker-icon.svg";
-import { ModeWatcher } from "mode-watcher";
-import * as Tooltip from "$lib/components/ui/tooltip/index.js";
-import Navbar from "$lib/components/Navbar.svelte";
 import BottomNav from "$lib/components/BottomNav.svelte";
 import Footer from "$lib/components/Footer.svelte";
+import Navbar from "$lib/components/Navbar.svelte";
+import * as Tooltip from "$lib/components/ui/tooltip/index.js";
 
 let { children } = $props();
 </script>

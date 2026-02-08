@@ -1,17 +1,16 @@
 <script lang="ts">
-import { dev } from "$app/environment";
-import { page } from "$app/state";
-
-import wavebreakerIcon from "$lib/assets/wavebreaker-icon.svg";
-import DarkModeToggle from "$lib/components/DarkModeToggle.svelte";
-import { Badge } from "$lib/components/ui/badge/index.js";
-import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
-import { Button } from "$lib/components/ui/button/index.js";
 
 import HomeIcon from "@lucide/svelte/icons/home";
 import MusicIcon from "@lucide/svelte/icons/music";
 import TrophyIcon from "@lucide/svelte/icons/trophy";
 import UserIcon from "@lucide/svelte/icons/user";
+import { dev } from "$app/environment";
+import { page } from "$app/state";
+import wavebreakerIcon from "$lib/assets/wavebreaker-icon.svg";
+import DarkModeToggle from "$lib/components/DarkModeToggle.svelte";
+import { Badge } from "$lib/components/ui/badge/index.js";
+import { Button } from "$lib/components/ui/button/index.js";
+import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
 
 let isRoot = $derived(page.url.pathname === "/");
 let isUserPage = $derived(page.url.pathname.startsWith("/users"));
