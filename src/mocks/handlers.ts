@@ -1,5 +1,16 @@
-import { fromOpenApi } from "@msw/source/open-api";
-import type { OpenAPI } from "openapi-types";
-import spec from "$lib/api/api-1.json";
+import { createOpenApiHttp } from "openapi-msw";
+import type { paths } from "$lib/api/v1";
 
-export const handlers = await fromOpenApi(spec as OpenAPI.Document);
+const http = createOpenApiHttp<paths>({ baseUrl: "/api" });
+
+// TS only suggests available GET paths
+const statsHandler = http.get("/stats", ({ response }) => {
+	return response(200).json({
+		scoreCount: 13649,
+		searchSupported: true,
+		songCount: 15122,
+		userCount: 150,
+	});
+});
+
+export const handlers = [statsHandler];
