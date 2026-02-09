@@ -10,7 +10,7 @@
 	},
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["**", "!api-1.json", "!**/static"]
+		"includes": ["**", "!**/api-1.json", "!**/static", "!**/v1.d.ts"]
 	},
 	"formatter": {
 		"enabled": true,
