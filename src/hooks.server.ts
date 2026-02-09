@@ -1,4 +1,4 @@
-import type { HandleServerError } from "@sveltejs/kit";
+import type { Handle, HandleServerError } from "@sveltejs/kit";
 import { dev } from "$app/environment";
 import type { LyricEntry } from "$lib/errors";
 
@@ -29,4 +29,14 @@ export const handleError: HandleServerError = async ({ message }) => {
 		// biome-ignore lint/style/noNonNullAssertion: access will always stay in array bounds
 		randomLyric: textArray[Math.floor(Math.random() * textArray.length)]!,
 	};
+};
+
+// see https://github.com/openapi-ts/openapi-typescript/blob/main/packages/openapi-fetch/examples/sveltekit/src/hooks.server.ts
+export const handle: Handle = async ({ event, resolve }) => {
+	return resolve(event, {
+		filterSerializedResponseHeaders(name) {
+			// SvelteKit doesn't serialize any headers on server-side fetches by default but openapi-fetch uses this header for empty responses.
+			return name === "content-length";
+		},
+	});
 };
