@@ -1600,8 +1600,14 @@
 		"schemas": {
 			"AccountType": {
 				"type": "integer",
-				"description": "Represents the type of account a player has.\n\n0 = User, 1 = Moderator, 2 = Wavebreaker Team",
-				"enum": [0, 1, 2]
+				"format": "int16",
+				"enum": [0, 1, 2],
+				"x-enum-descriptions": [
+					"A regular user with no special permissions",
+					"A moderator, allowed to delete songs, comments and change song metadata",
+					"A member of the Wavebreaker team. Mostly for cosmetic purposes, currently has same permissions as Moderator"
+				],
+				"x-enum-varnames": ["User", "Moderator", "Team"]
 			},
 			"AuthBodySchema": {
 				"type": "object",
@@ -1618,8 +1624,24 @@
 			},
 			"Character": {
 				"type": "integer",
-				"description": "Represents a character/vehicle in the game.",
-				"enum": [0, 1, 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+				"format": "int16",
+				"enum": [0, 1, 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+				"x-enum-varnames": [
+					"PointmanPro",
+					"DoubleVisionPro",
+					"Vegas",
+					"Pusher",
+					"Eraser",
+					"DoubleVision",
+					"PointmanElite",
+					"MonoPro",
+					"EraserElite",
+					"NinjaMono",
+					"DoubleVisionElite",
+					"Pointman",
+					"PusherElite",
+					"Mono"
+				]
 			},
 			"ExtraSongInfo": {
 				"type": "object",
@@ -1678,18 +1700,32 @@
 				},
 				"examples": [
 					{
+						"aliasesArtist": null,
+						"aliasesTitle": null,
+						"coverUrl": "https://ia600309.us.archive.org/13/items/mbid-8a4b4cd1-917c-46bd-94eb-ab9f22a5c46f/mbid-8a4b4cd1-917c-46bd-94eb-ab9f22a5c46f-36122349406_thumb500.jpg",
+						"coverUrlSmall": "https://ia600309.us.archive.org/13/items/mbid-8a4b4cd1-917c-46bd-94eb-ab9f22a5c46f/mbid-8a4b4cd1-917c-46bd-94eb-ab9f22a5c46f-36122349406_thumb.jpg",
+						"id": 1,
+						"mbid": "51517639-fafe-456a-9d6a-e4a11db00cf5",
+						"mistagLock": false,
+						"musicbrainzArtist": "Inverted Silence",
+						"musicbrainzLength": 202559,
+						"musicbrainzTitle": "Sendoff",
+						"songId": 1,
+						"updatedAt": "+002026-02-09T08:56:35.034878594Z"
+					},
+					{
 						"aliasesArtist": ["JamieP"],
 						"aliasesTitle": null,
 						"coverUrl": "https://i.scdn.co/image/ab67616d0000b27356021e26fd463e7c1d062a9d",
 						"coverUrlSmall": "https://i.scdn.co/image/ab67616d0000485156021e26fd463e7c1d062a9d",
-						"id": 1,
+						"id": 2,
 						"mbid": "6c7e91a6-9cba-4ddf-b262-b5bf7be72d44",
 						"mistagLock": false,
 						"musicbrainzArtist": "Jamie Paige",
 						"musicbrainzLength": 282315,
 						"musicbrainzTitle": "Dyad",
 						"songId": 2,
-						"updatedAt": "+002026-02-06T22:46:34.773403332Z"
+						"updatedAt": "+002026-02-09T08:56:35.034883403Z"
 					}
 				]
 			},
@@ -1708,8 +1744,9 @@
 			},
 			"League": {
 				"type": "integer",
-				"description": "Represents the three skill levels represented on the leaderboard.",
-				"enum": [0, 1, 2]
+				"format": "int16",
+				"enum": [0, 1, 2],
+				"x-enum-varnames": ["Casual", "Pro", "Elite"]
 			},
 			"MbidRefreshBody": {
 				"type": "object",
@@ -2123,7 +2160,7 @@
 						"score": 508143,
 						"songId": 2,
 						"songLength": 28224,
-						"submittedAt": "+002026-02-06T22:46:34.773104728Z",
+						"submittedAt": "+002026-02-09T08:56:35.034551699Z",
 						"trackShape": [
 							68, 65, 62, 58, 54, 51, 51, 49, 48, 46, 44, 42, 41, 40, 39, 37,
 							37, 36, 34, 32, 31, 30, 29, 28, 28, 27, 27, 25, 26, 26, 25, 22,
@@ -2301,19 +2338,19 @@
 				"examples": [
 					{
 						"artist": "inverted silence",
-						"createdAt": "+002026-02-06T22:46:34.773381581Z",
+						"createdAt": "+002026-02-09T08:56:35.034856853Z",
 						"id": 1,
 						"modifiers": ["steep"],
 						"title": "sendoff",
-						"updatedAt": "+002026-02-06T22:46:34.773382222Z"
+						"updatedAt": "+002026-02-09T08:56:35.034857404Z"
 					},
 					{
 						"artist": "jamie paige",
-						"createdAt": "+002026-02-06T22:46:34.773387603Z",
+						"createdAt": "+002026-02-09T08:56:35.034862894Z",
 						"id": 2,
 						"modifiers": [],
 						"title": "dyad",
-						"updatedAt": "+002026-02-06T22:46:34.773387813Z"
+						"updatedAt": "+002026-02-09T08:56:35.034863115Z"
 					},
 					{
 						"artist": "reol",
@@ -2321,7 +2358,7 @@
 						"id": 3,
 						"modifiers": [],
 						"title": "no title",
-						"updatedAt": "+002026-02-06T22:46:34.773391510Z"
+						"updatedAt": "+002026-02-09T08:56:35.034866601Z"
 					}
 				]
 			},

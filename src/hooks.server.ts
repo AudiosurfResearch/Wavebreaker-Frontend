@@ -18,6 +18,10 @@ export const handleError: HandleServerError = async ({ message }) => {
 			lyric: "And I falter as an afterthought",
 			url: "https://www.youtube.com/watch?v=0iVlSNpq8i8",
 		},
+		{
+			lyric: "It's okay, I am paper, recycled easily",
+			url: "https://jamiepaige.bandcamp.com/album/c-sides",
+		},
 	];
 
 	return {
