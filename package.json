@@ -15,7 +15,7 @@
 		"lint:fix": "biome lint --write",
 		"fmt": "biome format --write",
 		"fmt:check": "biome format",
-		"update-openapi": "openapi-typescript ./src/lib/api/api-1.json -o ./src/lib/api/v1.d.ts"
+		"update-openapi": "openapi-typescript ./src/lib/api/api-1.json -o ./src/lib/api/v1.d.ts --enum"
 	},
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.8",

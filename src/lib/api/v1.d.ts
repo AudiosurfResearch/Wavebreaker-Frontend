@@ -405,7 +405,7 @@ export interface components {
          * Format: int16
          * @enum {integer}
          */
-        AccountType: 0 | 1 | 2;
+        AccountType: AccountType;
         /** @description Wrapper for jwt crate's AuthBody because it doesn't implement ToSchema */
         AuthBodySchema: {
             access_token: string;
@@ -415,7 +415,7 @@ export interface components {
          * Format: int16
          * @enum {integer}
          */
-        Character: 0 | 1 | 2 | 3 | 4 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;
+        Character: Character;
         /**
          * @description Used for storing additional metadata from [MusicBrainz](https://musicbrainz.org).
          *     This lets us display fancy stuff™ on the song page.
@@ -483,7 +483,7 @@ export interface components {
          * Format: int16
          * @enum {integer}
          */
-        League: 0 | 1 | 2;
+        League: League;
         MbidRefreshBody: {
             recording_mbid: string;
             release_mbid?: string | null;
@@ -1058,7 +1058,7 @@ export interface components {
          * @description General type used to specify sort order
          * @enum {string}
          */
-        SortType: "asc" | "desc";
+        SortType: SortType;
         TopSongResponse: {
             songData: components["schemas"]["SongResponse"];
             /** Format: int64 */
@@ -2201,4 +2201,37 @@ export interface operations {
             };
         };
     };
+}
+export enum AccountType {
+    // A regular user with no special permissions
+    User = 0,
+    // A moderator, allowed to delete songs, comments and change song metadata
+    Moderator = 1,
+    // A member of the Wavebreaker team. Mostly for cosmetic purposes, currently has same permissions as Moderator
+    Team = 2
+}
+export enum Character {
+    PointmanPro = 0,
+    DoubleVisionPro = 1,
+    Vegas = 2,
+    Pusher = 3,
+    Eraser = 4,
+    DoubleVision = 9,
+    PointmanElite = 10,
+    MonoPro = 11,
+    EraserElite = 12,
+    NinjaMono = 13,
+    DoubleVisionElite = 14,
+    Pointman = 15,
+    PusherElite = 16,
+    Mono = 17
+}
+export enum League {
+    Casual = 0,
+    Pro = 1,
+    Elite = 2
+}
+export enum SortType {
+    asc = "asc",
+    desc = "desc"
 }
