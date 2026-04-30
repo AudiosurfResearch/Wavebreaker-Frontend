@@ -1,12 +1,5 @@
 import type { Handle, HandleServerError } from "@sveltejs/kit";
-import { dev } from "$app/environment";
 import type { LyricEntry } from "$lib/errors";
-
-if (dev) {
-	const { server } = await import("./mocks/node");
-
-	server.listen();
-}
 
 export const handleError: HandleServerError = async ({ message }) => {
 	const textArray: LyricEntry[] = [
@@ -26,7 +19,6 @@ export const handleError: HandleServerError = async ({ message }) => {
 
 	return {
 		message,
-		// biome-ignore lint/style/noNonNullAssertion: access will always stay in array bounds
 		randomLyric: textArray[Math.floor(Math.random() * textArray.length)]!,
 	};
 };
