@@ -1,19 +1,36 @@
-import type { Handle } from '@sveltejs/kit';
-import type { UserInfo } from '$lib/models/UserData';
-import { fetcher } from '$lib/utils/api';
+import type { Handle, HandleServerError } from '@sveltejs/kit';
+import type { LyricEntry } from '$lib/errors';
 
+export const handleError: HandleServerError = async ({ message, error }) => {
+  console.error(error);
+
+	const textArray: LyricEntry[] = [
+		{
+			lyric: "Don't let me go!",
+			url: 'https://soundcloud.com/asuzora/dont-ft-ranasol',
+		},
+		{
+			lyric: 'And I falter as an afterthought',
+			url: 'https://www.youtube.com/watch?v=0iVlSNpq8i8',
+		},
+		{
+			lyric: "It's okay, I am paper, recycled easily",
+			url: 'https://jamiepaige.bandcamp.com/album/c-sides',
+		},
+	];
+
+	return {
+		message,
+		randomLyric: textArray[Math.floor(Math.random() * textArray.length)]!,
+	};
+};
+
+// see https://github.com/openapi-ts/openapi-typescript/blob/main/packages/openapi-fetch/examples/sveltekit/src/hooks.server.ts
 export const handle: Handle = async ({ event, resolve }) => {
-	const jwt = event.cookies.get("Authorization");
-
-	if (jwt) {
-		try {
-			const user = await fetcher<UserInfo>('/api/auth/verifyToken', jwt);
-			event.locals.user = user;
-		} catch (e) {
-			console.error(e);
-		}
-	}
-
-	const response = await resolve(event);
-	return response;
+	return resolve(event, {
+		filterSerializedResponseHeaders(name) {
+			// SvelteKit doesn't serialize any headers on server-side fetches by default but openapi-fetch uses this header for empty responses.
+			return name === 'content-length';
+		},
+	});
 };

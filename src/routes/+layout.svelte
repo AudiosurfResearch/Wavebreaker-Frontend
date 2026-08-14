@@ -1,26 +1,31 @@
 <script lang="ts">
-	import '../app.postcss';
-	import Footer from '$lib/components/common/Footer.svelte';
-	import Navbar from '$lib/components/common/Navbar.svelte';
-	import BottomNav from '$lib/components/common/BottomNav.svelte';
+import './layout.css';
+import { ModeWatcher } from 'mode-watcher';
+import faviconPng from '$lib/assets/favicon.png';
+import faviconSvg from '$lib/assets/wavebreaker-icon.svg';
+import BottomNav from '$lib/components/BottomNav.svelte';
+import Footer from '$lib/components/Footer.svelte';
+import Navbar from '$lib/components/Navbar.svelte';
+import * as Tooltip from '$lib/components/ui/tooltip';
 
-	//import { navigating } from '$app/stores';
+let { children } = $props();
 </script>
 
-<div class="flex flex-col min-h-screen justify-between">
-	<Navbar />
-	<div class="max-w-7xl self-center w-full p-5">
-		<slot />
-		<!--
-		{#if $navigating}
-			<div class="flex justify-center items-center w-full">
-				<h1 class="text-3xl text-center">Please wait...</h1>
-			</div>
-		{:else}
-			<slot />
-		{/if}
-		-->
-	</div>
+<ModeWatcher />
+<svelte:head>
+	<link rel="icon" href={faviconSvg} type="image/svg+xml" />
+	<link rel="icon" href={faviconPng} type="image/png" />
+</svelte:head>
+
+<Navbar />
+<div
+	class="relative flex sm:min-h-[calc(100svh-4rem)] min-h-[calc(100svh-8rem)] flex-col items-center justify-between"
+>
+	<main class="flex flex-1 flex-col w-full h-full self-center max-w-7xl p-4">
+		<Tooltip.Provider>
+            {@render children()}
+        </Tooltip.Provider>
+	</main>
 	<Footer />
 </div>
 <BottomNav />

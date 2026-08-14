@@ -1,0 +1,14 @@
+{
+	"unstable": ["fmt-component"],
+	"fmt": {
+		"exclude": ["/static/", "/src/lib/api/*.d.ts", "/src/lib/api/*.json"],
+		"useTabs": true,
+		"singleQuote": true,
+		"lineWidth": 100
+	},
+	"lint": {
+		"rules": {
+			"exclude": ["no-sloppy-imports"]
+		}
+	}
+}

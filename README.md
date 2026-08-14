@@ -1,43 +1,44 @@
-<div align="center">
-  <picture>
-  <img alt="Wavebreaker Frontend logo" src="./.github/assets/wavebreaker_icon.png" width="25%" height="25%">
-</picture>
+# sv
 
-Frontend for <a href="https://github.com/AudiosurfResearch/Wavebreaker">Wavebreaker</a>, a reimplementation of Audiosurf's online services.
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-</div>
+## Creating a project
 
-#
+If you're seeing this, you've probably already done this step. Congrats!
 
-> [!NOTE]
-> There is a main public instance of Wavebreaker and its frontend running at https://wavebreaker.arcadian.garden/.
+```sh
+# create a new project
+npx sv create my-app
+```
 
-### Developing
+To recreate this project with the same configuration:
 
-Once you've cloned the project and installed dependencies with `npm install`, start a development server:
+```sh
+# recreate this project
+bun x sv create --template minimal --types ts --add tailwindcss="plugins:none" --install bun .
+```
 
-```bash
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or
+`yarn`), start a development server:
+
+```sh
 npm run dev
 
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
-
-# to expose the server to the local network
-npm run dev -- --host
 ```
 
-### Building
+## Building
 
-To create a production version:
+To create a production version of your app:
 
-```bash
+```sh
 npm run build
 ```
 
 You can preview the production build with `npm run preview`.
 
-### Thanks
-
-This project uses a few things from ScoreSaber's frontend (like the entirety of src/lib/utils/accio), which is open-source and licensed under the MIT license.
-
-README format shamelessly stolen from [ezekielathome](https://github.com/ezekielathome). Cool stuff!
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for
+> your target environment.
