@@ -4,6 +4,6 @@ import type { paths } from './v1';
 
 // TODO: use env var to set base URL for non-dev environment
 const client = createClient<paths>({
-	baseUrl: dev ? 'http://localhost:5173/api' : '',
+	baseUrl: dev ? 'https://wavebreaker.local/api' : '',
 });
 export default client;

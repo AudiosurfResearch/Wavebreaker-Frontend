@@ -1,7 +1,9 @@
 import type { Handle, HandleServerError } from '@sveltejs/kit';
 import type { LyricEntry } from '$lib/errors';
 
-export const handleError: HandleServerError = async ({ message }) => {
+export const handleError: HandleServerError = async ({ message, error }) => {
+  console.error(error);
+
 	const textArray: LyricEntry[] = [
 		{
 			lyric: "Don't let me go!",
