@@ -8,13 +8,11 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json && biome check",
-		"check:fix": "biome check --write",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "eslint --concurrency auto --cache .",
-		"lint:fix": "deno task lint:es --fix",
-		"update-openapi": "openapi-typescript ./src/lib/api/api-1.json -o ./src/lib/api/v1.d.ts --enum",
-		"format": "prettier --write ."
+		"lint:fix": "deno task lint --fix",
+		"update-openapi": "openapi-typescript ./src/lib/api/api-1.json -o ./src/lib/api/v1.d.ts --enum"
 	},
 	"dependencies": {
 		"@deno/svelte-adapter": "^0.2.1",

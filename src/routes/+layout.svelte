@@ -1,31 +1,31 @@
 <script lang="ts">
-import "./layout.css";
-import { ModeWatcher } from "mode-watcher";
-import faviconPng from "$lib/assets/favicon.png";
-import faviconSvg from "$lib/assets/wavebreaker-icon.svg";
-import BottomNav from "$lib/components/BottomNav.svelte";
-import Footer from "$lib/components/Footer.svelte";
-import Navbar from "$lib/components/Navbar.svelte";
-import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+import './layout.css';
+import { ModeWatcher } from 'mode-watcher';
+import faviconPng from '$lib/assets/favicon.png';
+import faviconSvg from '$lib/assets/wavebreaker-icon.svg';
+import BottomNav from '$lib/components/BottomNav.svelte';
+import Footer from '$lib/components/Footer.svelte';
+import Navbar from '$lib/components/Navbar.svelte';
+import * as Tooltip from '$lib/components/ui/tooltip';
 
 let { children } = $props();
 </script>
 
 <ModeWatcher />
 <svelte:head>
-    <link rel="icon" href={faviconSvg} type="image/svg+xml" />
-    <link rel="icon" href={faviconPng} type="image/png" />
+	<link rel="icon" href={faviconSvg} type="image/svg+xml" />
+	<link rel="icon" href={faviconPng} type="image/png" />
 </svelte:head>
 
 <Navbar />
 <div
-    class="relative flex sm:min-h-[calc(100svh-4rem)] min-h-[calc(100svh-8rem)] flex-col items-center justify-between"
+	class="relative flex sm:min-h-[calc(100svh-4rem)] min-h-[calc(100svh-8rem)] flex-col items-center justify-between"
 >
-    <main class="flex flex-1 flex-col w-full h-full self-center max-w-7xl p-4">
-        <Tooltip.Provider>
+	<main class="flex flex-1 flex-col w-full h-full self-center max-w-7xl p-4">
+		<Tooltip.Provider>
             {@render children()}
         </Tooltip.Provider>
-    </main>
-    <Footer />
+	</main>
+	<Footer />
 </div>
 <BottomNav />

@@ -1,18 +1,18 @@
 <script lang="ts">
-import * as Card from "$lib/components/ui/card/index.js";
-import type { PageProps } from "./$types";
+import * as Card from '$lib/components/ui/card';
+import type { PageProps } from './$types';
 
 let { data }: PageProps = $props();
 </script>
 
 <Card.Root class="w-full max-w-full sm:max-w-sm">
-    <Card.Header>
-        <Card.Title>Global stats</Card.Title>
-        <Card.Description>
+	<Card.Header>
+		<Card.Title>Global stats</Card.Title>
+		<Card.Description>
             Server-wide statistics across all of Wavebreaker!
         </Card.Description>
-    </Card.Header>
-    <Card.Content>
+	</Card.Header>
+	<Card.Content>
         {#if !data.serverStats.error}
             <div class="flex flex-col space-y-3">
                 <div>

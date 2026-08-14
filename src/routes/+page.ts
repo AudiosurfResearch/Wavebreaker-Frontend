@@ -1,8 +1,8 @@
-import client from "$lib/api/index.ts";
-import type { PageLoad } from "./$types.d.ts";
+import client from '$lib/api';
+import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch }) => {
-	const stats = await client.GET("/stats", { fetch });
+	const stats = await client.GET('/stats', { fetch });
 
 	return {
 		serverStats: {

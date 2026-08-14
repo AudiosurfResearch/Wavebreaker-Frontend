@@ -1,5 +1,5 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
-import type { LyricEntry } from "$lib/errors";
+import type { LyricEntry } from '$lib/errors';
 
 // for information about these interfaces
 declare global {
