@@ -1,4 +1,4 @@
-import client from '$lib/api';
+import client from '#lib/api/index.js';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch }) => {
@@ -7,7 +7,7 @@ export const load: PageLoad = async ({ fetch }) => {
 	return {
 		serverStats: {
 			data: stats.data,
-			error: stats.error,
-		},
+			error: stats.error
+		}
 	};
 };

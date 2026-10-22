@@ -1,14 +1,14 @@
 <script lang="ts">
-import './layout.css';
-import { ModeWatcher } from 'mode-watcher';
-import faviconPng from '$lib/assets/favicon.png';
-import faviconSvg from '$lib/assets/wavebreaker-icon.svg';
-import BottomNav from '$lib/components/BottomNav.svelte';
-import Footer from '$lib/components/Footer.svelte';
-import Navbar from '$lib/components/Navbar.svelte';
-import * as Tooltip from '$lib/components/ui/tooltip';
+	import './layout.css';
+	import { ModeWatcher } from 'mode-watcher';
+	import faviconPng from '#lib/assets/favicon.png';
+	import faviconSvg from '#lib/assets/wavebreaker-icon.svg';
+	import BottomNav from '#lib/components/BottomNav.svelte';
+	import Footer from '#lib/components/Footer.svelte';
+	import Navbar from '#lib/components/Navbar.svelte';
+	import * as Tooltip from '#lib/components/ui/tooltip/index.js';
 
-let { children } = $props();
+	let { children } = $props();
 </script>
 
 <ModeWatcher />
@@ -19,12 +19,12 @@ let { children } = $props();
 
 <Navbar />
 <div
-	class="relative flex sm:min-h-[calc(100svh-4rem)] min-h-[calc(100svh-8rem)] flex-col items-center justify-between"
+	class="relative flex min-h-[calc(100svh-8rem)] flex-col items-center justify-between sm:min-h-[calc(100svh-4rem)]"
 >
-	<main class="flex flex-1 flex-col w-full h-full self-center max-w-7xl p-4">
+	<main class="flex h-full w-full max-w-7xl flex-1 flex-col self-center p-4">
 		<Tooltip.Provider>
-            {@render children()}
-        </Tooltip.Provider>
+			{@render children()}
+		</Tooltip.Provider>
 	</main>
 	<Footer />
 </div>

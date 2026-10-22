@@ -30,5 +30,5 @@ export {
 	//
 	Set as FieldSet,
 	Title,
-	Title as FieldTitle,
+	Title as FieldTitle
 };

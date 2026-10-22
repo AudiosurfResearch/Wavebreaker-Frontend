@@ -15,5 +15,5 @@ export {
 	//
 	Root as Tooltip,
 	Trigger,
-	Trigger as TooltipTrigger,
+	Trigger as TooltipTrigger
 };

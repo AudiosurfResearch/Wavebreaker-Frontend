@@ -21,5 +21,5 @@ export {
 	//
 	Root as Card,
 	Title,
-	Title as CardTitle,
+	Title as CardTitle
 };

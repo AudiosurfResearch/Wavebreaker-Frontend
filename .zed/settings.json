@@ -5,24 +5,14 @@
 {
 	"languages": {
 		"JavaScript": {
-			"language_servers": [
-				"eslint",
-				"!deno",
-				"!typescript-language-server",
-				"!vtsls"
-			],
+			"language_servers": ["eslint", "!deno", "!typescript-language-server", "!vtsls"],
 			"formatter": "language_server",
 			"code_actions_on_format": {
 				"source.fixAll.eslint": true
 			}
 		},
 		"TypeScript": {
-			"language_servers": [
-				"eslint",
-				"!deno",
-				"!typescript-language-server",
-				"!vtsls"
-			],
+			"language_servers": ["eslint", "!deno", "!typescript-language-server", "!vtsls"],
 			"formatter": "language_server",
 			"code_actions_on_format": {
 				"source.fixAll.eslint": true

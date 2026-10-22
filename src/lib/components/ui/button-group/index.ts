@@ -9,5 +9,5 @@ export {
 	Separator,
 	Separator as ButtonGroupSeparator,
 	Text,
-	Text as ButtonGroupText,
+	Text as ButtonGroupText
 };
