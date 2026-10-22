@@ -1,7 +1,7 @@
 import type { Handle, HandleServerError } from '@sveltejs/kit/hooks';
 import type { LyricEntry } from '#lib/errors.js';
 
-export const handleError: HandleServerError = async ({ message, error }) => {
+export const handleError: HandleServerError = async ({ error }) => {
 	console.error(error);
 
 	const textArray: LyricEntry[] = [
@@ -20,7 +20,7 @@ export const handleError: HandleServerError = async ({ message, error }) => {
 	];
 
 	return {
-		message,
+		message: error.message,
 		randomLyric: textArray[Math.floor(Math.random() * textArray.length)]!
 	};
 };
