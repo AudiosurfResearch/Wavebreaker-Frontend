@@ -4,7 +4,7 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "NODE_ENV=development NODE_USE_SYSTEM_CA=1 vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -17,6 +17,7 @@
 	},
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.3.0",
+		"@icons-pack/svelte-simple-icons": "^7.2.0",
 		"mode-watcher": "^1.1.0",
 		"openapi-fetch": "^0.17.0",
 		"openapi-types": "^12.1.3",

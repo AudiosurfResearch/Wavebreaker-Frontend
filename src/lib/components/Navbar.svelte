@@ -10,6 +10,7 @@
 	import { Badge } from '#lib/components/ui/badge/index.js';
 	import { Button } from '#lib/components/ui/button/index.js';
 	import * as ButtonGroup from '#lib/components/ui/button-group/index.js';
+	import { SiSteam } from '@icons-pack/svelte-simple-icons';
 
 	let isRoot = $derived(page.url.pathname === '/');
 	let isUserPage = $derived(page.url.pathname.startsWith('/users'));
@@ -29,7 +30,7 @@
 					{/if}
 				</Button>
 			</div>
-			<div class="order-1 hidden shrink-0 items-center md:inline-flex">
+			<div class="order-1 hidden shrink-0 items-center px-4 md:inline-flex">
 				<ButtonGroup.Root>
 					<Button href="/" variant="ghost" size="sm" class={{ 'text-primary': isRoot }}>
 						<HomeIcon /> Home
@@ -60,7 +61,11 @@
 					</Button>
 				</ButtonGroup.Root>
 			</div>
-			<div class="order-2 mr-4 inline-flex w-1/2 items-center justify-end">
+			<div class="order-2 mr-4 inline-flex w-1/2 items-center justify-end gap-4">
+				<Button size="sm">
+					<SiSteam data-icon="inline-start" />
+					Login
+				</Button>
 				<DarkModeToggle />
 			</div>
 		</div>
