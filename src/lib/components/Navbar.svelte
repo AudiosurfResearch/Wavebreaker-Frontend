@@ -1,0 +1,73 @@
+<script lang="ts">
+	import HomeIcon from '@lucide/svelte/icons/home';
+	import MusicIcon from '@lucide/svelte/icons/music';
+	import TrophyIcon from '@lucide/svelte/icons/trophy';
+	import UserIcon from '@lucide/svelte/icons/user';
+	import { dev } from '$app/env';
+	import { page } from '$app/state';
+	import wavebreakerIcon from '#lib/assets/wavebreaker-icon.svg';
+	import DarkModeToggle from '#lib/components/DarkModeToggle.svelte';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import * as ButtonGroup from '#lib/components/ui/button-group/index.js';
+	import { SiSteam } from '@icons-pack/svelte-simple-icons';
+
+	let isRoot = $derived(page.url.pathname === '/');
+	let isUserPage = $derived(page.url.pathname.startsWith('/users'));
+	let isSongPage = $derived(page.url.pathname.startsWith('/songs'));
+	let isRankingPage = $derived(page.url.pathname.startsWith('/rankings'));
+</script>
+
+<header class="sticky top-0 z-50 w-full bg-background">
+	<div class="container-wrapper">
+		<div class="mx-auto flex h-16 items-center justify-between px-2">
+			<div class="order-1 inline-flex w-1/2 items-center justify-start">
+				<Button href="/" variant="ghost" class="flex h-12 gap-4">
+					<img alt="Wavebreaker logo" class="w-8" src={wavebreakerIcon} />
+					<div class="hidden text-2xl font-semibold sm:block">Wavebreaker</div>
+					{#if dev}
+						<Badge class="bg-warning text-warning-foreground">development</Badge>
+					{/if}
+				</Button>
+			</div>
+			<div class="order-1 hidden shrink-0 items-center px-4 md:inline-flex">
+				<ButtonGroup.Root>
+					<Button href="/" variant="ghost" size="sm" class={{ 'text-primary': isRoot }}>
+						<HomeIcon /> Home
+					</Button>
+					<Button
+						href="/users/search"
+						variant="ghost"
+						size="sm"
+						class={{ 'text-primary': isUserPage }}
+					>
+						<UserIcon /> Users
+					</Button>
+					<Button
+						href="/songs/search"
+						variant="ghost"
+						size="sm"
+						class={{ 'text-primary': isSongPage }}
+					>
+						<MusicIcon /> Songs
+					</Button>
+					<Button
+						href="/rankings"
+						variant="ghost"
+						size="sm"
+						class={{ 'text-primary': isRankingPage }}
+					>
+						<TrophyIcon /> Rankings
+					</Button>
+				</ButtonGroup.Root>
+			</div>
+			<div class="order-2 mr-4 inline-flex w-1/2 items-center justify-end gap-4">
+				<Button size="sm">
+					<SiSteam data-icon="inline-start" />
+					Login
+				</Button>
+				<DarkModeToggle />
+			</div>
+		</div>
+	</div>
+</header>
